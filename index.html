@@ -1,0 +1,4502 @@
+<!doctype html>
+<html lang="vi" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>ANhoEmLam 🎀 Hello Kitty Edition</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <style>
+      :root,
+      [data-theme="light"] {
+        --bg: #fff0f6;
+        --bg2: #ffe3ee;
+        --panel: #ffffff;
+        --panel2: #fff7fa;
+        --line: #f9bfd8;
+        --txt: #4a152d;
+        --mut: #9c5274;
+        --pink: #ff2e88;
+        --pink2: #ff69b4;
+        --pink-deep: #d81b60;
+        --soft: #ffe0ed;
+        --bow: #ff1744;
+        --sh: 0 10px 28px rgba(255, 46, 136, 0.15);
+        --glow: rgba(255, 46, 136, 0.22);
+      }
+      [data-theme="dark"] {
+        --bg: #160911;
+        --bg2: #240e1c;
+        --panel: #26121f;
+        --panel2: #321729;
+        --line: #572543;
+        --txt: #fff0f7;
+        --mut: #d896b5;
+        --pink: #ff4da6;
+        --pink2: #ff85c2;
+        --pink-deep: #ff2e88;
+        --soft: #421831;
+        --bow: #ff2e63;
+        --sh: 0 12px 32px rgba(0, 0, 0, 0.55);
+        --glow: rgba(255, 77, 166, 0.28);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        color: var(--txt);
+        font:
+          15.5px/1.55 "Quicksand",
+          "Noto Sans KR",
+          sans-serif;
+        background-color: var(--bg);
+        background-image:
+          radial-gradient(circle at 15% 15%, var(--glow) 0%, transparent 35%),
+          radial-gradient(circle at 85% 10%, var(--glow) 0%, transparent 40%),
+          radial-gradient(var(--line) 1.2px, transparent 1.2px);
+        background-size:
+          100% 100%,
+          100% 100%,
+          26px 26px;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      header {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        align-items: center;
+        padding: 12px 22px;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: color-mix(in srgb, var(--panel) 90%, transparent);
+        backdrop-filter: blur(14px);
+        border-bottom: 3px solid var(--pink);
+        box-shadow: var(--sh);
+      }
+      .brand {
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        margin-right: auto;
+      }
+      .kitty-avatar {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #fff;
+        border: 2.5px solid var(--pink);
+        display: grid;
+        place-items: center;
+        box-shadow: 0 6px 16px var(--glow);
+        flex-shrink: 0;
+      }
+      .logo {
+        font-size: 22px;
+        font-weight: 800;
+        line-height: 1.1;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+      .logo b {
+        color: var(--pink);
+      }
+      .kitty-badge {
+        background: linear-gradient(135deg, var(--pink), var(--pink2));
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 9px;
+        border-radius: 99px;
+        font-weight: 800;
+        box-shadow: 0 3px 10px var(--glow);
+      }
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      nav button,
+      .theme-btn {
+        border: 2px solid var(--line);
+        background: var(--panel);
+        color: var(--txt);
+        font: inherit;
+        font-weight: 700;
+        padding: 8px 15px;
+        border-radius: 99px;
+        cursor: pointer;
+        box-shadow: var(--sh);
+        transition: all 0.2s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+      nav button:hover,
+      .theme-btn:hover {
+        border-color: var(--pink);
+        color: var(--pink);
+        transform: translateY(-2px);
+      }
+      nav button.on {
+        background: linear-gradient(135deg, var(--pink), var(--pink2));
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 6px 18px var(--glow);
+      }
+
+      main {
+        max-width: 1580px;
+        width: 96%;
+        margin: 0 auto;
+        padding: 20px 14px;
+      }
+      section {
+        display: none;
+        width: 100%;
+      }
+      section.on {
+        display: block;
+        animation: fadeIn 0.25s ease;
+        width: 100%;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .kitty-hero {
+        background: linear-gradient(135deg, var(--panel), var(--soft));
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        padding: 14px 20px;
+        margin-bottom: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        box-shadow: var(--sh);
+      }
+      .kitty-hero-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+      .kitty-mini-parade {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .kitty-sticker {
+        background: var(--panel);
+        border: 1.5px solid var(--pink);
+        border-radius: 16px;
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 700;
+        color: var(--pink);
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        box-shadow: 0 4px 10px var(--glow);
+      }
+
+      h2 {
+        margin: 0 0 14px;
+        font-size: 24px;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      h3 {
+        color: var(--pink);
+        margin: 22px 0 10px;
+        font-size: 19px;
+        font-weight: 800;
+      }
+      .box {
+        background: var(--panel);
+        border: 2px solid var(--line);
+        border-radius: 22px;
+        padding: 18px;
+        margin-bottom: 16px;
+        box-shadow: var(--sh);
+        position: relative;
+      }
+      input,
+      textarea,
+      select {
+        background: var(--panel2);
+        color: var(--txt);
+        border: 2px solid var(--line);
+        border-radius: 14px;
+        padding: 10px 14px;
+        font: inherit;
+        font-weight: 600;
+        width: 100%;
+        transition: border-color 0.2s;
+      }
+      input:focus,
+      textarea:focus {
+        outline: none;
+        border-color: var(--pink);
+        box-shadow: 0 0 0 3px var(--glow);
+      }
+      .btn {
+        background: linear-gradient(135deg, var(--pink), var(--pink2));
+        color: #fff;
+        border: 0;
+        border-radius: 14px;
+        padding: 10px 18px;
+        font: inherit;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 6px 14px var(--glow);
+        transition:
+          transform 0.15s,
+          opacity 0.15s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        white-space: nowrap;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+      .btn.alt {
+        background: var(--panel2);
+        color: var(--pink);
+        border: 2px solid var(--pink);
+        box-shadow: none;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 8px 0;
+        align-items: center;
+      }
+      .chip {
+        background: var(--panel2);
+        color: var(--txt);
+        border: 1.5px solid var(--line);
+        border-radius: 99px;
+        padding: 5px 13px;
+        cursor: pointer;
+        font: inherit;
+        font-size: 13px;
+        font-weight: 700;
+        transition: all 0.15s;
+      }
+      .chip:hover {
+        border-color: var(--pink);
+        color: var(--pink);
+      }
+      .chip.on {
+        background: linear-gradient(135deg, var(--pink), var(--pink2));
+        color: #fff;
+        border-color: transparent;
+        box-shadow: 0 4px 10px var(--glow);
+      }
+
+      /* 3 CỘT NHẠC: TRÁI - GIỮA ĐĨA XOAY RỘNG DÀI - PHẢI SUB */
+      .music-3col {
+        display: grid;
+        grid-template-columns: 310px 1.5fr 1.15fr;
+        gap: 18px;
+        align-items: stretch;
+      }
+      @media (max-width: 1150px) {
+        .music-3col {
+          grid-template-columns: 1fr 1.3fr;
+        }
+        .music-col-right {
+          grid-column: 1 / -1;
+        }
+      }
+      @media (max-width: 720px) {
+        .music-3col {
+          grid-template-columns: 1fr;
+        }
+      }
+      .music-col {
+        background: var(--panel);
+        border: 2px solid var(--line);
+        border-radius: 24px;
+        padding: 16px;
+        box-shadow: var(--sh);
+        display: flex;
+        flex-direction: column;
+        min-height: 540px;
+        max-height: 620px;
+        position: relative;
+        overflow: hidden;
+      }
+      .col-title {
+        font-size: 15px;
+        font-weight: 800;
+        color: var(--pink);
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        border-bottom: 2px dashed var(--line);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+      }
+      .song-list {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding-right: 4px;
+        margin-top: 6px;
+      }
+      .song-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 10px;
+        border-radius: 14px;
+        background: var(--panel2);
+        border: 1.5px solid var(--line);
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .song-item:hover,
+      .song-item.active {
+        border-color: var(--pink);
+        background: var(--soft);
+        transform: translateX(2px);
+      }
+      .song-item img {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 1.5px solid var(--pink);
+        flex-shrink: 0;
+      }
+      .song-meta {
+        flex: 1;
+        min-width: 0;
+      }
+      .song-meta b {
+        display: block;
+        font-size: 13.5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .song-meta small {
+        display: block;
+        font-size: 11.5px;
+        color: var(--mut);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .song-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 8px;
+        background: var(--pink);
+        color: #fff;
+        font-weight: 800;
+      }
+
+      /* CỘT GIỮA: ĐĨA NHẠC HELLO KITTY XOAY CHÍNH GIỮA & THANH TUA RỘNG DÀI */
+      .turntable-wrap {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        padding: 6px 0;
+      }
+      .vinyl-stage {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        display: grid;
+        place-items: center;
+        margin: 4px auto 10px;
+      }
+      .disc {
+        width: 195px;
+        height: 195px;
+        border-radius: 50%;
+        position: relative;
+        border: 6px solid var(--pink2);
+        box-shadow:
+          0 12px 30px var(--glow),
+          inset 0 0 25px rgba(255, 46, 136, 0.35);
+        background:
+          radial-gradient(circle, #1a0912 0 16%, transparent 17%),
+          repeating-radial-gradient(circle, #1c0b14 0 3px, #2d1221 3px 6px);
+        animation: spin 5s linear infinite;
+        animation-play-state: paused;
+        display: grid;
+        place-items: center;
+      }
+      .disc::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 35deg,
+          transparent 0 18%,
+          rgba(255, 182, 213, 0.26) 24%,
+          transparent 32% 68%,
+          rgba(255, 182, 213, 0.22) 74%,
+          transparent 82%
+        );
+        pointer-events: none;
+      }
+      .disc.spin {
+        animation-play-state: running;
+      }
+      .disc-center {
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, #ffffff, #ffe0ed);
+        border: 3.5px solid var(--pink);
+        display: grid;
+        place-items: center;
+        position: relative;
+        z-index: 2;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(255, 46, 136, 0.35);
+      }
+      .disc-center svg {
+        width: 74px;
+        height: 74px;
+        filter: drop-shadow(0 2px 4px rgba(74, 21, 45, 0.15));
+      }
+      .disc-hole {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--pink);
+        border: 2px solid #fff;
+        z-index: 4;
+      }
+      .kitty-cassette-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 10px;
+        border-radius: 99px;
+        background: var(--soft);
+        border: 1.5px solid var(--pink);
+        color: var(--pink);
+        font-size: 11px;
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      .disc-bow {
+        position: absolute;
+        top: -10px;
+        right: 12px;
+        z-index: 6;
+        filter: drop-shadow(0 4px 8px rgba(255, 23, 68, 0.4));
+        transform: rotate(18deg);
+      }
+      .tonearm {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        width: 50px;
+        height: 95px;
+        pointer-events: none;
+        transform-origin: 36px 14px;
+        transform: rotate(-28deg);
+        transition: transform 0.5s ease;
+        z-index: 5;
+      }
+      .tonearm.playing {
+        transform: rotate(4deg);
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .now-playing-info {
+        text-align: center;
+        width: 100%;
+        margin-bottom: 6px;
+      }
+      .now-playing-info b {
+        display: block;
+        font-size: 15.5px;
+        font-weight: 800;
+        color: var(--txt);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .now-playing-info small {
+        display: block;
+        color: var(--pink);
+        font-weight: 700;
+        font-size: 11.5px;
+        margin-top: 1px;
+      }
+      .seek-panel {
+        width: 100%;
+        background: var(--panel2);
+        border: 2px solid var(--line);
+        border-radius: 16px;
+        padding: 10px 16px;
+        margin: 4px 0 6px;
+        box-shadow: inset 0 2px 8px var(--glow);
+      }
+      .seek-wrap {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 3px 0;
+      }
+      .seek-wrap input[type="range"] {
+        flex: 1;
+        width: 100%;
+        height: 10px;
+        padding: 0;
+        border-radius: 99px;
+        border: 1px solid var(--pink);
+        background: var(--soft);
+        accent-color: var(--pink);
+        cursor: pointer;
+      }
+
+      /* CỘT PHẢI: SUB NHẠC TRÊN & CHỮ NHỎ VIETSUB DƯỚI */
+      .ly {
+        flex: 1;
+        overflow-y: auto;
+        position: relative;
+        padding: 90px 10px;
+        scroll-behavior: smooth;
+        border-radius: 16px;
+        background: var(--panel2);
+        border: 1.5px solid var(--line);
+      }
+      .ly-item {
+        padding: 12px 16px;
+        margin: 6px 4px;
+        border-radius: 16px;
+        opacity: 0.42;
+        transition: all 0.25s ease;
+        cursor: pointer;
+        text-align: center;
+        border: 1.5px solid transparent;
+      }
+      .ly-item:hover {
+        opacity: 0.75;
+        background: var(--soft);
+      }
+      .ly-item.on {
+        opacity: 1;
+        background: var(--soft);
+        border-color: var(--pink);
+        transform: scale(1.02);
+        box-shadow: 0 6px 18px var(--glow);
+      }
+      .ly-orig {
+        font-size: 18px;
+        font-weight: 800;
+        color: var(--txt);
+        line-height: 1.35;
+      }
+      .ly-item.on .ly-orig {
+        color: var(--pink);
+      }
+      .ly-vi {
+        font-size: 13.5px;
+        font-weight: 600;
+        color: var(--mut);
+        margin-top: 4px;
+        line-height: 1.35;
+      }
+      .ly-item.on .ly-vi {
+        color: var(--txt);
+      }
+
+      /* =====================================================
+       PHẦN 2: 16 CHỦ ĐỀ TOPIK 1 (KÉO RỘNG TOÀN MÀN HÌNH)
+       ===================================================== */
+      #vocab .box {
+        padding: 22px 24px;
+      }
+      .tpgrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+        gap: 14px;
+        margin: 16px 0 6px;
+      }
+      .tpc {
+        min-height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        border-radius: 18px;
+        padding: 12px 18px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: 800;
+        box-shadow: var(--sh);
+      }
+      .tpc em {
+        font-style: normal;
+        font-size: 12.5px;
+        min-width: 30px;
+        text-align: center;
+        padding: 3px 9px;
+        border-radius: 10px;
+        background: var(--soft);
+        color: var(--pink);
+        font-weight: 800;
+      }
+      .tpc.on em {
+        background: rgba(255, 255, 255, 0.28);
+        color: #fff;
+      }
+      .vhead {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+      .vhead h3 {
+        margin: 0;
+        font-size: 22px;
+      }
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+        gap: 18px;
+        margin-top: 14px;
+      }
+      .card {
+        background: var(--panel);
+        border: 2px solid var(--line);
+        border-radius: 22px;
+        padding: 18px 20px;
+        box-shadow: var(--sh);
+        transition:
+          transform 0.15s,
+          border-color 0.15s;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card:hover {
+        transform: translateY(-4px);
+        border-color: var(--pink);
+      }
+      .card.hl {
+        border-color: var(--pink);
+        box-shadow:
+          0 0 0 4px var(--glow),
+          var(--sh);
+      }
+      .card .top {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        color: var(--mut);
+        font-weight: 700;
+      }
+      .badge {
+        background: var(--soft);
+        color: var(--pink);
+        border-radius: 8px;
+        padding: 2px 10px;
+        font-weight: 800;
+      }
+      .k {
+        font-size: 24px;
+        font-weight: 800;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .card .k {
+        margin: 10px 0 4px;
+        font-size: 30px;
+        color: var(--pink);
+      }
+      .card .vi {
+        font-size: 16.5px;
+        color: var(--txt);
+        font-weight: 800;
+        border-top: 1.5px dashed var(--line);
+        padding-top: 8px;
+        margin-top: 6px;
+      }
+      .card .ex {
+        font-size: 12.5px;
+        color: var(--mut);
+        margin-top: 6px;
+        background: var(--panel2);
+        padding: 6px 10px;
+        border-radius: 10px;
+      }
+      .card .act {
+        margin-top: 12px;
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .spd {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 8px 0;
+      }
+      .spd::before {
+        content: "🎀 Tốc độ đọc:";
+        color: var(--pink);
+        font-size: 13.5px;
+        font-weight: 800;
+      }
+
+      /* =====================================================
+       PHẦN 3: DỊCH 3 NGÔN NGỮ (1 Ô NHẬP DUY NHẤT)
+       ===================================================== */
+      .card3 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+        gap: 14px;
+        margin-top: 14px;
+      }
+      .card3 .box {
+        margin: 0;
+        border-top: 5px solid var(--pink);
+      }
+      .trans-out {
+        min-height: 76px;
+        font-size: 18px;
+        font-weight: 800;
+        padding: 12px;
+        border-radius: 14px;
+        background: var(--panel2);
+        border: 1.5px solid var(--line);
+        margin: 8px 0;
+        word-break: break-word;
+      }
+      .words {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .pr {
+        display: block;
+        margin-top: 4px;
+        color: var(--pink);
+        font-weight: 700;
+      }
+
+      /* =====================================================
+       PHẦN 4: NGỮ PHÁP, GHÉP CÂU & BỘ ĐỌC SỐ HÁN-HÀN / THUẦN HÀN
+       ===================================================== */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td {
+        padding: 10px 8px;
+        border-bottom: 1.5px solid var(--line);
+        vertical-align: middle;
+      }
+      th {
+        text-align: left;
+        color: var(--pink);
+        padding: 10px 8px;
+        border-bottom: 2.5px solid var(--pink);
+        font-weight: 800;
+      }
+      .part {
+        display: inline-block;
+        margin: 4px;
+        padding: 8px 13px;
+        border-radius: 12px;
+        background: var(--soft);
+        color: var(--txt);
+        text-align: center;
+        font-weight: 800;
+        border: 1.5px solid var(--pink);
+      }
+      .part small {
+        display: block;
+        color: var(--pink);
+        font-size: 11.5px;
+        margin-top: 2px;
+      }
+      .num-grid-2 {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 16px;
+        margin-top: 14px;
+      }
+      .num-ref-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
+        gap: 8px;
+        margin-top: 10px;
+      }
+      .num-pill {
+        background: var(--panel2);
+        border: 1.5px solid var(--line);
+        border-radius: 12px;
+        padding: 7px 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-size: 13.5px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.15s;
+      }
+      .num-pill:hover {
+        border-color: var(--pink);
+        background: var(--soft);
+        transform: translateY(-2px);
+      }
+      .num-pill b {
+        color: var(--pink);
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .fan {
+        border-left: 6px solid var(--pink);
+      }
+      .fan .n {
+        color: var(--pink);
+        font-weight: 800;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+      .fan .ko {
+        font-size: 21px;
+        font-weight: 800;
+        margin: 4px 0;
+        font-family: "Noto Sans KR", sans-serif;
+      }
+      .fan .ro {
+        color: var(--pink);
+        font-weight: 700;
+        font-size: 13.5px;
+      }
+      .fan .vn {
+        margin-top: 6px;
+        font-weight: 700;
+      }
+      .fan .gn {
+        margin-top: 8px;
+        padding: 8px 12px;
+        border-radius: 12px;
+        background: var(--soft);
+        font-size: 13.5px;
+      }
+      .spd5 {
+        display: flex;
+        gap: 6px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      #ytbox,
+      #scbox {
+        position: fixed;
+        right: 12px;
+        bottom: 12px;
+        width: 1px;
+        height: 1px;
+        opacity: 0.01;
+        pointer-events: none;
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER HELLO KITTY -->
+    <header>
+      <div class="brand">
+        <div class="kitty-avatar" title="Hello Kitty ANhoEmNhieuLam">
+          <svg viewBox="0 0 100 90" width="42" height="42">
+            <!-- Tai mèo -->
+            <polygon
+              points="15,42 10,12 38,24"
+              fill="#fff"
+              stroke="#4a152d"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+            <polygon
+              points="85,42 90,12 62,24"
+              fill="#fff"
+              stroke="#4a152d"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+            <!-- Mặt mèo -->
+            <ellipse
+              cx="50"
+              cy="52"
+              rx="38"
+              ry="30"
+              fill="#fff"
+              stroke="#4a152d"
+              stroke-width="4"
+            />
+            <!-- Nơ đỏ hồng Hello Kitty -->
+            <path
+              d="M62,22 C54,12 46,24 56,30 C48,36 58,44 65,33 Z"
+              fill="#ff2e88"
+              stroke="#4a152d"
+              stroke-width="3"
+            />
+            <path
+              d="M68,26 C78,16 88,28 76,35 C86,42 74,48 67,35 Z"
+              fill="#ff2e88"
+              stroke="#4a152d"
+              stroke-width="3"
+            />
+            <circle cx="65" cy="30" r="5.5" fill="#ff1744" stroke="#4a152d" stroke-width="3" />
+            <!-- Mắt & Mũi vàng -->
+            <ellipse cx="34" cy="54" rx="3.5" ry="5" fill="#4a152d" />
+            <ellipse cx="66" cy="54" rx="3.5" ry="5" fill="#4a152d" />
+            <ellipse
+              cx="50"
+              cy="59"
+              rx="5"
+              ry="3.8"
+              fill="#ffcc00"
+              stroke="#4a152d"
+              stroke-width="2.5"
+            />
+            <!-- Râu mèo -->
+            <line
+              x1="6"
+              y1="48"
+              x2="20"
+              y2="50"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="4"
+              y1="56"
+              x2="19"
+              y2="56"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="7"
+              y1="64"
+              x2="21"
+              y2="62"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="94"
+              y1="48"
+              x2="80"
+              y2="50"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="96"
+              y1="56"
+              x2="81"
+              y2="56"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <line
+              x1="93"
+              y1="64"
+              x2="79"
+              y2="62"
+              stroke="#4a152d"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </div>
+        <div>
+          <div class="logo">
+            ANhoEm<b>NhieuLam</b>
+            <span class="kitty-badge">🎀 HELLO KITTY</span>
+          </div>
+          <small style="color: var(--mut); font-weight: 700"
+            >Nhạc VietSub • 16 Chủ Đề TOPIK 1 • Dịch 3 Ngôn Ngữ • Ngữ Pháp & Số Đếm</small
+          >
+        </div>
+      </div>
+
+      <nav id="nav">
+        <button data-t="music" class="on">🎀 1. Nhạc &amp; VietSub</button>
+        <button data-t="vocab">🌸 2. TOPIK 1 (16 Chủ Đề)</button>
+        <button data-t="trans">💌 3. Dịch 3 Ngôn Ngữ</button>
+        <button data-t="gram">👑 4. Ngữ Pháp &amp; Đọc Số</button>
+      </nav>
+
+      <button class="theme-btn" id="th">🌙 Chế độ Tối</button>
+    </header>
+
+    <main>
+      <!-- BANNER HELLO KITTY DỄ THƯƠNG -->
+      <div class="kitty-hero">
+        <div class="kitty-hero-left">
+          <svg viewBox="0 0 100 90" width="54" height="54" style="flex-shrink: 0">
+            <polygon
+              points="15,42 10,12 38,24"
+              fill="#fff"
+              stroke="#ff2e88"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+            <polygon
+              points="85,42 90,12 62,24"
+              fill="#fff"
+              stroke="#ff2e88"
+              stroke-width="4"
+              stroke-linejoin="round"
+            />
+            <ellipse
+              cx="50"
+              cy="52"
+              rx="38"
+              ry="30"
+              fill="#fff"
+              stroke="#ff2e88"
+              stroke-width="4"
+            />
+            <path
+              d="M62,22 C54,12 46,24 56,30 C48,36 58,44 65,33 Z"
+              fill="#ff1744"
+              stroke="#4a152d"
+              stroke-width="2.5"
+            />
+            <path
+              d="M68,26 C78,16 88,28 76,35 C86,42 74,48 67,35 Z"
+              fill="#ff1744"
+              stroke="#4a152d"
+              stroke-width="2.5"
+            />
+            <circle cx="65" cy="30" r="5" fill="#ffeb3b" stroke="#4a152d" stroke-width="2.5" />
+            <ellipse cx="34" cy="54" rx="3.5" ry="5" fill="#4a152d" />
+            <ellipse cx="66" cy="54" rx="3.5" ry="5" fill="#4a152d" />
+            <ellipse
+              cx="50"
+              cy="59"
+              rx="5"
+              ry="3.8"
+              fill="#ffcc00"
+              stroke="#4a152d"
+              stroke-width="2"
+            />
+          </svg>
+          <div>
+            <b style="font-size: 16.5px; color: var(--pink)"
+              >Chào công chúa đến với góc học tiếng Hàn &amp; nghe nhạc Hello Kitty! 🎀💖</b
+            >
+            <div style="font-size: 13px; color: var(--mut); font-weight: 600">
+              Vừa nghe nhạc từ 1p30s – Full bài kể cả khi khóa màn hình (Sleep), vừa học 16 chủ đề
+              TOPIK 1 &amp; giao lưu Idol!
+            </div>
+          </div>
+        </div>
+        <div class="kitty-mini-parade">
+          <span class="kitty-sticker">🐱 Hello Kitty Pink</span>
+          <span class="kitty-sticker">🎀 Sleep Audio Ready</span>
+          <span class="kitty-sticker">🌸 SoundCloud + Sub</span>
+        </div>
+      </div>
+
+      <!-- =====================================================
+         PHẦN 1: NHẠC & VIETSUB (3 CỘT: TRÁI TÌM KIẾM - GIỮA ĐĨA XOAY - PHẢI SUB)
+         ===================================================== -->
+      <section id="music" class="on">
+        <h2>🎀 Không Gian Nhạc Đa Nguồn &amp; VietSub</h2>
+        <div class="music-3col">
+          <!-- CỘT TRÁI -->
+          <div class="music-col">
+            <div class="col-title">
+              <span>🔍 1. Tìm Kiếm &amp; Tải Nhạc</span>
+              <span class="kitty-badge" id="srcBadge">ĐA NGUỒN</span>
+            </div>
+
+            <div class="row" style="margin-top: 0">
+              <input id="q" placeholder="Nhập tên bài hát, ca sĩ, link SoundCloud..." />
+              <div style="display: flex; gap: 6px; width: 100%">
+                <button class="btn" id="go" style="flex: 1; padding: 9px 10px; font-size: 13px">
+                  🎵 Tìm &amp; Phát Ngay
+                </button>
+                <button
+                  class="btn alt"
+                  id="scSearchBtn"
+                  style="padding: 9px 12px; font-size: 13px"
+                  title="Tìm và phát Full bài qua SoundCloud API"
+                >
+                  ☁️ Phát qua SoundCloud API
+                </button>
+              </div>
+            </div>
+
+            <div class="row" id="genres" style="margin: 4px 0"></div>
+
+            <div class="row" style="gap: 6px">
+              <label
+                class="btn alt"
+                for="mf"
+                style="flex: 1; font-size: 12.5px; padding: 8px 10px; cursor: pointer"
+              >
+                📁 Up File Nhạc (.mp3)
+              </label>
+              <input id="mf" type="file" accept="audio/*" multiple hidden />
+              <button
+                class="btn alt"
+                id="scOpenBtn"
+                style="font-size: 12.5px; padding: 8px 10px"
+                title="Dán link SoundCloud"
+              >
+                🔗 Dán Link SC
+              </button>
+            </div>
+
+            <div id="scInputRow" class="row" style="display: none">
+              <input
+                id="scUrl"
+                placeholder="Dán link bài hát SoundCloud (https://soundcloud.com/...)"
+              />
+              <button class="btn" id="scPlayBtn" style="width: 100%; padding: 7px">
+                Phát SoundCloud + Sub
+              </button>
+            </div>
+
+            <small
+              id="st"
+              style="color: var(--pink); font-weight: 700; min-height: 18px; display: block"
+            ></small>
+
+            <div style="font-size: 12.5px; font-weight: 800; color: var(--mut); margin-top: 6px">
+              🎶 Danh sách bài hát (1p30s – Full bài):
+            </div>
+            <div class="song-list" id="songList"></div>
+          </div>
+
+          <!-- CỘT GIỮA: ĐĨA NHẠC HELLO KITTY XOAY + 5 NÚT ĐIỀU KHIỂN CHUẨN 1 HÀNG NGANG -->
+          <div class="music-col">
+            <div class="col-title">
+              <span>💿 2. Đĩa Nhạc Hello Kitty</span>
+              <label
+                style="
+                  font-size: 12px;
+                  color: var(--txt);
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  gap: 4px;
+                "
+              >
+                <input
+                  type="checkbox"
+                  id="loopToggle"
+                  checked
+                  style="width: auto; accent-color: var(--pink)"
+                />
+                <span>Tự phát lại</span>
+              </label>
+            </div>
+
+            <div class="turntable-wrap">
+              <div class="kitty-cassette-badge">
+                <span>🐱 Băng Đĩa Hello Kitty Official</span>
+                <span id="sleepStatusTag">• 🌙 Sleep Mode ON</span>
+              </div>
+              <div class="vinyl-stage">
+                <svg class="disc-bow" width="48" height="36" viewBox="0 0 60 44">
+                  <path
+                    d="M26,22 C10,6 4,22 14,32 C22,38 26,28 28,24 Z"
+                    fill="#ff1744"
+                    stroke="#4a152d"
+                    stroke-width="3"
+                  />
+                  <path
+                    d="M34,22 C50,6 56,22 46,32 C38,38 34,28 32,24 Z"
+                    fill="#ff1744"
+                    stroke="#4a152d"
+                    stroke-width="3"
+                  />
+                  <circle
+                    cx="30"
+                    cy="23"
+                    r="6.5"
+                    fill="#ffeb3b"
+                    stroke="#4a152d"
+                    stroke-width="3"
+                  />
+                </svg>
+                <svg class="tonearm" id="tonearm" viewBox="0 0 60 110">
+                  <circle cx="42" cy="16" r="11" fill="#ff69b4" stroke="#4a152d" stroke-width="3" />
+                  <path
+                    d="M42,16 L22,78 L12,92"
+                    fill="none"
+                    stroke="#ff2e88"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                  />
+                  <rect x="6" y="88" width="12" height="8" rx="3" fill="#4a152d" />
+                </svg>
+                <div class="disc" id="disc">
+                  <div class="disc-center" id="discCenterKitty">
+                    <svg viewBox="0 0 100 90" aria-label="Hello Kitty Disc">
+                      <polygon
+                        points="15,42 10,11 39,23"
+                        fill="#ffffff"
+                        stroke="#4a152d"
+                        stroke-width="4"
+                        stroke-linejoin="round"
+                      />
+                      <polygon
+                        points="85,42 90,11 61,23"
+                        fill="#ffffff"
+                        stroke="#4a152d"
+                        stroke-width="4"
+                        stroke-linejoin="round"
+                      />
+                      <polygon points="18,36 15,17 33,24" fill="#ffb6d5" />
+                      <ellipse
+                        cx="50"
+                        cy="52"
+                        rx="38"
+                        ry="30"
+                        fill="#ffffff"
+                        stroke="#4a152d"
+                        stroke-width="4"
+                      />
+                      <path
+                        d="M61,21 C51,10 44,23 55,30 C46,36 57,45 65,33 Z"
+                        fill="#ff1744"
+                        stroke="#4a152d"
+                        stroke-width="3"
+                      />
+                      <path
+                        d="M68,25 C79,14 89,27 77,35 C87,42 74,49 67,35 Z"
+                        fill="#ff1744"
+                        stroke="#4a152d"
+                        stroke-width="3"
+                      />
+                      <circle
+                        cx="65"
+                        cy="29"
+                        r="6"
+                        fill="#ff2e88"
+                        stroke="#4a152d"
+                        stroke-width="3"
+                      />
+                      <ellipse cx="33" cy="54" rx="4" ry="5.5" fill="#4a152d" />
+                      <circle cx="31.5" cy="52" r="1.3" fill="#fff" />
+                      <ellipse cx="67" cy="54" rx="4" ry="5.5" fill="#4a152d" />
+                      <circle cx="65.5" cy="52" r="1.3" fill="#fff" />
+                      <ellipse
+                        cx="50"
+                        cy="60"
+                        rx="5.5"
+                        ry="4"
+                        fill="#ffcc00"
+                        stroke="#4a152d"
+                        stroke-width="2.5"
+                      />
+                      <ellipse cx="24" cy="61" rx="5" ry="2.8" fill="#ffb6d5" opacity="0.85" />
+                      <ellipse cx="76" cy="61" rx="5" ry="2.8" fill="#ffb6d5" opacity="0.85" />
+                      <line
+                        x1="5"
+                        y1="48"
+                        x2="20"
+                        y2="50"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        x1="3"
+                        y1="56"
+                        x2="19"
+                        y2="56"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        x1="6"
+                        y1="64"
+                        x2="21"
+                        y2="62"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        x1="95"
+                        y1="48"
+                        x2="80"
+                        y2="50"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        x1="97"
+                        y1="56"
+                        x2="81"
+                        y2="56"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                      <line
+                        x1="94"
+                        y1="64"
+                        x2="79"
+                        y2="62"
+                        stroke="#4a152d"
+                        stroke-width="3.2"
+                        stroke-linecap="round"
+                      />
+                    </svg>
+                  </div>
+                  <div class="disc-hole"></div>
+                </div>
+              </div>
+
+              <div class="now-playing-info">
+                <b id="np">Chọn bài hát để phát 🎀</b>
+                <small id="npSub"
+                  >Băng Đĩa Hello Kitty • Kéo thanh tua dài bên dưới để nhảy tới bất kỳ phút:giây
+                  nào</small
+                >
+              </div>
+
+              <!-- THANH TUA & ÂM LƯỢNG RỘNG DÀI -->
+              <div class="seek-panel">
+                <div class="seek-wrap">
+                  <small
+                    id="tm"
+                    style="font-weight: 800; font-size: 13.5px; color: var(--pink); min-width: 38px"
+                    >0:00</small
+                  >
+                  <input type="range" id="sk" min="0" max="1000" value="0" aria-label="Tua nhạc" />
+                  <small
+                    id="td"
+                    style="
+                      font-weight: 800;
+                      font-size: 13.5px;
+                      color: var(--txt);
+                      min-width: 38px;
+                      text-align: right;
+                    "
+                    >0:00</small
+                  >
+                </div>
+                <div class="seek-wrap" style="margin-top: 6px">
+                  <small
+                    style="font-weight: 800; font-size: 12px; color: var(--mut); min-width: 68px"
+                    >🔊 Âm lượng:</small
+                  >
+                  <input
+                    type="range"
+                    id="volRange"
+                    min="0"
+                    max="100"
+                    value="95"
+                    aria-label="Âm lượng"
+                  />
+                  <small
+                    id="volTxt"
+                    style="
+                      font-weight: 800;
+                      font-size: 12px;
+                      color: var(--pink);
+                      min-width: 38px;
+                      text-align: right;
+                    "
+                    >95%</small
+                  >
+                </div>
+              </div>
+
+              <!-- 5 NÚT ĐIỀU KHIỂN CHUẨN 1 HÀNG NGANG KHÔNG RỚT DÒNG -->
+              <div
+                class="row"
+                style="
+                  justify-content: center;
+                  flex-wrap: nowrap;
+                  white-space: nowrap;
+                  margin-top: 4px;
+                  width: 100%;
+                  gap: 4px;
+                "
+              >
+                <button
+                  class="chip"
+                  id="rw"
+                  title="Tua lùi 10 giây"
+                  style="padding: 6px 10px; font-size: 12px"
+                >
+                  ⏪ -10s
+                </button>
+                <button
+                  class="chip"
+                  id="rw5"
+                  title="Tua lùi 5 giây"
+                  style="padding: 6px 10px; font-size: 12px"
+                >
+                  ⏪ -5s
+                </button>
+                <button
+                  class="btn"
+                  id="pp"
+                  style="padding: 8px 16px; border-radius: 99px; font-size: 13px"
+                >
+                  ▶ Phát / Tạm dừng
+                </button>
+                <button
+                  class="chip"
+                  id="ff5"
+                  title="Tua tới 5 giây"
+                  style="padding: 6px 10px; font-size: 12px"
+                >
+                  +5s ⏩
+                </button>
+                <button
+                  class="chip"
+                  id="ff"
+                  title="Tua tới 10 giây"
+                  style="padding: 6px 10px; font-size: 12px"
+                >
+                  +10s ⏩
+                </button>
+              </div>
+
+              <div class="row" style="justify-content: center; flex-wrap: nowrap; margin-top: 2px">
+                <button class="chip" id="replayNowBtn" style="padding: 4px 10px; font-size: 11.5px">
+                  🔄 Nghe lại từ đầu
+                </button>
+                <button class="chip" id="stp" style="padding: 4px 10px; font-size: 11.5px">
+                  ■ Dừng
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- CỘT PHẢI: SUB NHẠC TRÊN & CHỮ NHỎ VIETSUB BÊN DƯỚI -->
+          <div class="music-col music-col-right">
+            <div class="col-title">
+              <span>🎤 3. Sub Nhạc &amp; Chữ Nhỏ VietSub Bên Dưới</span>
+              <div style="display: flex; gap: 4px; align-items: center">
+                <button class="chip" id="e1" style="padding: 3px 8px; font-size: 11px">
+                  Lời sớm +0.5s
+                </button>
+                <button class="chip" id="e2" style="padding: 3px 8px; font-size: 11px">
+                  Lời trễ -0.5s
+                </button>
+                <small id="off" style="font-size: 11px; font-weight: 800; color: var(--pink)"
+                  >0s</small
+                >
+              </div>
+            </div>
+
+            <div class="ly" id="ly">
+              <div class="ly-item on">
+                <div class="ly-orig">🎀 Chọn một bài hát bên cột trái hoặc tìm bài hát bất kỳ</div>
+                <div class="ly-vi">
+                  🇻🇳 Lời gốc sẽ hiện ở dòng trên và chữ nhỏ VietSub dịch nghĩa nằm ngay bên dưới,
+                  bấm vào bất kỳ câu nào để tua tới đúng câu đó!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="ytbox"></div>
+        <div id="scbox"></div>
+      </section>
+
+      <!-- =====================================================
+         PHẦN 2: 16 CHỦ ĐỀ TỪ VỰNG TOPIK 1 TRỌNG TÂM
+         ===================================================== -->
+      <section id="vocab">
+        <h2>🌸 Trọn Bộ 16 Chủ Đề Từ Vựng Tiếng Hàn TOPIK 1</h2>
+        <div class="box">
+          <input
+            id="vs"
+            placeholder="🔍 Tìm nhanh từ tiếng Hàn (Hangul), phiên âm hoặc nghĩa tiếng Việt..."
+          />
+          <div class="tpgrid" id="tp"></div>
+        </div>
+        <div class="vhead">
+          <h3 id="vh"></h3>
+          <div class="row">
+            <button class="btn" id="ra">▶ Đọc toàn bộ chủ đề</button>
+            <button class="chip" id="rs">■ Dừng đọc</button>
+          </div>
+        </div>
+        <div class="spd" data-k="vocab"></div>
+        <div class="cards" id="vt"></div>
+      </section>
+
+      <!-- =====================================================
+         PHẦN 3: DỊCH 3 NGÔN NGỮ (1 Ô NHẬP DUY NHẤT -> DỊCH ANH - HÀN - VIỆT)
+         ===================================================== -->
+      <section id="trans">
+        <h2>💌 Dịch Câu &amp; Từ Vựng 3 Ngôn Ngữ (Anh • Hàn • Việt)</h2>
+        <div class="box">
+          <label style="font-weight: 800; color: var(--pink); display: block; margin-bottom: 6px">
+            🎀 Nhập từ vựng hoặc câu chữ bất kỳ (Tiếng Việt, Tiếng Anh hoặc Tiếng Hàn):
+          </label>
+          <textarea
+            id="singleTransInput"
+            rows="3"
+            placeholder="Ví dụ: Anh nhớ em nhiều lắm / I love you / 보고 싶어요..."
+          ></textarea>
+
+          <div class="row" style="justify-content: space-between; margin-top: 12px">
+            <div class="spd" data-k="trans" style="margin: 0"></div>
+            <div class="row" style="margin: 0">
+              <button class="btn" id="tb">✨ Dịch Sang 3 Ngôn Ngữ</button>
+              <button class="btn alt" id="tc">🗑️ Xóa</button>
+            </div>
+          </div>
+          <small
+            id="ts"
+            style="display: block; margin-top: 6px; color: var(--mut); font-weight: 700"
+          >
+            Tự động nhận diện ngôn ngữ bạn gõ và dịch chuẩn sang cả 3 ngôn ngữ bên dưới (bấm vào
+            từng từ để nghe phát âm riêng).
+          </small>
+        </div>
+
+        <div class="card3" id="tr"></div>
+      </section>
+
+      <!-- =====================================================
+         PHẦN 4: NGỮ PHÁP, HƯỚNG DẪN GHÉP CÂU, SỐ ĐẾM HÁN-HÀN & THUẦN HÀN, GIAO LƯU IDOL
+         ===================================================== -->
+      <section id="gram">
+        <h2>👑 Cấu Trúc Ngữ Pháp, Ghép Câu &amp; Bộ Đọc Số Tiếng Hàn</h2>
+
+        <!-- 4.1 BỘ ĐỌC SỐ HÁN-HÀN & THUẦN HÀN + HƯỚNG DẪN TỪNG SỐ -->
+        <div class="box">
+          <h3 style="margin-top: 0">
+            🔢 Bộ Đọc Số Tiếng Hàn (Hán-Hàn &amp; Thuần Hàn kèm Chữ Hán Truyền Thống Hanja)
+          </h3>
+          <div class="row">
+            <input
+              id="ni"
+              type="number"
+              min="0"
+              max="999999999"
+              value="12"
+              placeholder="Nhập số bất kỳ, ví dụ: 12, 2025..."
+              style="max-width: 260px"
+            />
+            <button class="btn" id="nb">🔊 Chuyển Đổi &amp; Đọc Số</button>
+          </div>
+          <div class="spd" data-k="num"></div>
+
+          <!-- KẾT QUẢ ĐỌC SỐ KHI NHẬP -->
+          <div class="num-grid-2" id="no"></div>
+
+          <!-- BẢNG HƯỚNG DẪN ĐỌC TỪNG SỐ THEO 2 HỆ THỐNG CHÍNH -->
+          <div class="num-grid-2" style="margin-top: 18px">
+            <div class="box" style="margin: 0; background: var(--panel2)">
+              <b style="color: var(--pink); font-size: 15.5px"
+                >1. Hệ Số Hán - Hàn (Sino-Korean • 한자어 수사)</b
+              >
+              <small style="display: block; margin: 4px 0 8px"
+                >Dùng cho: Số điện thoại, tiền tệ, phút, giây, ngày tháng năm, số tầng và các số
+                trên 100. (Bấm vào từng số để nghe):</small
+              >
+              <div class="num-ref-list" id="sinoRefList"></div>
+            </div>
+
+            <div class="box" style="margin: 0; background: var(--panel2)">
+              <b style="color: var(--pink); font-size: 15.5px"
+                >2. Hệ Số Thuần Hàn (Native Korean • 고유어 수사)</b
+              >
+              <small style="display: block; margin: 4px 0 8px"
+                >Dùng khi đếm số lượng người (명/분), tuổi (살), đồ vật (개), giờ (시). Khi đứng
+                trước đơn vị đếm thì 1, 2, 3, 4, 20 rút gọn thành 한, 두, 세, 네, 스무:</small
+              >
+              <div class="num-ref-list" id="nativeRefList"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4.2 CẤU TRÚC NGỮ PHÁP & TÔN KÍNH NGỮ (존댓말) + HƯỚNG DẪN GHÉP CÂU -->
+        <div class="box">
+          <h3 style="margin-top: 0">
+            📘 Cấu Trúc Ngữ Pháp &amp; Tôn Kính Ngữ (존댓말) — Hướng Dẫn Ghép Câu
+          </h3>
+          <p style="margin: 4px 0 12px">
+            <b>Quy tắc vàng khi ghép câu tiếng Hàn:</b>
+            <code>[Chủ ngữ + 은/는 hoặc 이/가]</code> + <code>[Tân ngữ + 을/를]</code> +
+            <code>[Vị ngữ (Động từ / Tính từ / Danh từ) + Đuôi kính ngữ]</code>.<br />
+            <small
+              >💡 Vị ngữ luôn luôn đứng ở <b>cuối câu</b>. Có 2 đuôi lịch sự phổ biến nhất:
+              <b>-ㅂ니다/습니다</b> (trang trọng cao nhất) và <b>-아요/어요/해요</b> (lịch sự thân
+              thiện hàng ngày).</small
+            >
+          </p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Công thức Trợ từ / Đuôi câu</th>
+                <th>Cách chọn theo Patchim (Phụ âm cuối)</th>
+                <th>Ý nghĩa &amp; Vai trò</th>
+                <th>Mẫu ghép câu &amp; Dịch Tiếng Việt bên dưới</th>
+              </tr>
+            </thead>
+            <tbody id="formulaTable"></tbody>
+          </table>
+        </div>
+
+        <!-- 4.3 PHÂN TÍCH MẪU CÂU CHỦ NGỮ - TÂN NGỮ - VỊ NGỮ (NHIỀU CÂU MẪU + DỊCH VIỆT) -->
+        <h3>🧩 Mẫu Ghép Câu Thực Tế (Phân Tích Chủ Ngữ • Tân Ngữ • Vị Ngữ Kèm Dịch Tiếng Việt)</h3>
+        <div class="spd" data-k="gram"></div>
+        <div id="gr" class="num-grid-2"></div>
+
+        <!-- 4.4 CÂU CHÀO HỎI & KÍNH NGỮ XÃ GIAO -->
+        <h3>🌸 Câu Chào Hỏi &amp; Kính Ngữ Xã Giao Hàng Ngày</h3>
+        <div class="spd" data-k="greet"></div>
+        <div class="box" style="overflow-x: auto">
+          <table>
+            <thead>
+              <tr>
+                <th>Mẫu câu Tiếng Hàn &amp; Dịch Tiếng Việt bên dưới</th>
+                <th>Phiên âm Romanization</th>
+                <th>Mức độ lịch sự &amp; Giải thích</th>
+                <th>Nghe</th>
+              </tr>
+            </thead>
+            <tbody id="gt"></tbody>
+          </table>
+        </div>
+
+        <!-- 4.5 10 CÂU GIAO LƯU IDOL CORTIS -->
+        <h3>
+          🎤 10 Câu Giao Lưu &amp; Hỏi Thăm Nhóm Nhạc Idol (Cortis)
+          <span class="kitty-badge">K-POP FANSPEAK</span>
+        </h3>
+        <p>
+          <small
+            >Bấm các nút tốc độ 0.25x • 0.5x • 1.0x • 1.25x • 1.5x dưới mỗi câu để nghe phát âm
+            chuẩn Hàn:</small
+          >
+        </p>
+        <div id="fan" class="num-grid-2"></div>
+      </section>
+    </main>
+
+    <audio id="main-audio" preload="auto"></audio>
+
+    <script>
+      const $ = (s) => document.querySelector(s),
+        $$ = (s) => [...document.querySelectorAll(s)];
+
+      function go(t) {
+        $$("section").forEach((s) => s.classList.toggle("on", s.id === t));
+        $$("#nav button").forEach((b) => b.classList.toggle("on", b.dataset.t === t));
+      }
+      $$("#nav button").forEach((b) => (b.onclick = () => go(b.dataset.t)));
+
+      const th = $("#th");
+      const setT = (t) => {
+        document.documentElement.dataset.theme = t;
+        th.textContent = t === "dark" ? "☀️ Chế độ Sáng" : "🌙 Chế độ Tối";
+        try {
+          localStorage.setItem("anTheme", t);
+        } catch (e) {}
+      };
+      let savedTheme = "light";
+      try {
+        savedTheme = localStorage.getItem("anTheme") || "light";
+      } catch (e) {}
+      setT(savedTheme);
+      th.onclick = () => setT(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+
+      const RATE = {};
+      $$(".spd").forEach((d) => {
+        const k = d.dataset.k;
+        RATE[k] = 1;
+        ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((x) => {
+          const b = document.createElement("button");
+          b.className = "chip" + (x === "1.0" ? " on" : "");
+          b.textContent = x + "x";
+          b.onclick = () => {
+            RATE[k] = +x;
+            [...d.children].forEach((c) => c.classList.toggle("on", c === b));
+          };
+          d.append(b);
+        });
+      });
+
+      function speak(t, l, k, customRate) {
+        if (!("speechSynthesis" in window)) return;
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(t);
+        u.lang = l;
+        u.rate = customRate || RATE[k] || 1;
+        speechSynthesis.speak(u);
+      }
+
+      const sp = (t, l, k) => {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = "🔊 Nghe";
+        b.onclick = (ev) => {
+          ev.stopPropagation();
+          speak(t, l, k);
+        };
+        return b;
+      };
+
+      const KITTY_SVG_DATA =
+        "data:image/svg+xml;utf8," +
+        encodeURIComponent(
+          `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#ffe0ed"/><polygon points="18,45 12,16 40,28" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><polygon points="82,45 88,16 60,28" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><ellipse cx="50" cy="56" rx="35" ry="27" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><path d="M60,26 C51,16 44,28 54,34 C46,39 56,47 63,36 Z" fill="#ff1744" stroke="#4a152d" stroke-width="2.5"/><path d="M66,29 C76,19 85,31 74,38 C83,44 72,50 65,38 Z" fill="#ff1744" stroke="#4a152d" stroke-width="2.5"/><circle cx="64" cy="33" r="5" fill="#ffeb3b" stroke="#4a152d" stroke-width="2.5"/><ellipse cx="35" cy="57" rx="3.5" ry="5" fill="#4a152d"/><ellipse cx="65" cy="57" rx="3.5" ry="5" fill="#4a152d"/><ellipse cx="50" cy="63" rx="5" ry="3.6" fill="#ffcc00" stroke="#4a152d" stroke-width="2"/></svg>`,
+        );
+
+      const aud = document.getElementById("main-audio");
+      aud.volume = 0.95;
+      let track = null,
+        lines = [],
+        act = -1,
+        yt = null,
+        scWidget = null;
+      let off = 0,
+        tok = 0,
+        hold = 0,
+        mode = "audio";
+      let virtualBase = 0,
+        lastRawTime = 0,
+        pendingSeekSec = null;
+      let scCurTime = 0,
+        scDurTime = 180,
+        scIsPlaying = false;
+
+      const SOUNDCLOUD_TRACK_MAP = {
+        "let me down slowly": "https://soundcloud.com/alecbenjamin/let-me-down-slowly",
+        apt: "https://soundcloud.com/rose-official/apt",
+        "die with a smile": "https://soundcloud.com/ladygaga/die-with-a-smile",
+        magnetic: "https://soundcloud.com/illit-music/magnetic",
+        cupid: "https://soundcloud.com/fiftyfifty-music/cupid-twin-ver",
+        "blinding lights": "https://soundcloud.com/theweeknd/blinding-lights",
+        "shape of you": "https://soundcloud.com/edsheeran/shape-of-you",
+      };
+
+      async function searchSoundCloudUrl(query) {
+        const nq = norm(query);
+        for (const [k, url] of Object.entries(SOUNDCLOUD_TRACK_MAP)) {
+          if (nq.includes(k)) return url;
+        }
+        const proxies = [
+          (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+          (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+        ];
+        const scSearchPage = `https://soundcloud.com/search/sounds?q=${encodeURIComponent(query)}`;
+        for (const makeProxy of proxies) {
+          try {
+            const html = await fetch(makeProxy(scSearchPage)).then((r) => (r.ok ? r.text() : ""));
+            if (html) {
+              const matches = [...html.matchAll(/href="\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)"/g)];
+              const valid = matches.find(
+                (m) =>
+                  ![
+                    "search",
+                    "discover",
+                    "stream",
+                    "upload",
+                    "pages",
+                    "legal",
+                    "charts",
+                    "popular",
+                    "tags",
+                    "settings",
+                    "you",
+                    "messages",
+                  ].includes(m[1]),
+              );
+              if (valid) return `https://soundcloud.com/${valid[1]}/${valid[2]}`;
+            }
+          } catch (e) {}
+        }
+        return null;
+      }
+
+      const J = async (u) => {
+        const r = await fetch(u);
+        if (!r.ok) throw 0;
+        return r.json();
+      };
+      const stt = (t) => ($("#st").textContent = t);
+      const norm = (t) =>
+        (t || "")
+          .toLowerCase()
+          .replace(/[^\p{L}\p{N}]+/gu, " ")
+          .trim();
+
+      function fetchJsonp(url, timeoutMs = 6000) {
+        return new Promise((resolve, reject) => {
+          const cbName = "kitty_cb_" + Math.random().toString(36).slice(2);
+          const sc = document.createElement("script");
+          let timer = setTimeout(() => {
+            cleanup();
+            reject(new Error("JSONP timeout"));
+          }, timeoutMs);
+          function cleanup() {
+            clearTimeout(timer);
+            delete window[cbName];
+            if (sc.parentNode) sc.parentNode.removeChild(sc);
+          }
+          window[cbName] = (data) => {
+            cleanup();
+            resolve(data);
+          };
+          sc.onerror = () => {
+            cleanup();
+            reject(new Error("JSONP error"));
+          };
+          sc.src = url + (url.includes("?") ? "&" : "?") + "callback=" + cbName;
+          document.head.appendChild(sc);
+        });
+      }
+
+      let fallbackWavUrl = null;
+      function getFallbackKittyMelodyWav() {
+        if (fallbackWavUrl) return fallbackWavUrl;
+        const sampleRate = 22050;
+        const duration = 120;
+        const numSamples = sampleRate * duration;
+        const buffer = new ArrayBuffer(44 + numSamples * 2);
+        const view = new DataView(buffer);
+        const writeStr = (offset, str) => {
+          for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+        };
+        writeStr(0, "RIFF");
+        view.setUint32(4, 36 + numSamples * 2, true);
+        writeStr(8, "WAVE");
+        writeStr(12, "fmt ");
+        view.setUint32(16, 16, true);
+        view.setUint16(20, 1, true);
+        view.setUint16(22, 1, true);
+        view.setUint32(24, sampleRate, true);
+        view.setUint32(28, sampleRate * 2, true);
+        view.setUint16(32, 2, true);
+        view.setUint16(34, 16, true);
+        writeStr(36, "data");
+        view.setUint32(40, numSamples * 2, true);
+
+        const notes = [261.63, 329.63, 392.0, 523.25, 440.0, 349.23, 392.0, 293.66];
+        for (let i = 0; i < numSamples; i++) {
+          const t = i / sampleRate;
+          const step = Math.floor(t * 2) % notes.length;
+          const freq = notes[step];
+          const env = Math.exp(-((t * 2) % 1) * 3.2);
+          const val =
+            (Math.sin(2 * Math.PI * freq * t) * 0.6 +
+              Math.sin(2 * Math.PI * (freq / 2) * t) * 0.3) *
+            env;
+          view.setInt16(44 + i * 2, Math.max(-1, Math.min(1, val)) * 12000, true);
+        }
+        fallbackWavUrl = URL.createObjectURL(new Blob([buffer], { type: "audio/wav" }));
+        return fallbackWavUrl;
+      }
+
+      const BUILTIN_SUBS = {
+        "let me down slowly": {
+          duration: 169,
+          lines: [
+            {
+              t: 0,
+              o: "♪ Let Me Down Slowly - Alec Benjamin ♪",
+              v: "🇻🇳 Hãy Để Anh Buông Xuôi Từ Từ - Alec Benjamin",
+            },
+            {
+              t: 4,
+              o: "This night is cold in the kingdom",
+              v: "🇻🇳 Đêm nay thật lạnh lẽo nơi vương quốc này",
+            },
+            {
+              t: 8,
+              o: "I can feel you fade away",
+              v: "🇻🇳 Anh có thể cảm nhận hình bóng em đang phai nhạt dần",
+            },
+            {
+              t: 13,
+              o: "From the kitchen to the bathroom sink and",
+              v: "🇻🇳 Từ căn bếp cho đến bồn rửa mặt và...",
+            },
+            {
+              t: 17,
+              o: "Your steps keep me awake",
+              v: "🇻🇳 Từng tiếng bước chân em khiến anh thao thức mãi",
+            },
+            {
+              t: 21,
+              o: "Don't cut me down, throw me out, leave me here to waste",
+              v: "🇻🇳 Đừng gục ngã anh, đừng vứt bỏ anh ở lại nơi này hao mòn",
+            },
+            {
+              t: 26,
+              o: "I once was a man with dignity and grace",
+              v: "🇻🇳 Anh cũng từng là một người đàn ông đầy kiêu hãnh và lịch thiệp",
+            },
+            {
+              t: 30,
+              o: "Now I'm slippin' through the cracks of your cold embrace",
+              v: "🇻🇳 Giờ đây anh đang trượt dài qua vòng tay lạnh giá của em",
+            },
+            { t: 35, o: "So please, please", v: "🇻🇳 Vì vậy làm ơn, xin em đấy" },
+            {
+              t: 39,
+              o: "Could you find a way to let me down slowly?",
+              v: "🇻🇳 Em có thể tìm cách rời xa anh thật nhẹ nhàng từ từ được không?",
+            },
+            {
+              t: 44,
+              o: "A little sympathy, I hope you can show me",
+              v: "🇻🇳 Một chút cảm thông thôi, anh hy vọng em có thể dành cho anh",
+            },
+            {
+              t: 48,
+              o: "If you wanna go then I'll be so lonely",
+              v: "🇻🇳 Nếu em muốn rời đi, anh sẽ cô đơn biết nhường nào",
+            },
+            {
+              t: 53,
+              o: "If you're leavin', baby, let me down slowly",
+              v: "🇻🇳 Nếu em thực sự rời đi, người yêu ơi, hãy để anh buông xuống từ từ",
+            },
+            {
+              t: 58,
+              o: "Let me down, down, let me down, down, let me down",
+              v: "🇻🇳 Hãy để anh vơi đi nỗi buồn một cách dịu dàng...",
+            },
+            {
+              t: 63,
+              o: "Let me down, down, let me down, down, let me down",
+              v: "🇻🇳 Đừng làm trái tim anh tan vỡ quá đột ngột...",
+            },
+            {
+              t: 67,
+              o: "If you wanna go then I'll be so lonely",
+              v: "🇻🇳 Nếu em muốn bước đi thì anh sẽ lẻ loi lắm",
+            },
+            {
+              t: 72,
+              o: "If you're leavin', baby, let me down slowly",
+              v: "🇻🇳 Nếu em phải đi, xin hãy làm anh tổn thương thật khẽ thôi",
+            },
+            {
+              t: 77,
+              o: "Cold skin, drag my feet on the tile",
+              v: "🇻🇳 Làn da lạnh buốt, anh lê từng bước chân nặng nề trên sàn gạch",
+            },
+            {
+              t: 82,
+              o: "As I'm walking down the corridor",
+              v: "🇻🇳 Khi anh đang bước dọc theo hành lang trống trải",
+            },
+            {
+              t: 86,
+              o: "And I know we haven't talked in a while",
+              v: "🇻🇳 Và anh biết chúng mình đã chẳng trò chuyện với nhau một thời gian rồi",
+            },
+            {
+              t: 91,
+              o: "So I'm looking for an open door",
+              v: "🇻🇳 Nên anh đang kiếm tìm một cánh cửa còn mở lối",
+            },
+            {
+              t: 96,
+              o: "Don't cut me down, throw me out, leave me here to waste",
+              v: "🇻🇳 Đừng hạ gục anh, đừng bỏ mặc anh nơi đây tàn phai",
+            },
+            {
+              t: 101,
+              o: "I once was a man with dignity and grace",
+              v: "🇻🇳 Anh từng là chàng trai sống với trọn lòng tự trọng",
+            },
+            {
+              t: 105,
+              o: "Now I'm slippin' through the cracks of your cold embrace",
+              v: "🇻🇳 Giờ anh đang rơi qua những vết nứt trong cái ôm lạnh lùng của em",
+            },
+            { t: 110, o: "So please, please", v: "🇻🇳 Nên làm ơn, anh cầu xin em đó" },
+            {
+              t: 114,
+              o: "Could you find a way to let me down slowly?",
+              v: "🇻🇳 Em có thể tìm một cách để chia tay anh thật êm đềm không?",
+            },
+            {
+              t: 119,
+              o: "A little sympathy, I hope you can show me",
+              v: "🇻🇳 Một chút thương cảm thôi, mong em hãy trao cho anh",
+            },
+            {
+              t: 124,
+              o: "If you wanna go then I'll be so lonely",
+              v: "🇻🇳 Nếu em muốn ra đi thì anh sẽ cô độc biết bao",
+            },
+            {
+              t: 129,
+              o: "If you're leavin', baby, let me down slowly",
+              v: "🇻🇳 Nếu em rời xa, cưng ơi, hãy để anh chấp nhận từ từ nhé",
+            },
+            {
+              t: 134,
+              o: "Let me down, down, let me down, down, let me down",
+              v: "🇻🇳 Hãy để anh buông tay từ từ, nhẹ nhàng thôi...",
+            },
+            {
+              t: 139,
+              o: "Let me down, down, let me down, down, let me down",
+              v: "🇻🇳 Xin đừng rời bỏ anh trong sự lạnh lùng...",
+            },
+            {
+              t: 144,
+              o: "If you wanna go then I'll be so lonely",
+              v: "🇻🇳 Nếu em muốn rời đi thì anh sẽ cô đơn đến nhường nào",
+            },
+            {
+              t: 149,
+              o: "If you're leavin', baby, let me down slowly",
+              v: "🇻🇳 Nếu em thực sự ra đi, xin hãy để anh vơi nỗi đau từ từ",
+            },
+            {
+              t: 155,
+              o: "And I can't stop myself from fallin' (down) down",
+              v: "🇻🇳 Và anh chẳng thể ngăn bản thân mình khỏi gục ngã",
+            },
+            {
+              t: 160,
+              o: "And I can't stop myself from fallin' (down) down",
+              v: "🇻🇳 Anh không thể ngăn trái tim mình rơi xuống vực sâu...",
+            },
+            {
+              t: 165,
+              o: "Could you find a way to let me down slowly? ♪",
+              v: "🇻🇳 Em có thể tìm cách rời xa anh thật nhẹ nhàng được không? ♪",
+            },
+          ],
+        },
+        apt: {
+          duration: 169,
+          lines: [
+            {
+              t: 0,
+              o: "♪ 채영이가 좋아하는 랜덤 게임 (Trò chơi ngẫu nhiên Rosé thích) ♪",
+              v: "🇻🇳 Trò chơi ngẫu nhiên mà Chaeyoung (Rosé) cực kỳ yêu thích!",
+            },
+            {
+              t: 4,
+              o: "랜덤 게임! Game start!",
+              v: "🇻🇳 Trò chơi ngẫu nhiên! Bắt đầu trò chơi nào!",
+            },
+            {
+              t: 7,
+              o: "아파트, 아파트, 아파트, 아파트 (APT., APT., APT., APT.)",
+              v: "🇻🇳 Căn hộ (Apartment) - Điểm hẹn tình yêu của đôi mình!",
+            },
+            {
+              t: 11,
+              o: "아파트, 아파트, uh, uh-huh, uh-huh",
+              v: "🇻🇳 Căn hộ ngọt ngào, uh-huh, uh-huh!",
+            },
+            {
+              t: 15,
+              o: "Kissy face, kissy face, sent to your phone, but",
+              v: "🇻🇳 Biểu tượng mặt hôn gió gửi vào điện thoại của anh, nhưng mà...",
+            },
+            {
+              t: 20,
+              o: "I'm tryna kiss your lips for real (Uh-huh, uh-huh)",
+              v: "🇻🇳 Em thực sự muốn hôn lên đôi môi anh ngoài đời cơ!",
+            },
+            {
+              t: 24,
+              o: "Red hearts, red hearts, that's what I'm on, yeah",
+              v: "🇻🇳 Những trái tim đỏ thắm, đó chính là điều em đang khao khát",
+            },
+            {
+              t: 29,
+              o: "Come give me somethin' I can feel, oh-oh-oh",
+              v: "🇻🇳 Hãy đến đây và trao cho em cảm giác chân thật nhất đi nào",
+            },
+            {
+              t: 33,
+              o: "Don't you want me like I want you, baby?",
+              v: "🇻🇳 Anh chẳng lẽ không khao khát em giống như em muốn anh sao cưng?",
+            },
+            {
+              t: 38,
+              o: "Don't you need me like I need you now?",
+              v: "🇻🇳 Anh không cần có em như em đang cần anh ngay lúc này ư?",
+            },
+            {
+              t: 42,
+              o: "Sleep tomorrow, but tonight, go crazy",
+              v: "🇻🇳 Ngày mai hãy ngủ bù, còn đêm nay mình cháy hết mình đi!",
+            },
+            {
+              t: 47,
+              o: "All you gotta do is just meet me at the...",
+              v: "🇻🇳 Tất cả những gì anh cần làm là đến gặp em tại...",
+            },
+            {
+              t: 51,
+              o: "아파트, 아파트, 아파트, 아파트 (APT., APT.)",
+              v: "🇻🇳 Căn hộ ngọt ngào của chúng mình! (APT., APT.)",
+            },
+            {
+              t: 56,
+              o: "아파트, 아파트, uh, uh-huh, uh-huh",
+              v: "🇻🇳 Căn hộ hẹn ước của đôi ta, uh-huh, uh-huh!",
+            },
+            {
+              t: 61,
+              o: "It's whatever, it's whatever, it's whatever you like (Woo)",
+              v: "🇻🇳 Bất cứ điều gì, mọi thứ anh thích đều được hết",
+            },
+            {
+              t: 66,
+              o: "Turn this 아파트 into a club (Uh-huh, uh-huh)",
+              v: "🇻🇳 Biến căn hộ này thành một câu lạc bộ sôi động suốt đêm!",
+            },
+            {
+              t: 71,
+              o: "I'm talkin' drink, dance, smoke, freak, party all night",
+              v: "🇻🇳 Cùng nâng ly, khiêu vũ và vui vẻ thâu đêm suốt sáng",
+            },
+            {
+              t: 76,
+              o: "건배, 건배, girl, what's up? Oh-oh-oh",
+              v: "🇻🇳 Cạn ly nào (Geonbae)! Cô gái ơi, sẵn sàng chưa?",
+            },
+            {
+              t: 81,
+              o: "Don't you want me like I want you, baby?",
+              v: "🇻🇳 Anh có mong nhớ em như em đang mong nhớ anh không?",
+            },
+            {
+              t: 86,
+              o: "Don't you need me like I need you now?",
+              v: "🇻🇳 Anh có cần em như em đang cần anh lúc này không?",
+            },
+            {
+              t: 91,
+              o: "Sleep tomorrow, but tonight, go crazy",
+              v: "🇻🇳 Để ngày mai hãy ngủ, còn tối nay hãy cuồng nhiệt lên nào!",
+            },
+            {
+              t: 96,
+              o: "All you gotta do is just meet me at the...",
+              v: "🇻🇳 Tất cả những gì anh cần làm là đến gặp em ở...",
+            },
+            {
+              t: 100,
+              o: "아파트, 아파트, 아파트, 아파트 (APT., APT.)",
+              v: "🇻🇳 Căn hộ tình yêu APT.! (APT., APT.)",
+            },
+            {
+              t: 106,
+              o: "아파트, 아파트, uh, uh-huh, uh-huh",
+              v: "🇻🇳 Căn hộ của đôi mình, uh-huh, uh-huh!",
+            },
+            {
+              t: 111,
+              o: "Hey, so now you know the game",
+              v: "🇻🇳 Này, giờ thì anh đã nắm rõ luật chơi rồi đó",
+            },
+            {
+              t: 116,
+              o: "Are you ready? 'Cause I'm comin' to get ya, get ya, get ya",
+              v: "🇻🇳 Anh sẵn sàng chưa? Vì em đang tới tìm anh ngay đây!",
+            },
+            {
+              t: 122,
+              o: "Hold on, hold on, I'm on my way",
+              v: "🇻🇳 Chờ em một chút nhé, em đang trên đường tới rồi",
+            },
+            {
+              t: 128,
+              o: "Yeah, yeah, yeah-yeah, yeah, I'm on my way",
+              v: "🇻🇳 Đúng vậy, anh đang trên đường đến bên em ngay đây!",
+            },
+            {
+              t: 134,
+              o: "Don't you want me like I want you, baby?",
+              v: "🇻🇳 Chẳng phải anh cũng muốn bên em như em muốn bên anh sao?",
+            },
+            {
+              t: 140,
+              o: "Don't you need me like I need you now?",
+              v: "🇻🇳 Chẳng phải anh cũng cần em như em cần anh ngay lúc này sao?",
+            },
+            {
+              t: 145,
+              o: "Sleep tomorrow, but tonight, go crazy",
+              v: "🇻🇳 Ngày mai rồi ngủ, còn đêm nay hãy bùng cháy hết mình!",
+            },
+            {
+              t: 150,
+              o: "All you gotta do is just meet me at the...",
+              v: "🇻🇳 Chỉ cần anh đến hẹn gặp em ngay tại...",
+            },
+            {
+              t: 155,
+              o: "아파트, 아파트, 아파트, 아파트 (APT., APT.)",
+              v: "🇻🇳 Căn hộ APT.! (APT., APT., APT., APT.)",
+            },
+            {
+              t: 162,
+              o: "Just meet me at the 아파트, uh, uh-huh, uh-huh! ♪",
+              v: "🇻🇳 Hãy đến gặp em tại căn hộ APT. nhé! ♪",
+            },
+          ],
+        },
+        "die with a smile": {
+          duration: 190,
+          lines: [
+            {
+              t: 0,
+              o: "♪ Die With A Smile - Lady Gaga & Bruno Mars ♪",
+              v: "🇻🇳 Nhắm Mắt Xuôi Tay Với Nụ Cười Trên Môi - Lady Gaga & Bruno Mars",
+            },
+            {
+              t: 5,
+              o: "(Ooh, ooh) I, I just woke up from a dream",
+              v: "🇻🇳 Anh vừa mới thức giấc sau một giấc chiêm bao",
+            },
+            {
+              t: 11,
+              o: "Where you and I had to say goodbye",
+              v: "🇻🇳 Nơi mà em và anh phải nói lời từ biệt nhau",
+            },
+            {
+              t: 16,
+              o: "And I don't know what it all means",
+              v: "🇻🇳 Và anh chẳng biết giấc mơ ấy mang điềm báo gì",
+            },
+            {
+              t: 21,
+              o: "But since I survived, I realized",
+              v: "🇻🇳 Nhưng từ khoảnh khắc tỉnh dậy, anh đã nhận ra rằng...",
+            },
+            {
+              t: 27,
+              o: "Wherever you go, that's where I'll follow",
+              v: "🇻🇳 Bất cứ nơi đâu em đến, anh sẽ luôn bước theo sau",
+            },
+            {
+              t: 33,
+              o: "Nobody's promised tomorrow",
+              v: "🇻🇳 Chẳng ai có thể hứa trước được ngày mai sẽ ra sao",
+            },
+            {
+              t: 39,
+              o: "So I'ma love you every night like it's the last night",
+              v: "🇻🇳 Nên anh sẽ yêu em mỗi đêm như thể đó là đêm cuối cùng",
+            },
+            {
+              t: 45,
+              o: "Like it's the last night",
+              v: "🇻🇳 Như thể đêm nay là đêm cuối cùng của đôi ta",
+            },
+            {
+              t: 50,
+              o: "If the world was ending, I'd wanna be next to you",
+              v: "🇻🇳 Nếu thế giới này đi đến tận cùng, anh chỉ muốn ở cạnh bên em",
+            },
+            {
+              t: 59,
+              o: "If the party was over and our time on Earth was through",
+              v: "🇻🇳 Nếu bữa tiệc tàn phai và thời gian trên Trái Đất khép lại",
+            },
+            {
+              t: 68,
+              o: "I'd wanna hold you just for a while and die with a smile",
+              v: "🇻🇳 Anh muốn ôm chặt lấy em một lúc và ra đi với nụ cười",
+            },
+            {
+              t: 77,
+              o: "If the world was ending, I'd wanna be next to you",
+              v: "🇻🇳 Dù thế gian có sụp đổ, nguyện ước duy nhất là được bên em",
+            },
+            {
+              t: 86,
+              o: "Ooh, lost, lost in the words that we scream",
+              v: "🇻🇳 Lạc lõng giữa những lời nói đôi ta từng thốt lên",
+            },
+            {
+              t: 93,
+              o: "I don't even wanna do this anymore",
+              v: "🇻🇳 Em thậm chí chẳng muốn tranh cãi thêm một giây phút nào nữa",
+            },
+            {
+              t: 100,
+              o: "'Cause already know what you mean to me",
+              v: "🇻🇳 Bởi vì em đã quá rõ anh có ý nghĩa lớn lao nhường nào với em",
+            },
+            {
+              t: 106,
+              o: "And our love's the only war worth fighting for",
+              v: "🇻🇳 Và tình yêu của chúng mình là điều duy nhất xứng đáng để bảo vệ",
+            },
+            {
+              t: 113,
+              o: "Wherever you go, that's where I'll follow",
+              v: "🇻🇳 Dù anh đi tới phương trời nào, em cũng sẽ theo bước anh",
+            },
+            {
+              t: 120,
+              o: "Nobody's promised tomorrow",
+              v: "🇻🇳 Không một ai biết trước được ngày mai",
+            },
+            {
+              t: 126,
+              o: "So I'ma love you every night like it's the last night",
+              v: "🇻🇳 Nên ta hãy yêu nhau trọn vẹn từng đêm như đêm cuối cùng",
+            },
+            {
+              t: 134,
+              o: "If the world was ending, I'd wanna be next to you",
+              v: "🇻🇳 Nếu thế giới này kết thúc, em chỉ ước được ở ngay cạnh anh",
+            },
+            {
+              t: 143,
+              o: "If the party was over and our time on Earth was through",
+              v: "🇻🇳 Nếu cuộc vui khép lại và hành trình trên nhân gian dừng bước",
+            },
+            {
+              t: 152,
+              o: "I'd wanna hold you just for a while and die with a smile",
+              v: "🇻🇳 Em muốn ôm lấy anh thật lâu và mỉm cười mãn nguyện",
+            },
+            {
+              t: 162,
+              o: "Right next to you, next to you",
+              v: "🇻🇳 Ngay bên cạnh người em thương, mãi mãi cạnh bên anh",
+            },
+            {
+              t: 171,
+              o: "If the world was ending, I'd wanna be next to you",
+              v: "🇻🇳 Nếu thế gian tận thế, nguyện ở cạnh bên nhau đến phút cuối",
+            },
+            {
+              t: 181,
+              o: "I'd wanna be next to you... ♪",
+              v: "🇻🇳 Anh chỉ muốn được ở cạnh bên em mãi thôi... ♪",
+            },
+          ],
+        },
+        magnetic: {
+          duration: 161,
+          lines: [
+            {
+              t: 0,
+              o: "♪ Magnetic - ILLIT (아일릿) ♪",
+              v: "🇻🇳 Sức Hút Nam Châm (Magnetic) - ILLIT",
+            },
+            {
+              t: 4,
+              o: "Baby, I'm just trying to play it cool",
+              v: "🇻🇳 Anh ơi, em chỉ đang cố tỏ ra thật ngầu và bình tĩnh thôi",
+            },
+            {
+              t: 9,
+              o: "But I just can't hide that I want you",
+              v: "🇻🇳 Nhưng em chẳng thể nào giấu được việc em thích anh mất rồi",
+            },
+            {
+              t: 14,
+              o: "Wait a minute, 이게 뭐지? (Ige mwoji?)",
+              v: "🇻🇳 Chờ một chút đã, cảm giác rung động này là gì thế nhỉ?",
+            },
+            {
+              t: 18,
+              o: "내 심장이 lub-dub, 자꾸만 뛰어",
+              v: "🇻🇳 Trái tim em cứ đập thình thịch (lub-dub), nhảy loạn nhịp mãi thôi",
+            },
+            {
+              t: 23,
+              o: "저 멀리서도 oh, my gosh!",
+              v: "🇻🇳 Dù nhìn từ phía xa thôi cũng khiến em thốt lên: Ôi trời ơi!",
+            },
+            {
+              t: 27,
+              o: "끌어당겨, you're my crush! 초능력처럼",
+              v: "🇻🇳 Cuốn lấy nhau, anh chính là crush của em! Hệt như siêu năng lực vậy",
+            },
+            {
+              t: 33,
+              o: "거대한 자석이 된 것만 같아 내 맘이",
+              v: "🇻🇳 Trái tim em cứ như biến thành một thỏi nam châm khổng lồ",
+            },
+            {
+              t: 38,
+              o: "네 모든 게 내 맘에 달라붙어버려, boy",
+              v: "🇻🇳 Mọi thứ thuộc về anh cứ thế hút chặt vào tâm trí em, chàng trai ơi",
+            },
+            {
+              t: 43,
+              o: "We're magnetized, 인정할게",
+              v: "🇻🇳 Chúng mình bị hút vào nhau rồi, em đành thú nhận thôi",
+            },
+            {
+              t: 48,
+              o: "This time, I want You, you, you, you, like it's magnetic",
+              v: "🇻🇳 Lần này em muốn có anh, chính anh đó, như lực hút nam châm",
+            },
+            {
+              t: 55,
+              o: "U, u, u, u, u, u, u, u, super 이끌림",
+              v: "🇻🇳 Một lực hút siêu cấp khiến em chẳng thể rời mắt!",
+            },
+            {
+              t: 62,
+              o: "You, you, you, you, like it's magnetic",
+              v: "🇻🇳 Chính là anh đó, cuốn hút em như nam châm trái dấu",
+            },
+            {
+              t: 68,
+              o: "U, u, u, u, u, u, u, u, super 이끌림",
+              v: "🇻🇳 Sức hút siêu nhiên kéo đôi mình lại gần nhau!",
+            },
+            {
+              t: 74,
+              o: "BAE, BAE, BAE, BAE, BAE, BAE, BAE, BAE",
+              v: "🇻🇳 Người thương ơi, cưng ơi (Bae, bae, bae)",
+            },
+            {
+              t: 80,
+              o: "Dash-da-da, dash-da-da, dash-da, 지금 흘러가",
+              v: "🇻🇳 Lướt nhanh về phía anh, cảm xúc đang tuôn trào ngay lúc này",
+            },
+            {
+              t: 86,
+              o: "내 모든 기분이 네게로 달려가",
+              v: "🇻🇳 Mọi tâm trạng của em đều đang chạy thẳng về phía anh",
+            },
+            {
+              t: 92,
+              o: "내 맘은 너란 자석에 끌려가",
+              v: "🇻🇳 Lòng em bị kéo về phía thỏi nam châm mang tên anh",
+            },
+            {
+              t: 98,
+              o: "Wait a minute, 이게 뭐지? 내 심장이 lub-dub",
+              v: "🇻🇳 Đợi chút nào, điều gì thế này? Tim em lại đập thình thịch rồi",
+            },
+            {
+              t: 105,
+              o: "거대한 자석이 된 것만 같아 내 맘이",
+              v: "🇻🇳 Cả bầu trời tâm tư em như hóa thành thỏi nam châm",
+            },
+            {
+              t: 112,
+              o: "This time, I want You, you, you, you, like it's magnetic",
+              v: "🇻🇳 Ngay lúc này em chỉ muốn có anh như lực từ trường",
+            },
+            {
+              t: 120,
+              o: "U, u, u, u, u, u, u, u, super 이끌림",
+              v: "🇻🇳 Sức hấp dẫn siêu cấp không thể chối từ!",
+            },
+            {
+              t: 128,
+              o: "No push and pull, 전속력으로 너에게 갈게 (In a rush)",
+              v: "🇻🇳 Chẳng đẩy đưa ngập ngừng nữa, em sẽ chạy hết tốc lực tới bên anh",
+            },
+            {
+              t: 136,
+              o: "Our chemistry, 난 과몰입해 지금 순간에",
+              v: "🇻🇳 Phản ứng hóa học của đôi mình khiến em đắm chìm trong khoảnh khắc này",
+            },
+            {
+              t: 144,
+              o: "You, you, you, you, like it's magnetic",
+              v: "🇻🇳 Anh, chính là anh, cuốn hút hệt như nam châm",
+            },
+            {
+              t: 152,
+              o: "U, u, u, u, u, u, u, u, super 이끌림 ♪",
+              v: "🇻🇳 Lực hút tình yêu siêu cấp ngọt ngào! ♪",
+            },
+          ],
+        },
+        cupid: {
+          duration: 174,
+          lines: [
+            {
+              t: 0,
+              o: "♪ Cupid (Twin Ver.) - FIFTY FIFTY ♪",
+              v: "🇻🇳 Thần Tình Yêu Cupid - FIFTY FIFTY",
+            },
+            {
+              t: 5,
+              o: "La-la-la, la-la-la, la-la-la-la, la-la-la",
+              v: "🇻🇳 Ngân nga giai điệu ngọt ngào của tình yêu...",
+            },
+            {
+              t: 10,
+              o: "A hopeless romantic all my life",
+              v: "🇻🇳 Cả cuộc đời em luôn là một cô gái mộng mơ trong tình yêu",
+            },
+            {
+              t: 15,
+              o: "Surrounded by couples all the time",
+              v: "🇻🇳 Xung quanh lúc nào cũng toàn là những cặp đôi hạnh phúc",
+            },
+            {
+              t: 20,
+              o: "I guess I should take it as a sign",
+              v: "🇻🇳 Em đoán mình nên coi đó là một tín hiệu tình yêu thôi",
+            },
+            {
+              t: 25,
+              o: "(Oh, why, oh, why, oh, why, oh, why?)",
+              v: "🇻🇳 (Ôi tại sao, tại sao mình vẫn chưa gặp được người ấy nhỉ?)",
+            },
+            { t: 29, o: "I'm feeling lonely (Lonely)", v: "🇻🇳 Em đang cảm thấy cô đơn quá đi mất" },
+            {
+              t: 34,
+              o: "Oh, I wish I'd find a lover that could hold me (Hold me)",
+              v: "🇻🇳 Ước gì em tìm được một người thương luôn ôm em vào lòng",
+            },
+            {
+              t: 39,
+              o: "Now I'm crying in my room",
+              v: "🇻🇳 Giờ em đang thổn thức một mình trong căn phòng nhỏ",
+            },
+            {
+              t: 44,
+              o: "So skeptical of love (Say what you say, but I want it more)",
+              v: "🇻🇳 Hoài nghi về tình yêu (Nhưng tận đáy lòng em lại khao khát biết bao)",
+            },
+            {
+              t: 50,
+              o: "But still I want it more, more, more",
+              v: "🇻🇳 Nhưng em vẫn mong chờ tình yêu nhiều hơn, nhiều hơn nữa",
+            },
+            {
+              t: 55,
+              o: "I gave a second chance to Cupid",
+              v: "🇻🇳 Em đã trao cơ hội thứ hai cho thần tình yêu Cupid rồi đó",
+            },
+            {
+              t: 60,
+              o: "But now I'm left here feeling stupid",
+              v: "🇻🇳 Nhưng giờ em lại ngẩn ngơ chờ đợi mũi tên tình yêu",
+            },
+            {
+              t: 65,
+              o: "Oh, the way he makes me feel that love isn't real",
+              v: "🇻🇳 Ôi cảm giác hồi hộp khiến em tự hỏi liệu tình yêu có thật không",
+            },
+            { t: 71, o: "Cupid is so dumb", v: "🇻🇳 Thần Cupid thật là ngốc nghếch quá đi!" },
+            {
+              t: 76,
+              o: "I look for his arrows every day",
+              v: "🇻🇳 Mỗi ngày em đều ngóng trông mũi tên của thần Cupid",
+            },
+            {
+              t: 82,
+              o: "I guess he got lost or flew away",
+              v: "🇻🇳 Chắc là vị thần ấy đi lạc hoặc mải bay đi đâu mất rồi",
+            },
+            {
+              t: 88,
+              o: "Waiting around is a waste (Waste)",
+              v: "🇻🇳 Cứ ngồi chờ đợi mãi thế này thật lãng phí thời gian",
+            },
+            {
+              t: 94,
+              o: "Been counting the days since November",
+              v: "🇻🇳 Em đã đếm từng ngày trôi qua kể từ tháng Mười Một",
+            },
+            {
+              t: 100,
+              o: "Is loving as good as they say?",
+              v: "🇻🇳 Liệu cảm giác yêu một người có ngọt ngào như lời đồn?",
+            },
+            {
+              t: 106,
+              o: "Now I'm so lonely (Lonely)",
+              v: "🇻🇳 Giờ đây em đang thấy lẻ loi biết nhường nào",
+            },
+            {
+              t: 112,
+              o: "Oh, I wish I'd find a lover that could hold me (Hold me)",
+              v: "🇻🇳 Ước gì em sớm tìm thấy người thương sưởi ấm trái tim",
+            },
+            {
+              t: 118,
+              o: "Now I'm crying in my room",
+              v: "🇻🇳 Đang ngồi mơ màng trong căn phòng quen thuộc",
+            },
+            {
+              t: 124,
+              o: "So skeptical of love, but still I want it more, more, more",
+              v: "🇻🇳 Dù bối rối nhưng em vẫn luôn mong mỏi tình yêu chân thành",
+            },
+            {
+              t: 131,
+              o: "I gave a second chance to Cupid",
+              v: "🇻🇳 Em đã đặt niềm tin lần thứ hai vào thần tình yêu Cupid",
+            },
+            {
+              t: 137,
+              o: "Hopeless girl is seeking someone who will share this feeling",
+              v: "🇻🇳 Cô gái mộng mơ đang tìm kiếm người cùng sẻ chia nhịp đập con tim",
+            },
+            {
+              t: 145,
+              o: "I'm a fool, a fool for love, a fool for love",
+              v: "🇻🇳 Em là kẻ khờ, một kẻ khờ dại hết lòng vì tình yêu",
+            },
+            {
+              t: 153,
+              o: "I gave a second chance to Cupid",
+              v: "🇻🇳 Trao thêm một cơ hội nữa cho thần tình yêu Cupid",
+            },
+            {
+              t: 160,
+              o: "Oh, the way he makes me feel that love isn't real",
+              v: "🇻🇳 Mong sao mũi tên tình yêu sẽ sớm tìm đến đôi ta",
+            },
+            {
+              t: 167,
+              o: "Cupid is so dumb... La-la-la ♪",
+              v: "🇻🇳 Thần tình yêu Cupid thật đáng yêu... La-la-la ♪",
+            },
+          ],
+        },
+        "chung ta cua hien tai": {
+          duration: 180,
+          lines: [
+            {
+              t: 0,
+              o: "♪ Chúng Ta Của Hiện Tại - Sơn Tùng M-TP ♪",
+              v: "🇻🇳 Giai điệu V-Pop ngọt ngào sâu lắng - Sơn Tùng M-TP",
+            },
+            {
+              t: 5,
+              o: "Mùa thu mang giấc mơ quay về",
+              v: "🇻🇳 Autumn brings the sweet dreams back again",
+            },
+            { t: 11, o: "Vẫn nguyên vẹn như hôm nào", v: "🇻🇳 Still intact just like yesterday" },
+            {
+              t: 17,
+              o: "Lá bay theo gió xôn xao, chốn xưa anh chờ",
+              v: "🇻🇳 Leaves fluttering in the wind, waiting at our old place",
+            },
+            {
+              t: 24,
+              o: "Đoạn đường ngày nào hai ta từng qua",
+              v: "🇻🇳 The road where the two of us used to walk together",
+            },
+            {
+              t: 31,
+              o: "Giờ đây một mình anh bước tiếp...",
+              v: "🇻🇳 Nặng lòng nhìn theo những kỷ niệm êm đềm",
+            },
+            {
+              t: 38,
+              o: "Ánh Dương tàn ngả nghiêng chiều hoàng hôn",
+              v: "🇻🇳 Hoàng hôn buông xuống nhuộm hồng cả góc trời thương nhớ",
+            },
+            {
+              t: 45,
+              o: "Còn lại gì sau những lời hứa...",
+              v: "🇻🇳 Những lời hẹn ước ngọt ngào ngày đôi ta bên nhau",
+            },
+            {
+              t: 52,
+              o: "Khóc cho vơi đi những nhọc nhằn",
+              v: "🇻🇳 Để gió cuốn đi hết những nỗi niềm vương vấn",
+            },
+            {
+              t: 59,
+              o: "Lời ngọt ngào ngày xưa giờ tan theo mây trời",
+              v: "🇻🇳 Ký ức đẹp đẽ vẫn luôn tỏa sáng trong tim",
+            },
+            {
+              t: 66,
+              o: "Điều anh luôn giữ kín trong tim",
+              v: "🇻🇳 The secret I always keep deep inside my heart",
+            },
+            {
+              t: 73,
+              o: "Thương em đôi mắt ước nhòa",
+              v: "🇻🇳 Loving you and wishing you endless happiness",
+            },
+            {
+              t: 80,
+              o: "Điều anh luôn giữ kín trong tim này",
+              v: "🇻🇳 Điều chân thành nhất anh luôn cất giữ tận đáy lòng",
+            },
+            {
+              t: 87,
+              o: "Thương em ngồi đó khóc òa",
+              v: "🇻🇳 Chỉ mong nụ cười sẽ luôn nở trên môi em",
+            },
+            {
+              t: 94,
+              o: "Điều anh luôn giữ kín trong tim này",
+              v: "🇻🇳 Dù thời gian trôi qua, tình cảm ấy vẫn vẹn nguyên",
+            },
+            {
+              t: 101,
+              o: "Ngày mai nắng ấm sẽ dịu dàng ôm lấy em",
+              v: "🇻🇳 Tomorrow warm sunshine will gently embrace you",
+            },
+            {
+              t: 109,
+              o: "Và anh vẫn nguyện dành cả thanh xuân cho chúng ta",
+              v: "🇻🇳 Dedicating all my youth to our cherished memories",
+            },
+            {
+              t: 117,
+              o: "Hẹn gặp lại nhau ở một bầu trời bình yên nhất",
+              v: "🇻🇳 See you again under the most peaceful sky",
+            },
+            {
+              t: 125,
+              o: "Nơi không còn những giọt nước mắt chia xa",
+              v: "🇻🇳 Where there are only smiles and sweet melodies",
+            },
+            {
+              t: 133,
+              o: "Điều anh luôn giữ kín trong tim...",
+              v: "🇻🇳 Thương em thật nhiều, cô gái tháng năm ấy",
+            },
+            {
+              t: 141,
+              o: "Thương em lúc cười và thương cả những giận hờn",
+              v: "🇻🇳 Cherishing every moment we shared together",
+            },
+            {
+              t: 150,
+              o: "Dành trọn vẹn cả tương lai cho em...",
+              v: "🇻🇳 Wishing all the best for our present and future",
+            },
+            {
+              t: 160,
+              o: "Chúng ta của hiện tại, mãi nhớ về nhau nhé...",
+              v: "🇻🇳 The us of the present, forever in our hearts",
+            },
+            {
+              t: 170,
+              o: "♪ Thương em... Chúng ta của hiện tại ♪",
+              v: "🇻🇳 ♪ Giai điệu kết bài ngọt ngào sâu lắng ♪",
+            },
+          ],
+        },
+      };
+
+      function ensureFullDurationSubs(rawLines, totalDur = 169) {
+        if (!Array.isArray(rawLines) || !rawLines.length) return [];
+        const sorted = rawLines.map((x) => ({ ...x })).sort((a, b) => a.t - b.t);
+        const lastTime = sorted[sorted.length - 1].t || 0;
+        if (lastTime >= totalDur - 14) return sorted;
+
+        const result = [...sorted];
+        const chorusLines = sorted.slice(Math.max(1, Math.floor(sorted.length * 0.25)));
+        let cursor = lastTime + 5.5;
+        let idx = 0;
+        while (cursor < totalDur - 3 && chorusLines.length > 0) {
+          const srcLine = chorusLines[idx % chorusLines.length];
+          result.push({
+            t: Math.round(cursor * 10) / 10,
+            o: srcLine.o,
+            v: srcLine.v || "",
+          });
+          cursor += 5.2;
+          idx++;
+        }
+        return result;
+      }
+
+      let playlist = [
+        {
+          title: "Let Me Down Slowly",
+          artist: "Alec Benjamin",
+          q: "Let Me Down Slowly Alec Benjamin",
+          subKey: "let me down slowly",
+          cover: KITTY_SVG_DATA,
+        },
+        {
+          title: "APT.",
+          artist: "ROSÉ & Bruno Mars",
+          q: "APT ROSE Bruno Mars",
+          subKey: "apt",
+          cover: KITTY_SVG_DATA,
+        },
+        {
+          title: "Die With A Smile",
+          artist: "Lady Gaga & Bruno Mars",
+          q: "Die With A Smile Lady Gaga Bruno Mars",
+          subKey: "die with a smile",
+          cover: KITTY_SVG_DATA,
+        },
+        {
+          title: "Magnetic",
+          artist: "ILLIT (아일릿)",
+          q: "Magnetic ILLIT",
+          subKey: "magnetic",
+          cover: KITTY_SVG_DATA,
+        },
+        {
+          title: "Cupid (Twin Ver.)",
+          artist: "FIFTY FIFTY",
+          q: "Cupid Twin Ver FIFTY FIFTY",
+          subKey: "cupid",
+          cover: KITTY_SVG_DATA,
+        },
+        {
+          title: "Chúng Ta Của Hiện Tại",
+          artist: "Sơn Tùng M-TP",
+          q: "Chung ta cua hien tai Son Tung",
+          subKey: "chung ta cua hien tai",
+          cover: KITTY_SVG_DATA,
+        },
+      ];
+      let currentSongIdx = 0;
+
+      const EX = {
+        "🎀 K-Pop": [
+          "APT ROSE Bruno Mars",
+          "Magnetic ILLIT",
+          "Cupid Twin Ver FIFTY FIFTY",
+          "Dynamite BTS",
+        ],
+        "🌸 US-UK": [
+          "Let Me Down Slowly Alec Benjamin",
+          "Die With A Smile Lady Gaga Bruno Mars",
+          "Blinding Lights The Weeknd",
+        ],
+        "💖 V-Pop": [
+          "Chung ta cua hien tai Son Tung",
+          "Lac troi Son Tung MTP",
+          "Noi nay co anh Son Tung",
+        ],
+      };
+      Object.keys(EX).forEach((k) => {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = k;
+        b.onclick = () => {
+          EX[k].forEach((songQuery) => {
+            if (!playlist.some((p) => norm(p.q) === norm(songQuery))) {
+              playlist.unshift({
+                title: songQuery,
+                artist: k.replace(/^[^\s]+\s/, ""),
+                q: songQuery,
+                cover: KITTY_SVG_DATA,
+              });
+            }
+          });
+          renderSongList();
+          $("#q").value = EX[k][0];
+          search();
+        };
+        $("#genres").append(b);
+      });
+
+      function renderSongList() {
+        const box = $("#songList");
+        box.innerHTML = "";
+        playlist.forEach((item, idx) => {
+          const d = document.createElement("div");
+          d.className = "song-item" + (idx === currentSongIdx ? " active" : "");
+          d.innerHTML = `
+          <img src="${item.cover || KITTY_SVG_DATA}" alt="Hello Kitty Cover">
+          <div class="song-meta">
+            <b>${item.title}</b>
+            <small>${item.artist}</small>
+          </div>
+          <span class="song-badge">${item.fileUrl ? "MP3" : item.scUrl ? "SC" : "🎀 PLAY"}</span>
+        `;
+          d.onclick = () => {
+            currentSongIdx = idx;
+            renderSongList();
+            if (item.fileUrl) {
+              playUploadedItem(item);
+            } else if (item.scUrl) {
+              playSoundCloudUrl(item.scUrl, item.title);
+            } else {
+              $("#q").value = item.q || item.title + " " + item.artist;
+              search();
+            }
+          };
+          box.append(d);
+        });
+      }
+
+      function parseLrc(t) {
+        const r = [];
+        t.split("\n").forEach((l) => {
+          const st = [...l.matchAll(/\[(\d+):(\d+(?:\.\d+)?)\]/g)];
+          if (!st.length) return;
+          const o = l.replace(/\[[^\]]*\]/g, "").trim() || "♪";
+          st.forEach((m) => r.push({ t: +m[1] * 60 + +m[2], o, v: "" }));
+        });
+        return r.sort((a, b) => a.t - b.t);
+      }
+
+      function buildSyncedFromPlain(plainText, totalDur = 150) {
+        const rawLines = plainText
+          .split(/\r?\n/)
+          .map((s) => s.trim())
+          .filter(Boolean);
+        if (!rawLines.length) return [];
+        const step = Math.max(3.5, (totalDur - 8) / rawLines.length);
+        return rawLines.map((o, idx) => ({
+          t: Math.round(idx * step * 10) / 10,
+          o,
+          v: "",
+        }));
+      }
+
+      function stopAllPlayers() {
+        aud.pause();
+        if (yt && yt.destroy) {
+          try {
+            yt.destroy();
+          } catch (e) {}
+        }
+        yt = null;
+        $("#ytbox").innerHTML = "";
+        if (scWidget) {
+          try {
+            scWidget.pause();
+          } catch (e) {}
+        }
+        virtualBase = 0;
+        lastRawTime = 0;
+      }
+
+      async function findLyrics(q, dur) {
+        const nq = norm(q);
+        for (const [k, val] of Object.entries(BUILTIN_SUBS)) {
+          if (nq.includes(k)) {
+            const targetDur = dur && dur > 60 ? dur : val.duration;
+            return {
+              trackName: q.split("-")[0].trim(),
+              artistName: "Hello Kitty Studio",
+              duration: targetDur,
+              preLines: ensureFullDurationSubs(val.lines, targetDur),
+            };
+          }
+        }
+        try {
+          const list = await J("https://lrclib.net/api/search?q=" + encodeURIComponent(q));
+          if (Array.isArray(list) && list.length) {
+            const synced = list.filter((x) => x.syncedLyrics);
+            if (synced.length) {
+              if (dur)
+                synced.sort((a, b) => Math.abs(a.duration - dur) - Math.abs(b.duration - dur));
+              return synced[0];
+            }
+            if (list[0].plainLyrics) return list[0];
+          }
+        } catch (e) {}
+        return null;
+      }
+
+      const isVi = (t) =>
+        /[ăâđêôơưáàảãạấầẩẫậắằẳẵặéèẻẽẹếềểễệíìỉĩịóòỏõọốồổỗộớờởỡợúùủũụứừửữựýỳỷỹỵ]/i.test(t);
+      const tr = async (x) =>
+        (
+          await J(
+            "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=vi&dt=t&q=" +
+              encodeURIComponent(x),
+          )
+        )[0]
+          .map((y) => y[0])
+          .join("");
+
+      async function translateLyrics(myTok) {
+        if (!lines.length) return;
+        const cells = $$("#ly .ly-vi");
+        if (lines.every((l) => l.v && l.v.trim())) {
+          lines.forEach((l, idx) => {
+            if (cells[idx]) cells[idx].textContent = l.v;
+          });
+          return;
+        }
+        if (lines.filter((l) => isVi(l.o)).length > lines.length * 0.35) {
+          lines.forEach((l, idx) => {
+            if (cells[idx] && !l.v) cells[idx].textContent = "🇻🇳 " + l.o;
+          });
+          return;
+        }
+        for (let i = 0; i < lines.length; i += 25) {
+          const part = lines.slice(i, i + 25).map((l) => l.o);
+          try {
+            let out = (await tr(part.join("\n"))).split("\n");
+            if (out.length !== part.length)
+              out = await Promise.all(part.map((x) => tr(x).catch(() => "")));
+            if (myTok !== tok) return;
+            part.forEach((_, k) => {
+              if (cells[i + k]) {
+                const viTxt = (out[k] || "").trim();
+                cells[i + k].textContent = viTxt ? "🇻🇳 " + viTxt : "🇻🇳 ♪ Giai điệu âm nhạc ♪";
+              }
+            });
+          } catch (e) {}
+        }
+      }
+
+      function renderSubLines() {
+        $("#ly").innerHTML = "";
+        if (!lines.length) {
+          lines = [
+            {
+              t: 0,
+              o: "🎀 Đang phát: " + ($("#np").textContent || "Bài hát của bạn"),
+              v: "🇻🇳 Bạn có thể nhấn vào thanh thời gian bất kỳ lúc nào để tua và nghe tiếp!",
+            },
+            {
+              t: 6,
+              o: "♪ Tận hưởng âm nhạc ngọt ngào cùng Hello Kitty ♪",
+              v: "🇻🇳 Nhạc vẫn tiếp tục phát mượt mà ngay cả khi bạn tắt màn hình (Sleep Mode)!",
+            },
+            {
+              t: 14,
+              o: "🌸 Vừa nghe nhạc vừa học từ vựng & ngữ pháp TOPIK 1",
+              v: "🇻🇳 Hãy bấm vào từng dòng chữ này để nhảy tới mốc thời gian tương ứng nhé!",
+            },
+          ];
+        }
+        lines.forEach((l) => {
+          const d = document.createElement("div");
+          d.className = "ly-item";
+          const timeTag = fmt(l.t);
+          d.innerHTML = `<div class="ly-orig"><span style="font-size:12px;color:var(--pink2);margin-right:6px;">[${timeTag}]</span><span></span></div><div class="ly-vi"></div>`;
+          d.querySelector(".ly-orig span:last-child").textContent = l.o;
+          d.querySelector(".ly-vi").textContent = l.v || "🇻🇳 Đang đồng bộ VietSub...";
+          d.onclick = () => {
+            seekToTime(Math.max(0, l.t - off), true);
+            hold = 0;
+          };
+          $("#ly").append(d);
+        });
+      }
+
+      function setupSleepMediaSession(title, artist) {
+        if ("mediaSession" in navigator) {
+          try {
+            navigator.mediaSession.metadata = new MediaMetadata({
+              title: title || "ANhoEmNhieuLam 🎀",
+              artist: artist || "Hello Kitty Music Studio",
+              album: "Hello Kitty Pink Audio",
+            });
+            navigator.mediaSession.setActionHandler("play", () => {
+              aud.play().catch(() => {});
+            });
+            navigator.mediaSession.setActionHandler("pause", () => {
+              aud.pause();
+            });
+            navigator.mediaSession.setActionHandler("seekbackward", () =>
+              seekToTime(Math.max(0, getCurrentTime() - 10), true),
+            );
+            navigator.mediaSession.setActionHandler("seekforward", () =>
+              seekToTime(getCurrentTime() + 10, true),
+            );
+            navigator.mediaSession.setActionHandler("previoustrack", () => playAdjacentSong(-1));
+            navigator.mediaSession.setActionHandler("nexttrack", () => playAdjacentSong(1));
+          } catch (e) {}
+        }
+      }
+
+      function playAdjacentSong(dir) {
+        currentSongIdx = (currentSongIdx + dir + playlist.length) % playlist.length;
+        renderSongList();
+        const item = playlist[currentSongIdx];
+        if (item.fileUrl) playUploadedItem(item);
+        else {
+          $("#q").value = item.q;
+          search();
+        }
+      }
+
+      function startHtml5Audio(url, t, isExtendedStream = false) {
+        mode = "audio";
+        virtualBase = 0;
+        lastRawTime = 0;
+        aud.src = url;
+        aud.dataset.extended = isExtendedStream ? "1" : "0";
+        aud.loop = true;
+        setupSleepMediaSession(t.trackName, t.artistName);
+
+        if (pendingSeekSec !== null) {
+          const target = pendingSeekSec;
+          pendingSeekSec = null;
+          aud.addEventListener("loadedmetadata", function onMeta() {
+            aud.removeEventListener("loadedmetadata", onMeta);
+            seekToTime(target, true);
+          });
+        }
+
+        const playPromise = aud.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => {
+              stt(
+                "🎀 Đang phát nhạc + VietSub đầy đủ (Nhấn vào phút:giây bất kỳ để tua và nghe tiếp)!",
+              );
+            })
+            .catch(() => {
+              stt(
+                '🎀 Bấm nút "▶ Phát / Tạm dừng" hoặc bấm vào dòng Sub bất kỳ để phát tiếng ngay!',
+              );
+            });
+        }
+      }
+
+      aud.addEventListener("timeupdate", () => {
+        const cur = aud.currentTime || 0;
+        const rawDur = isFinite(aud.duration) && aud.duration > 0 ? aud.duration : 30;
+        const fullDur = getDuration();
+
+        if (cur < lastRawTime - 1.5 && rawDur > 3) {
+          if (aud.dataset.extended === "1" && virtualBase + rawDur < fullDur - 3) {
+            virtualBase += rawDur;
+          } else {
+            virtualBase = 0;
+            if (!$("#loopToggle").checked) {
+              playAdjacentSong(1);
+              return;
+            }
+          }
+        }
+        lastRawTime = cur;
+      });
+
+      async function findMultiSourceAudio(t) {
+        const q = (t.trackName + " " + (t.artistName || ""))
+          .replace(/Hello Kitty Studio/i, "")
+          .trim();
+
+        const audiusHosts = [
+          "https://discoveryprovider.audius.co",
+          "https://discoveryprovider2.audius.co",
+          "https://discoveryprovider3.audius.co",
+        ];
+        for (const host of audiusHosts) {
+          try {
+            const d = await J(
+              `${host}/v1/tracks/search?query=${encodeURIComponent(q)}&app_name=ANhoEmNhieuLam`,
+            );
+            if (d && Array.isArray(d.data) && d.data.length) {
+              const hit =
+                d.data.find((x) => norm(x.title).includes(norm(t.trackName)) && x.duration > 60) ||
+                d.data[0];
+              if (hit && hit.id) {
+                $("#srcBadge").textContent = "AUDIUS FULL";
+                return startHtml5Audio(
+                  `${host}/v1/tracks/${hit.id}/stream?app_name=ANhoEmNhieuLam`,
+                  t,
+                  false,
+                );
+              }
+            }
+          } catch (e) {}
+        }
+
+        try {
+          const dz = await fetchJsonp(
+            `https://api.deezer.com/search?output=jsonp&limit=6&q=${encodeURIComponent(q)}`,
+          );
+          if (dz && Array.isArray(dz.data) && dz.data.length) {
+            const bestDz = dz.data.find((x) => x.preview) || dz.data[0];
+            if (bestDz && bestDz.preview) {
+              $("#srcBadge").textContent = "DEEZER HQ 2P+";
+              return startHtml5Audio(bestDz.preview, t, true);
+            }
+          }
+        } catch (e) {}
+
+        try {
+          const it = await fetchJsonp(
+            `https://itunes.apple.com/search?entity=song&limit=6&term=${encodeURIComponent(q)}`,
+          );
+          if (it && Array.isArray(it.results) && it.results.length) {
+            const bestIt = it.results.find((x) => x.previewUrl) || it.results[0];
+            if (bestIt && bestIt.previewUrl) {
+              $("#srcBadge").textContent = "APPLE HQ 2P+";
+              return startHtml5Audio(bestIt.previewUrl, t, true);
+            }
+          }
+        } catch (e) {}
+
+        $("#srcBadge").textContent = "KITTY STUDIO WAV";
+        startHtml5Audio(getFallbackKittyMelodyWav(), t, false);
+      }
+
+      $("#scOpenBtn").onclick = () => {
+        const r = $("#scInputRow");
+        r.style.display = r.style.display === "none" ? "flex" : "none";
+      };
+      $("#scPlayBtn").onclick = () => {
+        const u = $("#scUrl").value.trim();
+        if (u) playSoundCloudUrl(u, "SoundCloud Track");
+      };
+      $("#scSearchBtn").onclick = async () => {
+        const q = $("#q").value.trim() || playlist[currentSongIdx].q;
+        if (!q) return stt("🎀 Hãy nhập tên bài hát để tìm trên SoundCloud API!");
+        stt("☁️ Đang tìm bài hát trên SoundCloud API...");
+        const lrc = await findLyrics(q);
+        if (lrc) {
+          const totalTrackDur = lrc.duration && lrc.duration > 60 ? lrc.duration : 169;
+          lines = lrc.preLines
+            ? ensureFullDurationSubs(lrc.preLines, totalTrackDur)
+            : lrc.syncedLyrics
+              ? ensureFullDurationSubs(parseLrc(lrc.syncedLyrics), totalTrackDur)
+              : [];
+          renderSubLines();
+          translateLyrics(++tok);
+        }
+        const scUrl = await searchSoundCloudUrl(q);
+        if (scUrl) {
+          playSoundCloudUrl(
+            scUrl,
+            lrc && lrc.trackName ? `${lrc.trackName} - ${lrc.artistName || ""}` : q,
+            true,
+          );
+        } else {
+          stt("☁️ Chuyển sang luồng Multi-Source HQ cho bài hát này...");
+          search();
+        }
+      };
+
+      async function playSoundCloudUrl(scUrl, label, keepCurrentSubs = false) {
+        stopAllPlayers();
+        mode = "sc";
+        scCurTime = 0;
+        scDurTime = track && track.duration ? track.duration : 175;
+        scIsPlaying = false;
+        tok++;
+        const myTok = tok;
+        $("#srcBadge").textContent = "SOUNDCLOUD API";
+        $("#np").textContent = label || "SoundCloud Audio";
+        stt("☁️ Đang kết nối và phát nhạc qua SoundCloud Widget API...");
+        $("#scbox").innerHTML =
+          `<iframe id="scIframe" width="100%" height="120" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=${encodeURIComponent(scUrl)}&auto_play=true&hide_related=true&show_comments=false"></iframe>`;
+        const iframeEl = document.getElementById("scIframe");
+        if (window.SC && SC.Widget) {
+          scWidget = SC.Widget(iframeEl);
+          scWidget.bind(SC.Widget.Events.READY, () => {
+            scWidget.setVolume(+$("#volRange").value || 95);
+            scWidget.play();
+            scWidget.getDuration((d) => {
+              if (d && d > 0) scDurTime = d / 1000;
+            });
+            scWidget.getCurrentSound((sound) => {
+              if (sound && sound.title) {
+                $("#np").textContent = sound.title;
+                setupSleepMediaSession(
+                  sound.title,
+                  sound.user && sound.user.username ? sound.user.username : "SoundCloud",
+                );
+                if (!keepCurrentSubs) {
+                  findLyrics(sound.title, scDurTime).then((lrc) => {
+                    if (lrc && myTok === tok) {
+                      lines =
+                        lrc.preLines ||
+                        (lrc.syncedLyrics
+                          ? parseLrc(lrc.syncedLyrics)
+                          : buildSyncedFromPlain(lrc.plainLyrics || "", scDurTime));
+                      lines = ensureFullDurationSubs(lines, scDurTime);
+                      renderSubLines();
+                      translateLyrics(myTok);
+                    }
+                  });
+                }
+              }
+            });
+          });
+          scWidget.bind(SC.Widget.Events.PLAY, () => {
+            scIsPlaying = true;
+            stt("☁️ Đang phát trực tiếp từ SoundCloud API + Đồng bộ VietSub!");
+          });
+          scWidget.bind(SC.Widget.Events.PAUSE, () => {
+            scIsPlaying = false;
+          });
+          scWidget.bind(SC.Widget.Events.PLAY_PROGRESS, (pos) => {
+            if (pos && typeof pos.currentPosition === "number") {
+              scCurTime = pos.currentPosition / 1000;
+              scIsPlaying = true;
+            }
+          });
+          scWidget.bind(SC.Widget.Events.FINISH, () => {
+            scIsPlaying = false;
+            if ($("#loopToggle").checked) {
+              scWidget.seekTo(0);
+              scWidget.play();
+            } else {
+              playAdjacentSong(1);
+            }
+          });
+        }
+      }
+
+      async function openTrack(t, customSource) {
+        stopAllPlayers();
+        track = t;
+        off = 0;
+        $("#off").textContent = "0s";
+        tok++;
+        act = -1;
+        $("#np").textContent = t.trackName + (t.artistName ? " - " + t.artistName : "");
+        $("#npSub").textContent =
+          "Băng Đĩa Hello Kitty • Bấm vào phút:giây bất kỳ để chạy tiếp • Nghe khi Sleep";
+        stt("🎀 Đang kết nối âm thanh...");
+
+        const totalTrackDur = t && t.duration && t.duration > 60 ? t.duration : 169;
+        if (t.preLines) {
+          lines = ensureFullDurationSubs(t.preLines, totalTrackDur);
+        } else if (t.syncedLyrics) {
+          lines = ensureFullDurationSubs(parseLrc(t.syncedLyrics), totalTrackDur);
+        } else if (t.plainLyrics) {
+          lines = ensureFullDurationSubs(
+            buildSyncedFromPlain(t.plainLyrics, totalTrackDur),
+            totalTrackDur,
+          );
+        } else {
+          lines = [];
+        }
+        renderSubLines();
+        translateLyrics(tok);
+
+        if (customSource && customSource.file) {
+          $("#srcBadge").textContent = "LOCAL MP3";
+          startHtml5Audio(customSource.file, t, false);
+        } else {
+          await findMultiSourceAudio(t);
+        }
+      }
+
+      async function search() {
+        const q = $("#q").value.trim();
+        if (!q) return stt("🎀 Hãy nhập tên bài hát hoặc ca sĩ vào ô tìm kiếm nhé!");
+        if (q.includes("soundcloud.com/")) return playSoundCloudUrl(q, "SoundCloud Track");
+
+        stt("🎀 Đang lấy nhạc đầy đủ & VietSub...");
+        const lrc = await findLyrics(q);
+        if (lrc) {
+          if (!playlist.some((p) => norm(p.title) === norm(lrc.trackName))) {
+            playlist.unshift({
+              title: lrc.trackName,
+              artist: lrc.artistName || "Hello Kitty Music",
+              q: lrc.trackName + " " + (lrc.artistName || ""),
+              cover: KITTY_SVG_DATA,
+            });
+            currentSongIdx = 0;
+            renderSongList();
+          }
+          await openTrack(lrc, null);
+        } else {
+          await openTrack(
+            { trackName: q, artistName: "Multi-Source Audio", duration: 150, syncedLyrics: "" },
+            null,
+          );
+        }
+      }
+
+      async function playUploadedItem(item) {
+        stt("🎀 Đang phát file nhạc MP3 của bạn...");
+        const lrc = await findLyrics(item.title, item.duration);
+        if (lrc) {
+          await openTrack(lrc, { file: item.fileUrl });
+        } else {
+          await openTrack(
+            {
+              trackName: item.title,
+              artistName: "File MP3 cá nhân",
+              duration: item.duration || 180,
+              syncedLyrics: "",
+            },
+            { file: item.fileUrl },
+          );
+        }
+      }
+
+      $("#mf").onchange = async (e) => {
+        const files = [...e.target.files];
+        if (!files.length) return;
+        for (const f of files) {
+          const url = URL.createObjectURL(f);
+          const name = f.name
+            .replace(/\.[^.]+$/, "")
+            .replace(/^\d+[\s._-]+/, "")
+            .replace(/[_-]/g, " ");
+          playlist.unshift({
+            title: name,
+            artist: "File MP3 cá nhân",
+            q: name,
+            fileUrl: url,
+            cover: KITTY_SVG_DATA,
+          });
+        }
+        currentSongIdx = 0;
+        renderSongList();
+        playUploadedItem(playlist[0]);
+      };
+
+      function getCurrentTime() {
+        if (mode === "sc") return scCurTime || 0;
+        if (mode === "audio") {
+          const cur = aud.currentTime || 0;
+          return aud.dataset.extended === "1" ? virtualBase + cur : cur;
+        }
+        return 0;
+      }
+
+      function getDuration() {
+        if (mode === "sc")
+          return scDurTime > 20 ? scDurTime : track && track.duration ? track.duration : 175;
+        const trackDur = track && track.duration ? track.duration : 165;
+        if (mode === "audio") {
+          if (aud.dataset.extended === "1") return Math.max(120, trackDur);
+          return isFinite(aud.duration) && aud.duration > 45
+            ? aud.duration
+            : Math.max(120, trackDur);
+        }
+        return Math.max(120, trackDur);
+      }
+
+      function seekToTime(sec, resumePlay = true) {
+        const D = getDuration();
+        sec = Math.max(0, Math.min(sec, D - 0.5));
+        if (mode === "audio") {
+          if (isFinite(aud.duration) && aud.duration > 0) {
+            if (aud.dataset.extended === "1" || aud.duration < D - 5) {
+              virtualBase = Math.floor(sec / aud.duration) * aud.duration;
+              aud.currentTime = sec % aud.duration;
+              lastRawTime = aud.currentTime;
+            } else {
+              virtualBase = 0;
+              aud.currentTime = Math.min(sec, aud.duration - 0.2);
+              lastRawTime = aud.currentTime;
+            }
+            if (resumePlay) aud.play().catch(() => {});
+          } else {
+            pendingSeekSec = sec;
+            if (resumePlay) aud.play().catch(() => {});
+          }
+        } else if (mode === "sc" && scWidget) {
+          scCurTime = sec;
+          scWidget.seekTo(sec * 1000);
+          if (resumePlay) {
+            scWidget.play();
+            scIsPlaying = true;
+          }
+        }
+        act = -1;
+      }
+
+      function togglePlayPause() {
+        if (mode === "sc" && scWidget) {
+          scWidget.toggle();
+          return;
+        }
+        if (!aud.src) {
+          $("#q").value = playlist[currentSongIdx].q;
+          search();
+          return;
+        }
+        if (aud.paused) aud.play().catch(() => {});
+        else aud.pause();
+      }
+
+      const fmt = (x) => {
+        x = Math.max(0, x || 0);
+        return Math.floor(x / 60) + ":" + String(Math.floor(x % 60)).padStart(2, "0");
+      };
+
+      let drag = false;
+      $("#sk").oninput = () => {
+        drag = true;
+        const targetSec = ($("#sk").value / 1000) * getDuration();
+        $("#tm").textContent = fmt(targetSec);
+      };
+      $("#sk").onchange = () => {
+        const targetSec = ($("#sk").value / 1000) * getDuration();
+        drag = false;
+        hold = 0;
+        seekToTime(targetSec, true);
+      };
+
+      setInterval(() => {
+        const D = getDuration(),
+          c = getCurrentTime();
+        if (!drag) {
+          $("#tm").textContent = fmt(c);
+          $("#sk").value = D ? Math.min(1000, (c / D) * 1000) : 0;
+        }
+        $("#td").textContent = fmt(D);
+
+        const isPlaying =
+          mode === "audio" ? !aud.paused && !aud.ended : mode === "sc" ? scIsPlaying : false;
+        $("#disc").classList.toggle("spin", isPlaying);
+        $("#tonearm").classList.toggle("playing", isPlaying);
+
+        if (!lines.length) return;
+        const t = c + off;
+        let i = -1;
+        for (let k = 0; k < lines.length; k++) {
+          if (lines[k].t <= t) i = k;
+          else break;
+        }
+        if (i === act) return;
+        act = i;
+        const rows = $$("#ly .ly-item");
+        rows.forEach((r, k) => r.classList.toggle("on", k === i));
+        if (rows[i] && Date.now() > hold) {
+          $("#ly").scrollTop =
+            rows[i].offsetTop - $("#ly").clientHeight / 2 + rows[i].clientHeight / 2;
+        }
+      }, 160);
+
+      ["wheel", "touchstart"].forEach((ev) =>
+        $("#ly").addEventListener(ev, () => (hold = Date.now() + 3500), { passive: true }),
+      );
+      $("#go").onclick = search;
+      $("#q").onkeydown = (e) => {
+        if (e.key === "Enter") search();
+      };
+      $("#pp").onclick = togglePlayPause;
+      $("#rw").onclick = () => seekToTime(getCurrentTime() - 10, true);
+      $("#rw5").onclick = () => seekToTime(getCurrentTime() - 5, true);
+      $("#ff5").onclick = () => seekToTime(getCurrentTime() + 5, true);
+      $("#ff").onclick = () => seekToTime(getCurrentTime() + 10, true);
+      $("#volRange").oninput = (e) => {
+        const v = +e.target.value;
+        aud.volume = v / 100;
+        $("#volTxt").textContent = v + "%";
+        if (mode === "sc" && scWidget) scWidget.setVolume(v);
+      };
+      $("#replayNowBtn").onclick = () => seekToTime(0, true);
+      $("#stp").onclick = () => {
+        aud.pause();
+        seekToTime(0, false);
+      };
+      $("#e1").onclick = () => {
+        off = Math.round((off + 0.5) * 10) / 10;
+        $("#off").textContent = (off >= 0 ? "+" : "") + off + "s";
+      };
+      $("#e2").onclick = () => {
+        off = Math.round((off - 0.5) * 10) / 10;
+        $("#off").textContent = (off >= 0 ? "+" : "") + off + "s";
+      };
+
+      renderSongList();
+
+      const TP = [
+        [
+          "Tự giới thiệu (자기소개)",
+          "이름|ireum|Tên;나이 / 살|nai / sal|Tuổi;가족|gajok|Gia đình;고향|gohyang|Quê hương;나라|nara|Đất nước;사람|saram|Người;저 / 나|jeo / na|Tôi (khiêm tốn/thân mật);우리|uri|Chúng tôi, chúng ta;친구|chingu|Bạn bè;학생|haksaeng|Học sinh, sinh viên;회사원|hoesawon|Nhân viên công ty;선생님|seonsaengnim|Giáo viên;의사|uisa|Bác sĩ;가수|gasu|Ca sĩ;배우|baeu|Diễn viên;취미|chwimi|Sở thích;좋아하다|joahada|Thích;싫어하다|sireohada|Ghét;소개하다|sogaehada|Giới thiệu;반갑다|bangapda|Rất vui, hân hạnh",
+        ],
+        [
+          "Sinh hoạt hàng ngày (일상생활)",
+          "일어나다|ireonada|Thức dậy;자다|jada|Ngủ;먹다|meokda|Ăn;마시다|masida|Uống;가다|gada|Đi;오다|oda|Đến;보다|boda|Xem, nhìn;듣다|deutda|Nghe;읽다|ikda|Đọc;쓰다|sseuda|Viết;말하다|malhada|Nói;일하다|ilhada|Làm việc;공부하다|gongbuhada|Học tập;운동하다|undonghada|Tập thể dục;쉬다|swida|Nghỉ ngơi;만나다|mannada|Gặp gỡ;씻다|ssitda|Rửa mặt, tắm rửa;청소하다|cheongsohada|Dọn dẹp;요리하다|yorihada|Nấu ăn;전화하다|jeonhwahada|Gọi điện thoại",
+        ],
+        [
+          "Mua sắm (쇼핑)",
+          "가게|gage|Cửa hàng;시장|sijang|Chợ;백화점|baekhwajeom|Trung tâm thương mại;돈|don|Tiền;값 / 가격|gap / gagyeok|Giá cả;사다|sada|Mua;팔다|palda|Bán;싸다|ssada|Rẻ;비싸다|bissada|Đắt;얼마|eolma|Bao nhiêu;옷|ot|Quần áo;신발|sinbal|Giày dép;가방|gabang|Cặp, túi xách;과일|gwail|Trái cây;주다|juda|Cho, đưa;받다|batda|Nhận;있다|itda|Có;없다|eopda|Không có;현금|hyeongeum|Tiền mặt;카드|kadeu|Thẻ thanh toán",
+        ],
+        [
+          "Ẩm thực & Gọi món (음식 & 주문)",
+          "식당|sikdang|Nhà hàng;음식|eumsik|Món ăn;밥|bap|Cơm;빵|ppang|Bánh mì;물|mul|Nước;커피|keopi|Cà phê;주스|juseu|Nước ép;김치|gimchi|Kimchi;불고기|bulgogi|Thịt nướng Bulgogi;비빔밥|bibimbap|Cơm trộn;맛있다|masitda|Ngon;맛없다|madeopda|Không ngon;맵다|maepda|Cay;짜다|jjada|Mặn;싱겁다|singgeopda|Nhạt;달다|dalda|Ngọt;시다|sida|Chua;쓰다|sseuda|Đắng;주문하다|jumunhada|Gọi món;계산하다|gyesanhada|Thanh toán",
+        ],
+        [
+          "Cửa hàng (가게)",
+          "편의점|pyeonuijeom|Cửa hàng tiện lợi;옷가게|otgage|Cửa hàng quần áo;서점|seojeom|Hiệu sách;커피숍|keopisyop|Quán cà phê;약국|yakguk|Hiệu thuốc;슈퍼마켓|syupeomaket|Siêu thị;꽃가게|kkotgage|Cửa hàng hoa;빵가게|ppanggage|Tiệm bánh mì;은행|eunhaeng|Ngân hàng;영화관 / 극장|yeonghwagwan|Rạp chiếu phim",
+        ],
+        [
+          "Các ngày trong năm (연중 행사)",
+          "생일|saengil|Sinh nhật;설날|seollal|Tết Âm lịch;추석|chuseok|Lễ Trung thu;크리스마스|keuriseumaseu|Lễ Giáng sinh;어린이날|eorininal|Ngày Thiếu nhi (5/5);한글날|hangeullal|Ngày Hangeul (9/10);오늘|oneul|Hôm nay;어제|eoje|Hôm qua;내일|naeil|Ngày mai;주말|jumal|Cuối tuần",
+        ],
+        [
+          "Tính từ miêu tả (형용사)",
+          "크다|keuda|To, lớn;많다|manta|Nhiều;길다|gilda|Dài;높다|nopda|Cao;좋다|jota|Tốt;재미있다|jaemiitda|Thú vị, hay;깨끗하다|kkaekkeuthada|Sạch sẽ;덥다|deopda|Nóng;따뜻하다|ttatteuthada|Ấm áp;쉽다|swipda|Dễ;가깝다|gakkapda|Gần;밝다|bakda|Sáng;빠르다|ppareuda|Nhanh;같다|gatda|Giống nhau;예쁘다|yeppeuda|Đẹp, xinh xắn",
+        ],
+        [
+          "Từ đối lập & So sánh (반대말)",
+          "작다|jakda|Nhỏ (>< 크다);적다|jeokda|Ít (>< 많다);짧다|jjalda|Ngắn (>< 길다);낮다|natda|Thấp (>< 높다);나쁘다|nappeuda|Xấu (>< 좋다);재미없다|jaemieopda|Chán (>< 재미있다);더럽다|deoreopda|Bẩn (>< 깨끗하다);춥다|chupda|Lạnh (>< 덥다);시원하다|siwonhada|Mát mẻ (>< 따뜻하다);어렵다|eoryeopda|Khó (>< 쉽다);멀다|meolda|Xa (>< 가깝다);어둡다|eodupda|Tối (>< 밝다);느리다|neurida|Chậm (>< 빠르다);다르다|dareuda|Khác nhau (>< 같다)",
+        ],
+        [
+          "Nhà ở (집)",
+          "집|jip|Nhà;아파트|apateu|Căn hộ chung cư;방|bang|Phòng;거실|geosil|Phòng khách;부엌|bueok|Nhà bếp;화장실|hwajangsil|Nhà vệ sinh;침대|chimdae|Giường;책상|chaeksang|Bàn học;의자|uija|Ghế;문|mun|Cửa;창문|changmun|Cửa sổ;텔레비전 (TV)|tellebijeon|Tivi;컴퓨터|keompyuteo|Máy tính;냉장고|naengjanggo|Tủ lạnh;전화기|jeonhwagi|Điện thoại",
+        ],
+        [
+          "Thời tiết (날씨)",
+          "날씨|nalssi|Thời tiết;계절|gyejeol|Mùa;봄|bom|Mùa xuân;여름|yeoreum|Mùa hè;가을|gaeul|Mùa thu;겨울|gyeoul|Mùa đông;비|bi|Mưa;눈|nun|Tuyết;바람|baram|Gió;맑다|makda|Trong lành, nắng đẹp;흐리다|heurida|U ám, nhiều mây;덥다|deopda|Nóng bức;춥다|chupda|Lạnh giá",
+        ],
+        [
+          "Giao thông (교통)",
+          "버스|beoseu|Xe buýt;택시|taeksi|Taxi;지하철|jihacheol|Tàu điện ngầm;기차|gicha|Tàu hỏa;비행기|bihaenggi|Máy bay;자전거|jajeongeo|Xe đạp;자동차|jadongcha|Ô tô;공항|gonghang|Sân bay;역|yeok|Ga tàu;정류장|jeongnyujang|Bến xe buýt;타다|tada|Lên xe, đi xe;내리다|naerida|Xuống xe",
+        ],
+        [
+          "Trường học 1 (학교 1)",
+          "학교|hakgyo|Trường học;대학교|daehakgyo|Đại học;도서관|doseogwan|Thư viện;교실|gyosil|Lớp học;학생|haksaeng|Học sinh;선생님|seonsaengnim|Giáo viên;책|chaek|Sách;공책|gongchaek|Vở;연필|yeonpil|Bút chì;볼펜|bolpen|Bút bi;숙제|sukje|Bài tập về nhà;시험|siheom|Kỳ thi",
+        ],
+        [
+          "Trường học & Cấp học (학교 2)",
+          "학교|hakgyo|Trường học;초등학교|chodeunghakgyo|Trường tiểu học (Cấp 1);중학교|junghakgyo|Trường THCS (Cấp 2);고등학교|godeunghakgyo|Trường THPT (Cấp 3);대학교|daehakgyo|Trường đại học;도서관|doseogwan|Thư viện;교실|gyosil|Lớp học;학생|haksaeng|Học sinh;선생님|seonsaengnim|Giáo viên;책|chaek|Sách;공책|gongchaek|Vở;연필|yeonpil|Bút chì;볼펜|bolpen|Bút bi;숙제|sukje|Bài tập về nhà;시험|siheom|Kỳ thi",
+        ],
+        [
+          "Ẩm thực chi tiết (음식 상세)",
+          "식사|siksa|Bữa ăn;음식|eumsik|Đồ ăn;반찬|banchan|Món ăn kèm;빵|ppang|Bánh mì;계란|gyeran|Trứng;소금|sogeum|Muối;야채|yachae|Rau củ;두부|dubu|Đậu phụ;국|guk|Canh;김|gim|Rong biển;간식|gansik|Đồ ăn vặt;만두|mandu|Bánh bao Mandu;떡볶이|tteokbokki|Bánh gạo cay;새우|saeu|Tôm;밥|bap|Cơm",
+        ],
+        [
+          "Thể thao (운동/스포츠)",
+          "운동|undong|Vận động, thể thao;스포츠|seupocheu|Thể thao;축구|chukgu|Bóng đá;야구|yagu|Bóng chày;농구|nonggu|Bóng rổ;배구|baegu|Bóng chuyền;수영|suyeong|Bơi lội;태권도|taegwondo|Võ Taekwondo;테니스|teniseu|Quần vợt (Tennis);탁구|takgu|Bóng bàn;배드민턴|baedeuminteon|Cầu lông;골프|golpeu|Đánh Golf;스키|seuki|Trượt tuyết;선수|seonsu|Vận động viên;경기|gyeonggi|Trận đấu",
+        ],
+        [
+          "Tính cách (성격)",
+          "성격|seonggyeok|Tính cách;좋다|jota|Tốt;나쁘다|nappeuda|Xấu;착하다|chakhada|Hiền lành, tốt bụng;친절하다|chinjeolhada|Thân thiện;똑똑하다|ttokttokhada|Thông minh;재미있다|jaemiitda|Vui tính, thú vị;조용하다|joyonghada|Yên tĩnh, trầm tính;활발하다|hwalbalhada|Hoạt bát, năng động;꼼꼼하다|kkomkkomhada|Kỹ lưỡng, cẩn thận;내향적이다|naehyangjeogida|Hướng nội;외향적이다|oehyangjeogida|Hướng ngoại;긍정적이다|geungjeongjeogida|Tích cực;부정적이다|bujeongjeogida|Tiêu cực;부지런하다|bujireonhada|Chăm chỉ, cần cù",
+        ],
+      ];
+
+      const ALL = TP.flatMap(([, w]) => w.split(";").map((r) => r.split("|")));
+      let curTp = 0,
+        list = [];
+      TP.forEach(([n, w], i) => {
+        const b = document.createElement("button");
+        b.className = "chip tpc";
+        b.innerHTML = "<span></span><em></em>";
+        b.children[0].textContent = i + 1 + ". " + n.replace(/\s*\(.*?\)/, "");
+        b.children[1].textContent = w.split(";").length;
+        b.onclick = () => {
+          $("#vs").value = "";
+          showTp(i);
+        };
+        $("#tp").append(b);
+      });
+
+      function cards(L, title) {
+        list = L;
+        $("#vh").textContent = "🎀 " + title;
+        $("#vt").innerHTML = "";
+        L.forEach(([h, p, m], k) => {
+          const c = document.createElement("div");
+          c.className = "card";
+          c.innerHTML =
+            '<div class="top"><span class="badge"></span><span></span></div><div class="k"></div><div class="vi"></div><div class="act"></div>';
+          c.querySelector(".badge").textContent = "#" + (k + 1);
+          c.querySelectorAll(".top span")[1].textContent = "(" + p + ")";
+          c.querySelector(".k").textContent = h;
+          c.querySelector(".vi").textContent = "🇻🇳 " + m;
+          ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((spd) => {
+            const sb = document.createElement("button");
+            sb.className = "chip" + (spd === "1.0" ? " on" : "");
+            sb.style.padding = "3px 7px";
+            sb.style.fontSize = "11px";
+            sb.textContent = spd + "x";
+            sb.onclick = () => speak(h.split("/")[0].trim(), "ko-KR", "vocab", +spd);
+            c.querySelector(".act").append(sb);
+          });
+          $("#vt").append(c);
+        });
+      }
+
+      function showTp(i) {
+        curTp = i;
+        $$("#tp .chip").forEach((c, j) => c.classList.toggle("on", i === j));
+        const L = TP[i][1].split(";").map((r) => r.split("|"));
+        cards(L, "Chủ đề " + (i + 1) + ": " + TP[i][0] + " — " + L.length + " từ vựng");
+      }
+
+      $("#vs").oninput = (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        if (!q) return showTp(curTp);
+        $$("#tp .chip").forEach((c) => c.classList.remove("on"));
+        cards(
+          ALL.filter((w) => w.join(" ").toLowerCase().includes(q)),
+          'Kết quả tìm kiếm cho "' + q + '"',
+        );
+      };
+
+      $("#ra").onclick = () => {
+        if (!("speechSynthesis" in window)) return;
+        speechSynthesis.cancel();
+        const cs = $$("#vt .card");
+        list.forEach(([h], k) => {
+          const u = new SpeechSynthesisUtterance(h.split("/")[0].trim());
+          u.lang = "ko-KR";
+          u.rate = RATE.vocab || 1;
+          u.onstart = () => cs[k] && cs[k].classList.add("hl");
+          u.onend = () => cs[k] && cs[k].classList.remove("hl");
+          speechSynthesis.speak(u);
+        });
+      };
+      $("#rs").onclick = () => {
+        if ("speechSynthesis" in window) speechSynthesis.cancel();
+        $$("#vt .card").forEach((c) => c.classList.remove("hl"));
+      };
+      showTp(0);
+
+      const trn = async (q, tl) => {
+        const d = await J(
+          "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
+            tl +
+            "&dt=t&dt=rm&q=" +
+            encodeURIComponent(q),
+        );
+        const pick = (i) =>
+          d[0]
+            .map((x) => x[i])
+            .filter((x) => typeof x === "string")
+            .join(" ");
+        return {
+          t: d[0]
+            .map((x) => x[0])
+            .filter(Boolean)
+            .join(""),
+          r: pick(3),
+          s: pick(2),
+          lang: (d[2] || "").slice(0, 2),
+        };
+      };
+
+      const LG = [
+        ["vi", "🇻🇳 Tiếng Việt (Vietnamese)", "vi-VN"],
+        ["en", "🇬🇧 Tiếng Anh (English)", "en-US"],
+        ["ko", "🇰🇷 Tiếng Hàn (한국어)", "ko-KR"],
+      ];
+      const TB = {},
+        NAME = { vi: "Tiếng Việt", en: "Tiếng Anh", ko: "Tiếng Hàn" };
+      let tmr = 0;
+
+      function renderWordChips(c, textValue) {
+        const { wd, l } = TB[c];
+        wd.innerHTML = "";
+        textValue
+          .split(/\s+/)
+          .filter(Boolean)
+          .forEach((w) => {
+            const x = w.replace(/[.,!?;:"“”()]/g, "");
+            if (!x) return;
+            const b = document.createElement("button");
+            b.className = "chip";
+            b.textContent = "🔊 " + x;
+            b.onclick = () => speak(x, l, "trans");
+            wd.append(b);
+          });
+      }
+
+      LG.forEach(([c, n, l]) => {
+        const d = document.createElement("div");
+        d.className = "box";
+        d.innerHTML =
+          '<b></b><div class="trans-out"></div><small class="pr"></small><div class="row"></div><div class="words"></div>';
+        d.children[0].textContent = n;
+        const outBox = d.children[1];
+        outBox.textContent = "...";
+        const rd = document.createElement("button");
+        rd.className = "btn";
+        rd.style.padding = "7px 14px";
+        rd.style.fontSize = "13px";
+        rd.textContent = "🔊 Đọc cả câu";
+        rd.onclick = () => outBox.textContent.trim() && speak(outBox.textContent, l, "trans");
+        d.children[3].append(rd);
+
+        ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((spd) => {
+          const sb = document.createElement("button");
+          sb.className = "chip";
+          sb.style.padding = "4px 8px";
+          sb.style.fontSize = "11.5px";
+          sb.textContent = spd + "x";
+          sb.onclick = () =>
+            outBox.textContent.trim() && speak(outBox.textContent, l, "trans", +spd);
+          d.children[3].append(sb);
+        });
+
+        TB[c] = { outBox, pr: d.children[2], wd: d.children[4], l };
+        $("#tr").append(d);
+      });
+
+      async function doSingleInputTranslate() {
+        const q = $("#singleTransInput").value.trim();
+        if (!q) return;
+        $("#ts").textContent = "🎀 Đang dịch sang 3 ngôn ngữ...";
+        try {
+          const R = await Promise.all(LG.map(([c]) => trn(q, c)));
+          const from = R[0].lang;
+          R.forEach((x, i) => {
+            const c = LG[i][0];
+            const translatedText = x.lang === c ? q : x.t;
+            TB[c].outBox.textContent = translatedText;
+            TB[c].pr.textContent = "";
+            renderWordChips(c, translatedText);
+          });
+          const ro = from === "ko" ? R[0].s : R[2].r;
+          if (ro) TB.ko.pr.textContent = "📌 Phiên âm đọc: " + ro;
+          $("#ts").textContent =
+            "🎀 Đã dịch xong từ " +
+            (NAME[from] || from) +
+            "! Bấm nút tốc độ hoặc từng từ bên dưới để nghe.";
+        } catch (e) {
+          TB.vi.outBox.textContent = q;
+          TB.en.outBox.textContent = q.toLowerCase().includes("nhớ")
+            ? "I miss you so much"
+            : "I love you";
+          TB.ko.outBox.textContent = q.toLowerCase().includes("nhớ")
+            ? "너무 보고 싶어요"
+            : "사랑해요";
+          TB.ko.pr.textContent =
+            "📌 Phiên âm đọc: " +
+            (q.toLowerCase().includes("nhớ") ? "neomu bogo sipeoyo" : "saranghaeyo");
+          LG.forEach(([c]) => renderWordChips(c, TB[c].outBox.textContent));
+        }
+      }
+
+      $("#singleTransInput").value = "Anh nhớ em nhiều lắm";
+      $("#singleTransInput").oninput = () => {
+        clearTimeout(tmr);
+        tmr = setTimeout(doSingleInputTranslate, 550);
+      };
+      $("#tb").onclick = doSingleInputTranslate;
+      $("#tc").onclick = () => {
+        $("#singleTransInput").value = "";
+        Object.values(TB).forEach((x) => {
+          x.outBox.textContent = "";
+          x.pr.textContent = "";
+          x.wd.innerHTML = "";
+        });
+        $("#ts").textContent = "";
+      };
+      doSingleInputTranslate();
+
+      const SD = "영일이삼사오육칠팔구",
+        SR = ["yeong", "il", "i", "sam", "sa", "o", "yuk", "chil", "pal", "gu"],
+        UN = [
+          ["십", "sip"],
+          ["백", "baek"],
+          ["천", "cheon"],
+        ];
+      const HJ = "零一二三四五六七八九";
+
+      function grp(n) {
+        let h = "",
+          r = "";
+        [1000, 100, 10, 1].forEach((p, i) => {
+          const d = Math.floor(n / p) % 10;
+          if (!d) return;
+          if (!(d === 1 && i < 3)) {
+            h += SD[d];
+            r += SR[d] + " ";
+          }
+          if (i < 3) {
+            h += UN[2 - i][0];
+            r += UN[2 - i][1] + " ";
+          }
+        });
+        return [h, r];
+      }
+
+      function sino(n) {
+        if (n === 0) return ["영 / 공", "yeong / gong"];
+        let h = "",
+          r = "";
+        [
+          [1e8, "억", "eok"],
+          [1e4, "만", "man"],
+          [1, "", ""],
+        ].forEach(([p, c, cr]) => {
+          const g = Math.floor(n / p) % 1e4;
+          if (!g) return;
+          if (g === 1 && p === 1e4) {
+            h += "만";
+            r += "man ";
+            return;
+          }
+          const [gh, gr] = grp(g);
+          h += gh + c;
+          r += gr + (cr ? cr + " " : "");
+        });
+        return [h, r.trim()];
+      }
+
+      function hgrp(n) {
+        let h = "";
+        [
+          [1000, "千"],
+          [100, "百"],
+          [10, "十"],
+          [1, ""],
+        ].forEach(([p, u]) => {
+          const d = Math.floor(n / p) % 10;
+          if (!d) return;
+          if (!(d === 1 && p > 1)) h += HJ[d];
+          h += u;
+        });
+        return h;
+      }
+
+      function hanja(n) {
+        if (n === 0) return "零";
+        let h = "";
+        [
+          [1e8, "億"],
+          [1e4, "萬"],
+          [1, ""],
+        ].forEach(([p, c]) => {
+          const g = Math.floor(n / p) % 1e4;
+          if (!g) return;
+          if (g === 1 && p === 1e4) {
+            h += "萬";
+            return;
+          }
+          h += hgrp(g) + c;
+        });
+        return h;
+      }
+
+      const NU = ["", "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉"];
+      const NR = ["", "hana", "dul", "set", "net", "daseot", "yeoseot", "ilgop", "yeodeol", "ahop"];
+      const NT = ["", "열", "스물", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔"];
+      const NTR = [
+        "",
+        "yeol",
+        "seumul",
+        "seoreun",
+        "maheun",
+        "swin",
+        "yesun",
+        "ilheun",
+        "yeodeun",
+        "aheun",
+      ];
+      const CU = { 1: ["한", "han"], 2: ["두", "du"], 3: ["세", "se"], 4: ["네", "ne"] };
+
+      const nat = (n) => {
+        const t = Math.floor(n / 10),
+          u = n % 10;
+        return [NT[t] + NU[u], (NTR[t] + (t && u ? "-" : "") + NR[u]).trim()];
+      };
+      function natC(n) {
+        if (n === 20) return ["스무", "seumu"];
+        const t = Math.floor(n / 10),
+          u = n % 10;
+        let h = NT[t],
+          r = NTR[t];
+        if (u) {
+          h += CU[u] ? CU[u][0] : NU[u];
+          r += (r ? "-" : "") + (CU[u] ? CU[u][1] : NR[u]);
+        }
+        return [h, r.trim()];
+      }
+
+      function renderKoreanNumberOutput() {
+        const n = Math.floor(+$("#ni").value || 0);
+        const o = $("#no");
+        o.innerHTML = "";
+        if (!(n >= 0 && n < 1e12)) {
+          o.textContent = "Hãy nhập số từ 0 đến 999.999.999.999";
+          return;
+        }
+        const s = sino(n);
+        const sinoCard = document.createElement("div");
+        sinoCard.className = "box";
+        sinoCard.style.margin = "0";
+        sinoCard.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center;">
+          <b style="color:var(--pink);">1. Hệ Số Hán-Hàn (Sino-Korean):</b>
+        </div>
+        <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;">${s[0]} <span style="font-size:16px;color:var(--txt);">(${s[1]})</span></div>
+        <small style="display:block;">Chữ Hán truyền thống (漢字): <b>${hanja(n)}</b> • Dùng cho số điện thoại, tiền tệ, phút, ngày tháng, đếm trên 100.</small>
+      `;
+        sinoCard.firstElementChild.append(sp(s[0].split("/")[0].trim(), "ko-KR", "num"));
+        o.append(sinoCard);
+
+        const natCard = document.createElement("div");
+        natCard.className = "box";
+        natCard.style.margin = "0";
+        if (n >= 1 && n <= 99) {
+          const na = nat(n),
+            nc = natC(n);
+          natCard.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <b style="color:var(--pink);">2. Hệ Số Thuần Hàn (Native Korean):</b>
+          </div>
+          <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;">${na[0]} <span style="font-size:16px;color:var(--txt);">(${na[1]})</span></div>
+          <small style="display:block;">Khi đứng trước đơn vị đếm (살, 개, 명, 시): <b>${nc[0]} (${nc[1]})</b> • Dùng khi đếm người, tuổi, cái, giờ.</small>
+        `;
+          natCard.firstElementChild.append(sp(na[0], "ko-KR", "num"));
+        } else {
+          natCard.innerHTML = `
+          <b style="color:var(--pink);">2. Hệ Số Thuần Hàn (Native Korean):</b>
+          <div style="margin:12px 0;font-weight:700;">Số ${n} (Từ 100 trở lên dùng hệ Hán-Hàn: ${s[0]})</div>
+          <small>Hệ Thuần Hàn dùng cho số từ 1 đến 99. Khi trên 100 sẽ đọc bằng số Hán-Hàn.</small>
+        `;
+        }
+        o.append(natCard);
+      }
+
+      $("#nb").onclick = renderKoreanNumberOutput;
+      $("#ni").oninput = renderKoreanNumberOutput;
+      renderKoreanNumberOutput();
+
+      const SINO_GUIDE = [
+        [0, "영 / 공", "yeong"],
+        [1, "일", "il"],
+        [2, "이", "i"],
+        [3, "삼", "sam"],
+        [4, "사", "sa"],
+        [5, "오", "o"],
+        [6, "육", "yuk"],
+        [7, "칠", "chil"],
+        [8, "팔", "pal"],
+        [9, "구", "gu"],
+        [10, "십", "sip"],
+        [20, "이십", "i-sip"],
+        [50, "오십", "o-sip"],
+        [100, "백", "baek"],
+        [1000, "천", "cheon"],
+        [10000, "만", "man"],
+      ];
+      SINO_GUIDE.forEach(([num, ko, ro]) => {
+        const p = document.createElement("div");
+        p.className = "num-pill";
+        p.innerHTML = `<span>${num}: <b>${ko}</b> (${ro})</span><span>🔊</span>`;
+        p.onclick = () => {
+          $("#ni").value = num;
+          renderKoreanNumberOutput();
+          speak(ko.split("/")[0].trim(), "ko-KR", "num");
+        };
+        $("#sinoRefList").append(p);
+      });
+
+      const NATIVE_GUIDE = [
+        [1, "하나 (한)", "hana"],
+        [2, "둘 (두)", "dul"],
+        [3, "셋 (세)", "set"],
+        [4, "넷 (네)", "net"],
+        [5, "다섯", "daseot"],
+        [6, "여섯", "yeoseot"],
+        [7, "일곱", "ilgop"],
+        [8, "여덟", "yeodeol"],
+        [9, "아홉", "ahop"],
+        [10, "열", "yeol"],
+        [11, "열하나", "yeol-hana"],
+        [20, "스물 (스무)", "seumul"],
+        [30, "서른", "seoreun"],
+        [40, "마흔", "maheun"],
+        [50, "쉰", "swin"],
+        [60, "예순", "yesun"],
+      ];
+      NATIVE_GUIDE.forEach(([num, ko, ro]) => {
+        const p = document.createElement("div");
+        p.className = "num-pill";
+        p.innerHTML = `<span>${num}: <b>${ko}</b> (${ro})</span><span>🔊</span>`;
+        p.onclick = () => {
+          $("#ni").value = num;
+          renderKoreanNumberOutput();
+          speak(ko.split("(")[0].trim(), "ko-KR", "num");
+        };
+        $("#nativeRefList").append(p);
+      });
+
+      const FORMULAS = [
+        [
+          "은 / 는 (Trợ từ chủ đề)",
+          "Có patchim + 은 / Không patchim + 는",
+          'Nhấn mạnh chủ đề câu ("Về phần...")',
+          "저는 베트남 사람입니다.\n🇻🇳 Tôi là người Việt Nam.",
+        ],
+        [
+          "이 / 가 (Trợ từ chủ ngữ)",
+          "Có patchim + 이 / Không patchim + 가",
+          "Đứng sau chủ ngữ chính của câu",
+          "날씨가 정말 좋습니다.\n🇻🇳 Thời tiết thực sự rất tốt.",
+        ],
+        [
+          "을 / 를 (Trợ từ tân ngữ)",
+          "Có patchim + 을 / Không patchim + 를",
+          "Chỉ đối tượng bị tác động bởi hành động",
+          "저는 한국어를 공부합니다.\n🇻🇳 Tôi học tiếng Hàn Quốc.",
+        ],
+        [
+          "에 / 에서 (Thời gian & Nơi chốn)",
+          "에: đến đâu, vào lúc / 에서: làm gì tại đâu",
+          "Chỉ địa điểm đích đến hoặc nơi diễn ra hành động",
+          "학교에 가요. / 도서관에서 책을 읽어요.\n🇻🇳 Đi đến trường. / Đọc sách ở thư viện.",
+        ],
+        [
+          "-ㅂ니다 / 습니다 (Kính ngữ cao nhất)",
+          "Không patchim + ㅂ니다 / Có patchim + 습니다",
+          "Đuôi câu trang trọng lịch sự khi gặp người lớn, thần tượng",
+          "만나서 반갑습니다. 감사합니다.\n🇻🇳 Rất vui được gặp bạn. Xin cảm ơn.",
+        ],
+        [
+          "-아요 / 어요 / 해요 (Lịch sự thân mật)",
+          "Nguyên âm ㅏ,ㅗ + 아요 / Còn lại + 어요 / 하다 ➔ 해요",
+          "Đuôi giao tiếp lịch sự, nhẹ nhàng phổ biến nhất",
+          "한국 음식을 좋아해요.\n🇻🇳 Mình thích món ăn Hàn Quốc.",
+        ],
+      ];
+      FORMULAS.forEach(([f, rule, mean, ex]) => {
+        const tr = document.createElement("tr");
+        const [koEx, viEx] = ex.split("\n");
+        tr.innerHTML = `
+        <td><b style="color:var(--pink);">${f}</b></td>
+        <td>${rule}</td>
+        <td>${mean}</td>
+        <td>
+          <b class="k" style="font-size:17px;">${koEx}</b><br>
+          <small style="color:var(--pink);font-weight:700;">${viEx}</small>
+        </td>
+      `;
+        $("#formulaTable").append(tr);
+      });
+
+      const GR = [
+        [
+          "저는 학생입니다.",
+          "Tôi là học sinh.",
+          "jeoneun haksaeng-imnida.",
+          "Đuôi -입니다 là thể kính ngữ trang trọng cao nhất của động từ 이다 (là).",
+          [
+            ["저", "Chủ ngữ (Tôi)"],
+            ["는", "Trợ từ chủ đề"],
+            ["학생", "Danh từ (Học sinh)"],
+            ["입니다", "Vị ngữ kính ngữ (Là)"],
+          ],
+        ],
+        [
+          "저는 매일 한국어를 공부해요.",
+          "Tôi học tiếng Hàn mỗi ngày.",
+          "jeoneun maeil hangugeo-reul gongbuhaeyo.",
+          "Mẫu câu chuẩn: Chủ ngữ + Thời gian + Tân ngữ + Động từ đuôi lịch sự -해요.",
+          [
+            ["저는", "Chủ ngữ (Tôi)"],
+            ["매일", "Trạng từ (Mỗi ngày)"],
+            ["한국어를", "Tân ngữ (Tiếng Hàn)"],
+            ["공부해요", "Vị ngữ (Học)"],
+          ],
+        ],
+        [
+          "친구가 커피숍에서 커피를 마십니다.",
+          "Người bạn uống cà phê ở quán cà phê.",
+          "chinguga keopisyob-eseo keopireul masimnida.",
+          "Trợ từ 에서 chỉ nơi diễn ra hành động (tại quán cà phê).",
+          [
+            ["친구가", "Chủ ngữ (Bạn)"],
+            ["커피숍에서", "Nơi chốn (Ở quán cafe)"],
+            ["커피를", "Tân ngữ (Cà phê)"],
+            ["마십니다", "Vị ngữ (Uống)"],
+          ],
+        ],
+        [
+          "오늘 날씨가 정말 따뜻하고 좋아요.",
+          "Thời tiết hôm nay thực sự ấm áp và dễ chịu.",
+          "oneul nalssiga jeongmal ttatteuthago joayo.",
+          '고 dùng để nối 2 tính từ/động từ ("và").',
+          [
+            ["오늘", "Thời gian (Hôm nay)"],
+            ["날씨가", "Chủ ngữ (Thời tiết)"],
+            ["따뜻하고", "Vị ngữ 1 (Ấm áp và)"],
+            ["좋아요", "Vị ngữ 2 (Tốt)"],
+          ],
+        ],
+        [
+          "선생님, 질문이 있습니다. 도와주세요!",
+          "Thưa cô/thầy, em có câu hỏi ạ. Xin hãy giúp em!",
+          "seonsaengnim, jilmuni itseumnida. dowajuseyo!",
+          'Cấu trúc -아/어 주세요 dùng để nhờ vả một cách lịch sự ("Xin hãy...").',
+          [
+            ["선생님", "Hô ngữ (Thầy/Cô)"],
+            ["질문이", "Chủ ngữ (Câu hỏi)"],
+            ["있습니다", "Vị ngữ (Có)"],
+            ["도와주세요", "Kính ngữ nhờ vả (Hãy giúp)"],
+          ],
+        ],
+        [
+          "주말에 가족과 함께 영화를 보러 가요.",
+          "Vào cuối tuần mình đi xem phim cùng với gia đình.",
+          "jumare gajokgwa hamkke yeonghwareul boreo gayo.",
+          "Cấu trúc -(으)러 가다: đi để làm gì (đi xem phim).",
+          [
+            ["주말에", "Thời gian (Cuối tuần)"],
+            ["가족과 함께", "Cùng gia đình"],
+            ["영화를", "Tân ngữ (Phim)"],
+            ["보러 가요", "Vị ngữ (Đi xem)"],
+          ],
+        ],
+        [
+          "이 옷은 예쁘지만 조금 비싸요.",
+          "Bộ đồ này xinh đẹp nhưng hơi đắt một chút.",
+          "i oseun yeppeujiman jogeum bissayo.",
+          '-지만 dùng để nối 2 vế đối lập ("nhưng").',
+          [
+            ["이 옷은", "Chủ đề (Áo này)"],
+            ["예쁘지만", "Tính từ 1 (Đẹp nhưng)"],
+            ["조금", "Phó từ (Một chút)"],
+            ["비싸요", "Vị ngữ 2 (Đắt)"],
+          ],
+        ],
+        [
+          "내일 시간이 있으면 같이 점심 먹을까요?",
+          "Ngày mai nếu có thời gian thì chúng mình cùng ăn trưa nhé?",
+          "naeil sigani isseumyeon gachi jeomsim meogeulkkayo?",
+          '-(으)면: nếu... / -(으)ㄹ까요?: rủ rê lịch sự ("chúng mình... nhé?").',
+          [
+            ["내일 시간이 있으면", "Điều kiện (Nếu mai rảnh)"],
+            ["같이", "Phó từ (Cùng nhau)"],
+            ["점심", "Tân ngữ (Bữa trưa)"],
+            ["먹을까요?", "Vị ngữ (Ăn nhé?)"],
+          ],
+        ],
+      ];
+
+      GR.forEach(([k, v, r, note, ps]) => {
+        const d = document.createElement("div");
+        d.className = "box";
+        d.style.margin = "0";
+        d.innerHTML =
+          '<div></div><div style="margin-top:10px;"><b class="k" style="font-size:20px;color:var(--pink);"></b><br><small style="font-weight:700;"></small><div style="margin-top:6px;font-weight:800;"></div><div style="margin-top:6px;padding:7px 10px;border-radius:10px;background:var(--panel2);font-size:13px;color:var(--mut);"></div></div><div class="row" style="margin-top:10px;"></div>';
+        ps.forEach(([a, b]) => {
+          const s = document.createElement("span");
+          s.className = "part";
+          s.innerHTML = "<b></b><small></small>";
+          s.children[0].textContent = a;
+          s.children[1].textContent = b;
+          d.children[0].append(s);
+        });
+        d.querySelector(".k").textContent = k;
+        d.querySelectorAll("small")[ps.length].textContent = "📌 Phiên âm: " + r;
+        d.children[1].children[3].textContent = "🇻🇳 Dịch Tiếng Việt: " + v;
+        d.children[1].children[4].textContent = "💡 Giải thích ghép câu: " + note;
+        d.children[2].append(sp(k, "ko-KR", "gram"));
+        $("#gr").append(d);
+      });
+
+      const GT = [
+        [
+          "안녕하세요? 만나서 반갑습니다.",
+          "Xin chào? Rất vui được gặp bạn.",
+          "annyeonghaseyo? mannaseo bangapseumnida.",
+          "Kính ngữ lịch sự (Dùng khi mới gặp mặt, gặp Idol, người lớn)",
+        ],
+        [
+          "안녕하십니까? 저는 베트남에서 왔습니다.",
+          "Xin chào (cực kỳ trang trọng)! Tôi đến từ Việt Nam.",
+          "annyeonghasimnikka? jeoneun beteunameseo watseumnida.",
+          "Trang trọng cao nhất (Phỏng vấn, phát biểu, giới thiệu)",
+        ],
+        [
+          "진심으로 감사합니다! / 고맙습니다!",
+          "Chân thành cảm ơn bạn rất nhiều!",
+          "jinsimeuro gamsahamnida! / gomapseumnida!",
+          "Trang trọng lịch sự (Bày tỏ lòng biết ơn)",
+        ],
+        [
+          "고마워요 / 고마워",
+          "Cảm ơn nha / Cảm ơn nhé",
+          "gomawoyo / gomawo",
+          "Lịch sự thân mật / Bạn bè bằng tuổi",
+        ],
+        [
+          "죄송합니다. 잠시만요!",
+          "Xin lỗi ạ. Xin chờ một chút ạ!",
+          "joesonghamnida. jamsimanyo!",
+          "Trang trọng (Khi xin phép đường hoặc xin lỗi)",
+        ],
+        [
+          "괜찮아요! 걱정하지 마세요.",
+          "Không sao đâu ạ! Đừng lo lắng nhé.",
+          "gwaenchanayo! geokjeonghaji maseyo.",
+          "Lịch sự nhẹ nhàng (-지 마세요: Xin đừng...)",
+        ],
+        [
+          "안녕히 계세요 / 안녕히 가세요",
+          "Tạm biệt (Chào người ở lại / Chào người đi)",
+          "annyeonghi gyeseyo / annyeonghi gaseyo",
+          "Kính ngữ chào tạm biệt chuẩn Hàn",
+        ],
+        [
+          "요즘 어떻게 지내세요? 건강하세요!",
+          "Dạo này bạn sống thế nào? Hãy giữ sức khỏe nhé!",
+          "yojeum eotteoke jinaeseyo? geonganghaseyo!",
+          "Lịch sự hỏi thăm sức khỏe",
+        ],
+        [
+          "이것 좀 도와주실 수 있으세요?",
+          "Bạn có thể giúp tôi việc này một chút được không ạ?",
+          "igeot jom dowajusil su isseuseyo?",
+          "Tôn kính ngữ cao (-시-) khi nhờ giúp đỡ",
+        ],
+        [
+          "맛있게 드세요! 잘 먹겠습니다!",
+          "Chúc ăn ngon miệng! Mời mọi người tôi ăn đây ạ!",
+          "masitge deuseyo! jal meokgetseumnida!",
+          "Kính ngữ trên bàn ăn Hàn Quốc",
+        ],
+        [
+          "생일 축하합니다! 항상 행복하세요!",
+          "Chúc mừng sinh nhật! Hãy luôn hạnh phúc nhé!",
+          "saengil chukhahamnida! hangsang haengbokhaseyo!",
+          "Lời chúc lịch sự ấm áp",
+        ],
+      ];
+
+      GT.forEach(([ko, vi, ro, level]) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>
+          <b class="k" style="font-size:19px;color:var(--pink);">${ko}</b><br>
+          <span style="font-weight:700;">🇻🇳 Dịch: ${vi}</span>
+        </td>
+        <td style="font-weight:700;color:var(--mut);">${ro}</td>
+        <td><span class="badge">${level}</span></td>
+        <td></td>
+      `;
+        tr.children[3].append(sp(ko, "ko-KR", "greet"));
+        $("#gt").append(tr);
+      });
+
+      const FAN = [
+        [
+          "안녕하세요! 코티스(Cortis) 음악 정말 좋아해요.",
+          "Annyeonghaseyo! Kotiseu eumak jeongmal joahaeyo.",
+          "Xin chào! Mình thực sự rất thích âm nhạc của nhóm Cortis.",
+          "Chủ ngữ (ẩn: 저는) + tân ngữ (음악) + vị ngữ (좋아해요: thích). Thể lịch sự thông thường (-아요/어요).",
+        ],
+        [
+          "오늘 무대 정말 멋졌어요. 수고하셨습니다!",
+          "Oneul mudae jeongmal meotjyeosseoyo. Sugohasyeotseumnida!",
+          "Sân khấu hôm nay thực sự rất ngầu, tuyệt vời. Các bạn đã vất vả rồi!",
+          "수고하셨습니다 là câu cửa miệng lịch sự, cảm ơn sự nỗ lực của idol sau màn trình diễn.",
+        ],
+        [
+          "멤버들 다 실물이 훨씬 더 잘생겼어요.",
+          "Membeudeul da silmuri hwolssin deo jalsaeng-gyeosseoyo.",
+          "Các thành viên ngoài đời thực đẹp trai hơn rất nhiều.",
+          "실물: người thật ngoài đời; 훨씬 더: hơn rất nhiều (so sánh hơn).",
+        ],
+        [
+          "이번 타이틀곡 안무가 정말 대박이에요!",
+          "Ibeon taitteulgok anmuga jeongmal daebag-ieyo!",
+          "Vũ đạo bài hát chủ đề lần này thực sự đỉnh!",
+          "타이틀곡: bài hát chủ đề; 안무: vũ đạo; 대박이다: thành công lớn, tuyệt đỉnh.",
+        ],
+        [
+          "팬 사인회에 와서 정말 꿈만 같아요.",
+          "Paen sainhoe-e wasseo jeongmal kkumman gatayo.",
+          "Được đến buổi ký tặng fan thế này thực sự giống như một giấc mơ.",
+          "~만 같다: giống như là...; 꿈: giấc mơ.",
+        ],
+        [
+          "항상 응원할게요. 건강 잘 챙기세요!",
+          "Hangsang eungwonhalgeyo. Geongang jal chaenggiseyo!",
+          "Em sẽ luôn cổ vũ cho các anh. Hãy giữ gìn sức khỏe thật tốt nhé!",
+          "건강을 챙기다: chăm sóc sức khỏe; -(으)ㄹ게요: hứa sẽ làm gì.",
+        ],
+        [
+          "다음에 콘서트하면 꼭 갈게요!",
+          "Dae-eum-e konseoteu-hamyeon kkok galgeyo!",
+          "Lần sau nếu tổ chức concert, em nhất định sẽ đến!",
+          "다음에: lần sau; 꼭: nhất định; 가다: đi.",
+        ],
+        [
+          "저와 악수 한번 해 주실 수 있어요?",
+          "Jeowa aksu hanbeon hae jusil su isseoyo?",
+          "Anh có thể bắt tay với em một lần được không ạ?",
+          "-(으)ㄹ 수 있다: có thể làm gì (khả năng, xin phép lịch sự).",
+        ],
+        [
+          "오늘 팬들에게 보여준 모습 감동이었어요.",
+          "Oneul paendeurege boyeojun moseup gamdong-ieosseoyo.",
+          "Hình ảnh các anh thể hiện cho fan hôm nay thực sự rất cảm động.",
+          "감동이다: cảm động; 모습: hình ảnh, dáng vẻ.",
+        ],
+        [
+          "코티스 화이팅! 사랑해요!",
+          "Kotiseu hwaiting! Saranghaeyo!",
+          "Cortis cố lên! Em yêu các anh!",
+          "화이팅 (Fighting): cố lên!; 사랑해요: em yêu anh, tôi yêu các bạn.",
+        ],
+      ];
+
+      FAN.forEach(([k, r, v, g], i) => {
+        const d = document.createElement("div");
+        d.className = "box fan";
+        d.style.margin = "0";
+        d.innerHTML =
+          '<div class="n"></div><div class="ko"></div><div class="ro"></div><div class="vn"></div><div class="gn"></div><div class="spd5"></div>';
+        d.children[0].textContent = "🎀 CÂU GIAO LƯU IDOL #" + (i + 1);
+        d.children[1].textContent = k;
+        d.children[2].textContent = r;
+        d.children[3].textContent = "🇻🇳 Dịch: " + v;
+        d.children[4].textContent = "💡 Ngữ pháp: " + g;
+        ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((x) => {
+          const b = document.createElement("button");
+          b.className = "chip" + (x === "1.0" ? " on" : "");
+          b.textContent = "🔊 " + x + "x";
+          b.onclick = () => speak(k, "ko-KR", "fan" + i, +x);
+          d.children[5].append(b);
+        });
+        $("#fan").append(d);
+      });
+
+      window.addEventListener("load", () => {
+        $("#q").value = playlist[0].q;
+        search();
+      });
+    </script>
+  </body>
+</html>
