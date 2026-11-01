@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="referrer" content="no-referrer" />
     <title>ANhoEmLam 🎀 Hello Kitty Edition</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700;800&family=Noto+Sans+KR:wght@400;500;700;900&display=swap"
@@ -275,6 +275,7 @@
         justify-content: center;
         gap: 6px;
         white-space: nowrap;
+        touch-action: manipulation;
       }
       .btn:hover {
         transform: translateY(-2px);
@@ -303,6 +304,8 @@
         font-size: 13px;
         font-weight: 700;
         transition: all 0.15s;
+        touch-action: manipulation;
+        user-select: none;
       }
       .chip:hover {
         border-color: var(--pink);
@@ -722,6 +725,7 @@
       }
       .card.hl {
         border-color: var(--pink);
+        background: var(--soft);
         box-shadow:
           0 0 0 4px var(--glow),
           var(--sh);
@@ -749,6 +753,7 @@
         margin: 10px 0 4px;
         font-size: 30px;
         color: var(--pink);
+        cursor: pointer;
       }
       .card .vi {
         font-size: 16.5px;
@@ -771,6 +776,7 @@
         display: flex;
         gap: 6px;
         flex-wrap: wrap;
+        align-items: center;
       }
 
       .spd {
@@ -853,6 +859,11 @@
         text-align: center;
         font-weight: 800;
         border: 1.5px solid var(--pink);
+        cursor: pointer;
+        transition: transform 0.15s;
+      }
+      .part:hover {
+        transform: translateY(-2px);
       }
       .part small {
         display: block;
@@ -884,6 +895,7 @@
         font-weight: 700;
         cursor: pointer;
         transition: all 0.15s;
+        touch-action: manipulation;
       }
       .num-pill:hover {
         border-color: var(--pink);
@@ -908,6 +920,7 @@
         font-weight: 800;
         margin: 4px 0;
         font-family: "Noto Sans KR", sans-serif;
+        cursor: pointer;
       }
       .fan .ro {
         color: var(--pink);
@@ -1064,7 +1077,7 @@
             <span class="kitty-badge">🎀 HELLO KITTY</span>
           </div>
           <small style="color: var(--mut); font-weight: 700"
-            >Nhạc VietSub • 16 Chủ Đề TOPIK 1 • Dịch 3 Ngôn Ngữ • Ngữ Pháp & Số Đếm</small
+            >Nhạc VietSub • 16 Chủ Đề TOPIK 1 • Dịch 3 Ngôn Ngữ • Ngữ Pháp &amp; Số Đếm</small
           >
         </div>
       </div>
@@ -1138,13 +1151,13 @@
             >
             <div style="font-size: 13px; color: var(--mut); font-weight: 600">
               Vừa nghe nhạc từ 1p30s – Full bài kể cả khi khóa màn hình (Sleep), vừa học 16 chủ đề
-              TOPIK 1 &amp; giao lưu Idol!
+              TOPIK 1 &amp; phát âm chuẩn trên mọi điện thoại, máy tính!
             </div>
           </div>
         </div>
         <div class="kitty-mini-parade">
           <span class="kitty-sticker">🐱 Hello Kitty Pink</span>
-          <span class="kitty-sticker">🎀 Sleep Audio Ready</span>
+          <span class="kitty-sticker">🔊 Multi-Device TTS Ready</span>
           <span class="kitty-sticker">🌸 SoundCloud + Sub</span>
         </div>
       </div>
@@ -1671,7 +1684,7 @@
         </div>
 
         <!-- 4.2 CẤU TRÚC NGỮ PHÁP & TÔN KÍNH NGỮ (존댓말) + HƯỚNG DẪN GHÉP CÂU -->
-        <div class="box">
+        <div class="box" style="overflow-x: auto">
           <h3 style="margin-top: 0">
             📘 Cấu Trúc Ngữ Pháp &amp; Tôn Kính Ngữ (존댓말) — Hướng Dẫn Ghép Câu
           </h3>
@@ -1693,6 +1706,7 @@
                 <th>Cách chọn theo Patchim (Phụ âm cuối)</th>
                 <th>Ý nghĩa &amp; Vai trò</th>
                 <th>Mẫu ghép câu &amp; Dịch Tiếng Việt bên dưới</th>
+                <th>Nghe</th>
               </tr>
             </thead>
             <tbody id="formulaTable"></tbody>
@@ -1736,7 +1750,14 @@
       </section>
     </main>
 
-    <audio id="main-audio" preload="auto"></audio>
+    <audio id="main-audio" preload="auto" playsinline webkit-playsinline></audio>
+    <audio
+      id="tts-audio"
+      preload="auto"
+      referrerpolicy="no-referrer"
+      playsinline
+      webkit-playsinline
+    ></audio>
 
     <script>
       const $ = (s) => document.querySelector(s),
@@ -1779,13 +1800,303 @@
         });
       });
 
-      function speak(t, l, k, customRate) {
-        if (!("speechSynthesis" in window)) return;
-        speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(t);
-        u.lang = l;
-        u.rate = customRate || RATE[k] || 1;
-        speechSynthesis.speak(u);
+      const aud = document.getElementById("main-audio");
+      aud.volume = 0.95;
+
+      // =========================================================================
+      // HỆ THỐNG PHÁT ÂM ĐA THIẾT BỊ (PC, ANDROID, IPHONE/IPAD, ZALO/MESSENGER)
+      // Kết hợp Cloud Audio TTS trực tuyến + Mở khóa iOS + Dự phòng Web Speech API
+      // =========================================================================
+      const TTS_ENGINE = {
+        audio: document.getElementById("tts-audio") || new Audio(),
+        voices: [],
+        isUnlocked: false,
+        seqToken: 0,
+        duckRestoreVol: null,
+
+        init() {
+          this.audio.preload = "auto";
+          if ("referrerPolicy" in this.audio) {
+            this.audio.referrerPolicy = "no-referrer";
+          }
+
+          if ("speechSynthesis" in window) {
+            const loadVoices = () => {
+              try {
+                this.voices = window.speechSynthesis.getVoices() || [];
+              } catch (e) {}
+            };
+            loadVoices();
+            if (window.speechSynthesis.onvoiceschanged !== undefined) {
+              window.speechSynthesis.onvoiceschanged = loadVoices;
+            }
+          }
+
+          const unlockAudio = () => {
+            if (this.isUnlocked) return;
+            this.isUnlocked = true;
+
+            try {
+              this.audio.src =
+                "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
+              this.audio.volume = 0.01;
+              const p = this.audio.play();
+              if (p !== undefined) {
+                p.then(() => {
+                  this.audio.pause();
+                  this.audio.currentTime = 0;
+                  this.audio.volume = 1;
+                }).catch(() => {
+                  this.audio.volume = 1;
+                });
+              }
+            } catch (e) {}
+
+            if ("speechSynthesis" in window) {
+              try {
+                const silentU = new SpeechSynthesisUtterance(" ");
+                silentU.volume = 0;
+                window.speechSynthesis.speak(silentU);
+              } catch (e) {}
+            }
+          };
+
+          ["touchstart", "touchend", "click", "keydown"].forEach((evt) => {
+            document.addEventListener(evt, unlockAudio, { once: true, passive: true });
+          });
+        },
+
+        normalizeLang(lang) {
+          const l = String(lang || "ko-KR")
+            .toLowerCase()
+            .trim();
+          if (l.startsWith("ko") || l === "kr") return { short: "ko", full: "ko-KR", youdao: "ko" };
+          if (l.startsWith("vi") || l === "vn") return { short: "vi", full: "vi-VN", youdao: "vi" };
+          if (l.startsWith("en")) return { short: "en", full: "en-US", youdao: "en" };
+          return { short: "ko", full: "ko-KR", youdao: "ko" };
+        },
+
+        cleanText(rawText, langShort) {
+          let s = String(rawText || "").trim();
+          if (!s || s === "...") return "";
+          s = s.replace(/[♪♫🎀🌸💖🇻🇳🇬🇧🇰🇷🔊]/g, " ");
+          s = s.replace(/\s*\/\s*/g, ", ");
+          if (langShort === "ko") {
+            s = s.replace(/\([a-zA-Z0-9\s._-]+\)/g, "");
+          }
+          return s.replace(/\s+/g, " ").trim();
+        },
+
+        duckBackgroundMusic(enable) {
+          try {
+            if (enable) {
+              if (!aud.paused && aud.volume > 0.2) {
+                if (this.duckRestoreVol === null) this.duckRestoreVol = aud.volume;
+                aud.volume = 0.18;
+              }
+            } else {
+              if (this.duckRestoreVol !== null) {
+                aud.volume = this.duckRestoreVol;
+                this.duckRestoreVol = null;
+              }
+            }
+          } catch (e) {}
+        },
+
+        stop() {
+          this.seqToken++;
+          try {
+            this.audio.onended = null;
+            this.audio.onerror = null;
+            this.audio.pause();
+            this.audio.currentTime = 0;
+          } catch (e) {}
+          if ("speechSynthesis" in window) {
+            try {
+              window.speechSynthesis.cancel();
+            } catch (e) {}
+          }
+          this.duckBackgroundMusic(false);
+        },
+
+        applyAudioRate(rate) {
+          const r = Number(rate) || 1.0;
+          try {
+            if ("preservesPitch" in this.audio) this.audio.preservesPitch = true;
+            if ("mozPreservesPitch" in this.audio) this.audio.mozPreservesPitch = true;
+            if ("webkitPreservesPitch" in this.audio) this.audio.webkitPreservesPitch = true;
+            this.audio.playbackRate = Math.max(0.25, Math.min(2.0, r));
+          } catch (e) {
+            try {
+              this.audio.playbackRate = Math.max(0.5, Math.min(2.0, r));
+            } catch (e2) {}
+          }
+        },
+
+        findBestVoice(langInfo) {
+          if (!("speechSynthesis" in window)) return null;
+          try {
+            if (!this.voices || !this.voices.length) {
+              this.voices = window.speechSynthesis.getVoices() || [];
+            }
+            const matching = this.voices.filter((v) => {
+              const vl = (v.lang || "").toLowerCase().replace("_", "-");
+              return vl.startsWith(langInfo.short);
+            });
+            if (!matching.length) return null;
+            return (
+              matching.find((v) =>
+                /Google|Natural|Online|Yuna|Sora|Heami|SunHi|Linh|HoaiMy|NamMinh|Samantha/i.test(
+                  v.name,
+                ),
+              ) || matching[0]
+            );
+          } catch (e) {
+            return null;
+          }
+        },
+
+        speak(text, lang = "ko-KR", sectionKey = null, customRate = null) {
+          this.stop();
+          const rate =
+            customRate !== null && customRate !== undefined && !isNaN(customRate)
+              ? Number(customRate)
+              : sectionKey && RATE[sectionKey]
+                ? RATE[sectionKey]
+                : 1.0;
+          this.speakOnePromise(text, lang, rate, this.seqToken);
+        },
+
+        speakOnePromise(text, lang, rate, token) {
+          return new Promise((resolve) => {
+            if (token !== this.seqToken) return resolve(false);
+            const langInfo = this.normalizeLang(lang);
+            const cleaned = this.cleanText(text, langInfo.short);
+            if (!cleaned) return resolve(false);
+
+            this.duckBackgroundMusic(true);
+            const finish = () => {
+              if (token === this.seqToken) this.duckBackgroundMusic(false);
+              resolve(true);
+            };
+
+            const encoded = encodeURIComponent(cleaned.slice(0, 190));
+            const ttsSlowParam = rate <= 0.65 ? "0.24" : "1";
+
+            // 3 nguồn Cloud TTS trực tuyến cực nhạy cho mọi điện thoại & PC không có gói giọng
+            const urls = [
+              `https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=${langInfo.short}&ttsspeed=${ttsSlowParam}&q=${encoded}`,
+              `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${langInfo.short}&ttsspeed=${ttsSlowParam}&q=${encoded}`,
+              `https://dict.youdao.com/dictvoice?audio=${encoded}&le=${langInfo.youdao}`,
+            ];
+
+            let urlIdx = 0;
+
+            const tryNextCloud = () => {
+              if (token !== this.seqToken) return resolve(false);
+              if (urlIdx >= urls.length) {
+                this.playWebSpeechPromise(cleaned, langInfo, rate, token).then(finish);
+                return;
+              }
+              const currentUrl = urls[urlIdx++];
+              try {
+                this.audio.pause();
+                this.audio.src = currentUrl;
+                this.audio.volume = 1.0;
+                this.applyAudioRate(rate);
+
+                let settled = false;
+                const doneOnce = (ok) => {
+                  if (settled) return;
+                  settled = true;
+                  this.audio.onended = null;
+                  this.audio.onerror = null;
+                  if (ok) finish();
+                  else tryNextCloud();
+                };
+
+                this.audio.onended = () => doneOnce(true);
+                this.audio.onerror = () => doneOnce(false);
+
+                const playPromise = this.audio.play();
+                if (playPromise !== undefined) {
+                  playPromise
+                    .then(() => {
+                      this.applyAudioRate(rate);
+                    })
+                    .catch(() => {
+                      doneOnce(false);
+                    });
+                }
+              } catch (err) {
+                tryNextCloud();
+              }
+            };
+
+            // Phát trực tiếp qua Cloud Audio ngay trong sự kiện click của người dùng (iOS/Android không chặn)
+            tryNextCloud();
+          });
+        },
+
+        playWebSpeechPromise(text, langInfo, rate, token) {
+          return new Promise((resolve) => {
+            if (token !== this.seqToken || !("speechSynthesis" in window)) {
+              return resolve(false);
+            }
+            try {
+              window.speechSynthesis.cancel();
+              if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+              }
+              const u = new SpeechSynthesisUtterance(text);
+              u.lang = langInfo.full;
+              u.rate = Math.max(0.35, Math.min(1.6, Number(rate) || 1.0));
+              u.pitch = 1.0;
+              u.volume = 1.0;
+
+              const bestVoice = this.findBestVoice(langInfo);
+              if (bestVoice) u.voice = bestVoice;
+
+              let done = false;
+              const finishSpeech = () => {
+                if (done) return;
+                done = true;
+                resolve(true);
+              };
+
+              u.onend = finishSpeech;
+              u.onerror = finishSpeech;
+
+              window.speechSynthesis.speak(u);
+
+              const maxWaitMs = Math.max(2500, text.length * 260);
+              setTimeout(finishSpeech, maxWaitMs);
+            } catch (e) {
+              resolve(false);
+            }
+          });
+        },
+
+        async speakSequence(items, lang, sectionKey, onStartItem, onEndItem, onFinishAll) {
+          this.stop();
+          const myToken = this.seqToken;
+          for (let i = 0; i < items.length; i++) {
+            if (myToken !== this.seqToken) break;
+            const rate = sectionKey && RATE[sectionKey] ? RATE[sectionKey] : 1.0;
+            if (onStartItem) onStartItem(i);
+            await this.speakOnePromise(items[i], lang, rate, myToken);
+            if (onEndItem) onEndItem(i);
+            if (myToken !== this.seqToken) break;
+            await new Promise((r) => setTimeout(r, 260));
+          }
+          if (myToken === this.seqToken && onFinishAll) onFinishAll();
+        },
+      };
+
+      TTS_ENGINE.init();
+
+      function speak(t, l = "ko-KR", k = null, customRate = null) {
+        TTS_ENGINE.speak(t, l, k, customRate);
       }
 
       const sp = (t, l, k) => {
@@ -1805,8 +2116,6 @@
           `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#ffe0ed"/><polygon points="18,45 12,16 40,28" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><polygon points="82,45 88,16 60,28" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><ellipse cx="50" cy="56" rx="35" ry="27" fill="#fff" stroke="#4a152d" stroke-width="3.5"/><path d="M60,26 C51,16 44,28 54,34 C46,39 56,47 63,36 Z" fill="#ff1744" stroke="#4a152d" stroke-width="2.5"/><path d="M66,29 C76,19 85,31 74,38 C83,44 72,50 65,38 Z" fill="#ff1744" stroke="#4a152d" stroke-width="2.5"/><circle cx="64" cy="33" r="5" fill="#ffeb3b" stroke="#4a152d" stroke-width="2.5"/><ellipse cx="35" cy="57" rx="3.5" ry="5" fill="#4a152d"/><ellipse cx="65" cy="57" rx="3.5" ry="5" fill="#4a152d"/><ellipse cx="50" cy="63" rx="5" ry="3.6" fill="#ffcc00" stroke="#4a152d" stroke-width="2"/></svg>`,
         );
 
-      const aud = document.getElementById("main-audio");
-      aud.volume = 0.95;
       let track = null,
         lines = [],
         act = -1,
@@ -2777,7 +3086,7 @@
             },
             {
               t: 73,
-              o: "Thương em đôi mắt ước nhòa",
+              o: "Thương em đôi mắt ướt nhòa",
               v: "🇻🇳 Loving you and wishing you endless happiness",
             },
             {
@@ -3625,6 +3934,7 @@
       $("#volRange").oninput = (e) => {
         const v = +e.target.value;
         aud.volume = v / 100;
+        TTS_ENGINE.duckRestoreVol = null;
         $("#volTxt").textContent = v + "%";
         if (mode === "sc" && scWidget) scWidget.setVolume(v);
       };
@@ -3732,21 +4042,39 @@
         $("#vh").textContent = "🎀 " + title;
         $("#vt").innerHTML = "";
         L.forEach(([h, p, m], k) => {
+          const cleanWord = h
+            .split("/")[0]
+            .replace(/\s*\(.*?\)/g, "")
+            .trim();
           const c = document.createElement("div");
           c.className = "card";
           c.innerHTML =
-            '<div class="top"><span class="badge"></span><span></span></div><div class="k"></div><div class="vi"></div><div class="act"></div>';
+            '<div class="top"><span class="badge"></span><span></span></div><div class="k" title="Bấm để nghe phát âm"></div><div class="vi"></div><div class="act"></div>';
           c.querySelector(".badge").textContent = "#" + (k + 1);
           c.querySelectorAll(".top span")[1].textContent = "(" + p + ")";
-          c.querySelector(".k").textContent = h;
+          const kEl = c.querySelector(".k");
+          kEl.textContent = h;
+          kEl.onclick = () => speak(cleanWord, "ko-KR", "vocab");
           c.querySelector(".vi").textContent = "🇻🇳 " + m;
+
+          const mainListenBtn = sp(cleanWord, "ko-KR", "vocab");
+          mainListenBtn.style.padding = "3px 9px";
+          mainListenBtn.style.fontSize = "11.5px";
+          c.querySelector(".act").append(mainListenBtn);
+
           ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((spd) => {
             const sb = document.createElement("button");
             sb.className = "chip" + (spd === "1.0" ? " on" : "");
             sb.style.padding = "3px 7px";
             sb.style.fontSize = "11px";
             sb.textContent = spd + "x";
-            sb.onclick = () => speak(h.split("/")[0].trim(), "ko-KR", "vocab", +spd);
+            sb.onclick = (ev) => {
+              ev.stopPropagation();
+              [...c.querySelectorAll(".act .chip")].forEach((btn, idx) => {
+                if (idx > 0) btn.classList.toggle("on", btn === sb);
+              });
+              speak(cleanWord, "ko-KR", "vocab", +spd);
+            };
             c.querySelector(".act").append(sb);
           });
           $("#vt").append(c);
@@ -3771,20 +4099,35 @@
       };
 
       $("#ra").onclick = () => {
-        if (!("speechSynthesis" in window)) return;
-        speechSynthesis.cancel();
         const cs = $$("#vt .card");
-        list.forEach(([h], k) => {
-          const u = new SpeechSynthesisUtterance(h.split("/")[0].trim());
-          u.lang = "ko-KR";
-          u.rate = RATE.vocab || 1;
-          u.onstart = () => cs[k] && cs[k].classList.add("hl");
-          u.onend = () => cs[k] && cs[k].classList.remove("hl");
-          speechSynthesis.speak(u);
-        });
+        if (!list.length) return;
+        cs.forEach((c) => c.classList.remove("hl"));
+        const wordsToRead = list.map(([h]) =>
+          h
+            .split("/")[0]
+            .replace(/\s*\(.*?\)/g, "")
+            .trim(),
+        );
+        TTS_ENGINE.speakSequence(
+          wordsToRead,
+          "ko-KR",
+          "vocab",
+          (idx) => {
+            cs.forEach((c, j) => c.classList.toggle("hl", j === idx));
+            if (cs[idx]) {
+              cs[idx].scrollIntoView({ behavior: "smooth", block: "nearest" });
+            }
+          },
+          (idx) => {
+            if (cs[idx]) cs[idx].classList.remove("hl");
+          },
+          () => {
+            cs.forEach((c) => c.classList.remove("hl"));
+          },
+        );
       };
       $("#rs").onclick = () => {
-        if ("speechSynthesis" in window) speechSynthesis.cancel();
+        TTS_ENGINE.stop();
         $$("#vt .card").forEach((c) => c.classList.remove("hl"));
       };
       showTp(0);
@@ -3851,17 +4194,26 @@
         rd.style.padding = "7px 14px";
         rd.style.fontSize = "13px";
         rd.textContent = "🔊 Đọc cả câu";
-        rd.onclick = () => outBox.textContent.trim() && speak(outBox.textContent, l, "trans");
+        rd.onclick = () => {
+          const txt = outBox.textContent.trim();
+          if (txt && txt !== "...") speak(txt, l, "trans");
+        };
         d.children[3].append(rd);
 
         ["0.25", "0.5", "1.0", "1.25", "1.5"].forEach((spd) => {
           const sb = document.createElement("button");
-          sb.className = "chip";
+          sb.className = "chip" + (spd === "1.0" ? " on" : "");
           sb.style.padding = "4px 8px";
           sb.style.fontSize = "11.5px";
           sb.textContent = spd + "x";
-          sb.onclick = () =>
-            outBox.textContent.trim() && speak(outBox.textContent, l, "trans", +spd);
+          sb.onclick = () => {
+            const txt = outBox.textContent.trim();
+            if (!txt || txt === "...") return;
+            [...d.children[3].querySelectorAll(".chip")].forEach((chipEl) =>
+              chipEl.classList.toggle("on", chipEl === sb),
+            );
+            speak(txt, l, "trans", +spd);
+          };
           d.children[3].append(sb);
         });
 
@@ -4041,7 +4393,7 @@
         return [h, r.trim()];
       }
 
-      function renderKoreanNumberOutput() {
+      function renderKoreanNumberOutput(autoSpeak = false) {
         const n = Math.floor(+$("#ni").value || 0);
         const o = $("#no");
         o.innerHTML = "";
@@ -4050,17 +4402,20 @@
           return;
         }
         const s = sino(n);
+        const sinoClean = s[0].split("/")[0].trim();
         const sinoCard = document.createElement("div");
         sinoCard.className = "box";
         sinoCard.style.margin = "0";
         sinoCard.innerHTML = `
-        <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
           <b style="color:var(--pink);">1. Hệ Số Hán-Hàn (Sino-Korean):</b>
+          <div class="row" style="margin:0;"></div>
         </div>
-        <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;">${s[0]} <span style="font-size:16px;color:var(--txt);">(${s[1]})</span></div>
+        <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;cursor:pointer;" title="Bấm để nghe">${s[0]} <span style="font-size:16px;color:var(--txt);">(${s[1]})</span></div>
         <small style="display:block;">Chữ Hán truyền thống (漢字): <b>${hanja(n)}</b> • Dùng cho số điện thoại, tiền tệ, phút, ngày tháng, đếm trên 100.</small>
       `;
-        sinoCard.firstElementChild.append(sp(s[0].split("/")[0].trim(), "ko-KR", "num"));
+        sinoCard.querySelector(".k").onclick = () => speak(sinoClean, "ko-KR", "num");
+        sinoCard.querySelector(".row").append(sp(sinoClean, "ko-KR", "num"));
         o.append(sinoCard);
 
         const natCard = document.createElement("div");
@@ -4070,26 +4425,36 @@
           const na = nat(n),
             nc = natC(n);
           natCard.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+            <b style="color:var(--pink);">2. Hệ Số Thuần Hàn (Native Korean):</b>
+            <div class="row" style="margin:0;"></div>
+          </div>
+          <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;cursor:pointer;" title="Bấm để nghe">${na[0]} <span style="font-size:16px;color:var(--txt);">(${na[1]})</span></div>
+          <small style="display:block;">Khi đứng trước đơn vị đếm (살, 개, 명, 시): <b style="color:var(--pink);cursor:pointer;" class="nat-cnt">${nc[0]} (${nc[1]}) 🔊</b> • Dùng khi đếm người, tuổi, cái, giờ.</small>
+        `;
+          natCard.querySelector(".k").onclick = () => speak(na[0], "ko-KR", "num");
+          natCard.querySelector(".nat-cnt").onclick = () => speak(nc[0], "ko-KR", "num");
+          natCard.querySelector(".row").append(sp(na[0], "ko-KR", "num"));
+        } else {
+          natCard.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;">
             <b style="color:var(--pink);">2. Hệ Số Thuần Hàn (Native Korean):</b>
           </div>
-          <div class="k" style="font-size:28px;color:var(--pink);margin:8px 0;">${na[0]} <span style="font-size:16px;color:var(--txt);">(${na[1]})</span></div>
-          <small style="display:block;">Khi đứng trước đơn vị đếm (살, 개, 명, 시): <b>${nc[0]} (${nc[1]})</b> • Dùng khi đếm người, tuổi, cái, giờ.</small>
-        `;
-          natCard.firstElementChild.append(sp(na[0], "ko-KR", "num"));
-        } else {
-          natCard.innerHTML = `
-          <b style="color:var(--pink);">2. Hệ Số Thuần Hàn (Native Korean):</b>
           <div style="margin:12px 0;font-weight:700;">Số ${n} (Từ 100 trở lên dùng hệ Hán-Hàn: ${s[0]})</div>
           <small>Hệ Thuần Hàn dùng cho số từ 1 đến 99. Khi trên 100 sẽ đọc bằng số Hán-Hàn.</small>
         `;
+          natCard.firstElementChild.append(sp(sinoClean, "ko-KR", "num"));
         }
         o.append(natCard);
+
+        if (autoSpeak) {
+          speak(sinoClean, "ko-KR", "num");
+        }
       }
 
-      $("#nb").onclick = renderKoreanNumberOutput;
-      $("#ni").oninput = renderKoreanNumberOutput;
-      renderKoreanNumberOutput();
+      $("#nb").onclick = () => renderKoreanNumberOutput(true);
+      $("#ni").oninput = () => renderKoreanNumberOutput(false);
+      renderKoreanNumberOutput(false);
 
       const SINO_GUIDE = [
         [0, "영 / 공", "yeong"],
@@ -4115,7 +4480,7 @@
         p.innerHTML = `<span>${num}: <b>${ko}</b> (${ro})</span><span>🔊</span>`;
         p.onclick = () => {
           $("#ni").value = num;
-          renderKoreanNumberOutput();
+          renderKoreanNumberOutput(false);
           speak(ko.split("/")[0].trim(), "ko-KR", "num");
         };
         $("#sinoRefList").append(p);
@@ -4145,7 +4510,7 @@
         p.innerHTML = `<span>${num}: <b>${ko}</b> (${ro})</span><span>🔊</span>`;
         p.onclick = () => {
           $("#ni").value = num;
-          renderKoreanNumberOutput();
+          renderKoreanNumberOutput(false);
           speak(ko.split("(")[0].trim(), "ko-KR", "num");
         };
         $("#nativeRefList").append(p);
@@ -4197,10 +4562,13 @@
         <td>${rule}</td>
         <td>${mean}</td>
         <td>
-          <b class="k" style="font-size:17px;">${koEx}</b><br>
+          <b class="k" style="font-size:17px;cursor:pointer;" title="Bấm để nghe">${koEx}</b><br>
           <small style="color:var(--pink);font-weight:700;">${viEx}</small>
         </td>
+        <td></td>
       `;
+        tr.querySelector(".k").onclick = () => speak(koEx, "ko-KR", "gram");
+        tr.children[4].append(sp(koEx, "ko-KR", "gram"));
         $("#formulaTable").append(tr);
       });
 
@@ -4308,16 +4676,20 @@
         d.className = "box";
         d.style.margin = "0";
         d.innerHTML =
-          '<div></div><div style="margin-top:10px;"><b class="k" style="font-size:20px;color:var(--pink);"></b><br><small style="font-weight:700;"></small><div style="margin-top:6px;font-weight:800;"></div><div style="margin-top:6px;padding:7px 10px;border-radius:10px;background:var(--panel2);font-size:13px;color:var(--mut);"></div></div><div class="row" style="margin-top:10px;"></div>';
+          '<div></div><div style="margin-top:10px;"><b class="k" style="font-size:20px;color:var(--pink);cursor:pointer;" title="Bấm để nghe cả câu"></b><br><small style="font-weight:700;"></small><div style="margin-top:6px;font-weight:800;"></div><div style="margin-top:6px;padding:7px 10px;border-radius:10px;background:var(--panel2);font-size:13px;color:var(--mut);"></div></div><div class="row" style="margin-top:10px;"></div>';
         ps.forEach(([a, b]) => {
           const s = document.createElement("span");
           s.className = "part";
+          s.title = "Bấm để nghe cụm từ này";
           s.innerHTML = "<b></b><small></small>";
           s.children[0].textContent = a;
           s.children[1].textContent = b;
+          s.onclick = () => speak(a, "ko-KR", "gram");
           d.children[0].append(s);
         });
-        d.querySelector(".k").textContent = k;
+        const kEl = d.querySelector(".k");
+        kEl.textContent = k;
+        kEl.onclick = () => speak(k, "ko-KR", "gram");
         d.querySelectorAll("small")[ps.length].textContent = "📌 Phiên âm: " + r;
         d.children[1].children[3].textContent = "🇻🇳 Dịch Tiếng Việt: " + v;
         d.children[1].children[4].textContent = "💡 Giải thích ghép câu: " + note;
@@ -4398,13 +4770,14 @@
         const tr = document.createElement("tr");
         tr.innerHTML = `
         <td>
-          <b class="k" style="font-size:19px;color:var(--pink);">${ko}</b><br>
+          <b class="k" style="font-size:19px;color:var(--pink);cursor:pointer;" title="Bấm để nghe">${ko}</b><br>
           <span style="font-weight:700;">🇻🇳 Dịch: ${vi}</span>
         </td>
         <td style="font-weight:700;color:var(--mut);">${ro}</td>
         <td><span class="badge">${level}</span></td>
         <td></td>
       `;
+        tr.querySelector(".k").onclick = () => speak(ko, "ko-KR", "greet");
         tr.children[3].append(sp(ko, "ko-KR", "greet"));
         $("#gt").append(tr);
       });
@@ -4477,9 +4850,10 @@
         d.className = "box fan";
         d.style.margin = "0";
         d.innerHTML =
-          '<div class="n"></div><div class="ko"></div><div class="ro"></div><div class="vn"></div><div class="gn"></div><div class="spd5"></div>';
+          '<div class="n"></div><div class="ko" title="Bấm để nghe"></div><div class="ro"></div><div class="vn"></div><div class="gn"></div><div class="spd5"></div>';
         d.children[0].textContent = "🎀 CÂU GIAO LƯU IDOL #" + (i + 1);
         d.children[1].textContent = k;
+        d.children[1].onclick = () => speak(k, "ko-KR", "fan" + i, 1.0);
         d.children[2].textContent = r;
         d.children[3].textContent = "🇻🇳 Dịch: " + v;
         d.children[4].textContent = "💡 Ngữ pháp: " + g;
@@ -4487,7 +4861,10 @@
           const b = document.createElement("button");
           b.className = "chip" + (x === "1.0" ? " on" : "");
           b.textContent = "🔊 " + x + "x";
-          b.onclick = () => speak(k, "ko-KR", "fan" + i, +x);
+          b.onclick = () => {
+            [...d.children[5].children].forEach((c) => c.classList.toggle("on", c === b));
+            speak(k, "ko-KR", "fan" + i, +x);
+          };
           d.children[5].append(b);
         });
         $("#fan").append(d);
