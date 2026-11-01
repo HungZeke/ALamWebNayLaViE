@@ -75,8 +75,6 @@
         overflow-x: hidden;
         padding-bottom: env(safe-area-inset-bottom, 16px);
       }
-
-      /* THANH CUỘN XINH XẮN */
       ::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -191,7 +189,7 @@
         max-width: 1580px;
         width: 96%;
         margin: 0 auto;
-        padding: 18px 12px 32px;
+        padding: 16px 12px 32px;
       }
       section {
         display: none;
@@ -216,39 +214,21 @@
       .kitty-hero {
         background: linear-gradient(135deg, var(--panel), var(--soft));
         border: 2px solid var(--line);
-        border-radius: 24px;
-        padding: 14px 20px;
-        margin-bottom: 18px;
+        border-radius: 22px;
+        padding: 12px 18px;
+        margin-bottom: 16px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 14px;
+        justify-content: center;
+        gap: 12px;
         box-shadow: var(--sh);
+        text-align: center;
       }
       .kitty-hero-left {
         display: flex;
         align-items: center;
-        gap: 14px;
-      }
-      .kitty-mini-parade {
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        flex-wrap: wrap;
-      }
-      .kitty-sticker {
-        background: var(--panel);
-        border: 1.5px solid var(--pink);
-        border-radius: 16px;
-        padding: 4px 10px;
-        font-size: 12px;
-        font-weight: 700;
-        color: var(--pink);
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-        box-shadow: 0 4px 10px var(--glow);
-        white-space: nowrap;
+        gap: 12px;
+        justify-content: center;
       }
 
       h2 {
@@ -361,10 +341,60 @@
         box-shadow: 0 4px 10px var(--glow);
       }
 
-      /* 3 CỘT NHẠC: TRÁI - GIỮA ĐĨA XOAY RỘNG DÀI - PHẢI SUB */
+      /* HỘP GỢI Ý TÌM NHẠC THÔNG MINH DÙ CHỈ 1 CHỮ */
+      .search-wrap {
+        position: relative;
+        width: 100%;
+      }
+      .suggest-box {
+        position: absolute;
+        top: calc(100% + 6px);
+        left: 0;
+        right: 0;
+        background: var(--panel);
+        border: 2px solid var(--pink);
+        border-radius: 16px;
+        box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+        max-height: 250px;
+        overflow-y: auto;
+        z-index: 99;
+        display: none;
+        padding: 6px;
+      }
+      .suggest-box.on {
+        display: block;
+      }
+      .suggest-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: background 0.15s;
+        border-bottom: 1px dashed var(--line);
+      }
+      .suggest-item:last-child {
+        border-bottom: none;
+      }
+      .suggest-item:hover {
+        background: var(--soft);
+      }
+      .suggest-item b {
+        font-size: 13.5px;
+        color: var(--txt);
+        display: block;
+      }
+      .suggest-item small {
+        font-size: 11.5px;
+        color: var(--mut);
+      }
+
+      /* 3 CỘT NHẠC */
       .music-3col {
         display: grid;
-        grid-template-columns: 310px 1.5fr 1.15fr;
+        grid-template-columns: 320px 1.45fr 1.15fr;
         gap: 18px;
         align-items: stretch;
       }
@@ -377,7 +407,7 @@
         display: flex;
         flex-direction: column;
         min-height: 540px;
-        max-height: 620px;
+        max-height: 630px;
         position: relative;
         overflow: hidden;
       }
@@ -457,7 +487,7 @@
         flex-shrink: 0;
       }
 
-      /* CỘT GIỮA: ĐĨA NHẠC HELLO KITTY XOAY CHÍNH GIỮA & THANH TUA RỘNG DÀI */
+      /* ĐĨA NHẠC HELLO KITTY */
       .turntable-wrap {
         flex: 1;
         display: flex;
@@ -638,7 +668,7 @@
         gap: 5px;
       }
 
-      /* CỘT PHẢI: SUB NHẠC TRÊN & CHỮ NHỎ VIETSUB DƯỚI */
+      /* SUB NHẠC */
       .ly {
         flex: 1;
         overflow-y: auto;
@@ -690,9 +720,7 @@
         color: var(--txt);
       }
 
-      /* =====================================================
-       PHẦN 2: 16 CHỦ ĐỀ TOPIK 1 (KÉO RỘNG TOÀN MÀN HÌNH)
-       ===================================================== */
+      /* PHẦN 2: TOPIK 1 */
       #vocab .box {
         padding: 20px 22px;
       }
@@ -820,7 +848,6 @@
         flex-wrap: wrap;
         align-items: center;
       }
-
       .spd {
         display: flex;
         gap: 6px;
@@ -835,9 +862,7 @@
         font-weight: 800;
       }
 
-      /* =====================================================
-       PHẦN 3: DỊCH 3 NGÔN NGỮ (1 Ô NHẬP DUY NHẤT)
-       ===================================================== */
+      /* PHẦN 3 & 4 */
       .card3 {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
@@ -871,10 +896,6 @@
         color: var(--pink);
         font-weight: 700;
       }
-
-      /* =====================================================
-       PHẦN 4: NGỮ PHÁP, GHÉP CÂU & BỘ ĐỌC SỐ HÁN-HÀN / THUẦN HÀN
-       ===================================================== */
       .table-scroll {
         width: 100%;
         overflow-x: auto;
@@ -1006,9 +1027,6 @@
         z-index: -1;
       }
 
-      /* =====================================================
-       RESPONSIVE TABLET & MOBILE CHUẨN APP (ĐIỆN THOẠI)
-       ===================================================== */
       @media (max-width: 1150px) {
         .music-3col {
           grid-template-columns: 1fr 1.25fr;
@@ -1017,12 +1035,10 @@
           grid-column: 1 / -1;
         }
       }
-
       @media (max-width: 768px) {
         body {
           font-size: 14.5px;
         }
-        /* Cỡ chữ 16px cho input để iPhone Safari không bị tự động zoom khi chạm */
         input,
         textarea,
         select {
@@ -1030,14 +1046,13 @@
           padding: 9px 12px;
           border-radius: 12px;
         }
-
         header {
           padding: 8px 12px 10px;
           gap: 8px;
           border-bottom-width: 2.5px;
         }
         .brand {
-          width: calc(100% - 108px);
+          width: calc(100% - 95px);
           gap: 8px;
         }
         .kitty-avatar {
@@ -1064,8 +1079,6 @@
           font-size: 12px;
           margin-left: auto;
         }
-
-        /* Chia 4 nút menu thành lưới 2x2 đều tăm tắp trên điện thoại */
         nav {
           order: 3;
           width: 100%;
@@ -1082,47 +1095,19 @@
           overflow: hidden;
           text-overflow: ellipsis;
         }
-
         main {
           width: 100%;
           padding: 10px 10px 28px;
         }
-
         .kitty-hero {
-          padding: 10px 12px;
+          padding: 10px 14px;
           border-radius: 18px;
           margin-bottom: 12px;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-        }
-        .kitty-hero-left {
-          gap: 10px;
-          align-items: center;
-        }
-        .kitty-hero-left svg {
-          width: 42px !important;
-          height: 42px !important;
         }
         .kitty-hero-left b {
-          font-size: 14px !important;
-          line-height: 1.3;
-          display: block;
+          font-size: 14.5px !important;
+          line-height: 1.35;
         }
-        .kitty-hero-left div div {
-          font-size: 11.5px !important;
-          margin-top: 2px;
-        }
-        .kitty-mini-parade {
-          width: 100%;
-          justify-content: flex-start;
-          gap: 6px;
-        }
-        .kitty-sticker {
-          font-size: 10.5px;
-          padding: 3px 8px;
-        }
-
         h2 {
           font-size: 18px;
           margin: 0 0 10px;
@@ -1137,8 +1122,6 @@
           border-radius: 18px;
           margin-bottom: 12px;
         }
-
-        /* 3 CỘT NHẠC TRÊN ĐIỆN THOẠI: GỌN GÀNG, KHÔNG DƯ KHOẢNG TRỐNG */
         .music-3col {
           grid-template-columns: 1fr;
           gap: 12px;
@@ -1150,7 +1133,7 @@
           border-radius: 18px;
         }
         .song-list {
-          max-height: 205px;
+          max-height: 215px;
         }
         .vinyl-stage {
           width: 166px;
@@ -1202,8 +1185,6 @@
         .ly-vi {
           font-size: 12.5px;
         }
-
-        /* 16 CHỦ ĐỀ TOPIK 1 CHIA 2 CỘT TRÊN ĐIỆN THOẠI */
         .tpgrid {
           grid-template-columns: repeat(2, 1fr);
           gap: 8px;
@@ -1238,8 +1219,6 @@
           padding: 9px 10px;
           font-size: 13px;
         }
-
-        /* THẺ TỪ VỰNG TRÊN ĐIỆN THOẠI */
         .cards {
           grid-template-columns: 1fr;
           gap: 10px;
@@ -1265,8 +1244,6 @@
           padding: 5px 4px !important;
           font-size: 11px !important;
         }
-
-        /* DỊCH 3 NGÔN NGỮ & NGỮ PHÁP TRÊN ĐIỆN THOẠI */
         .card3,
         .num-grid-2 {
           grid-template-columns: 1fr;
@@ -1294,30 +1271,13 @@
           text-align: center;
         }
       }
-
-      @media (max-width: 390px) {
-        .tpgrid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 6px;
-        }
-        .tpc {
-          font-size: 11.5px;
-          padding: 7px 8px;
-        }
-        nav button {
-          font-size: 11.5px;
-          padding: 6px 4px;
-        }
-      }
     </style>
   </head>
   <body>
-    <!-- HEADER HELLO KITTY -->
     <header>
       <div class="brand">
         <div class="kitty-avatar" title="Hello Kitty ANhoEmNhieuLam">
           <svg viewBox="0 0 100 90" width="42" height="42">
-            <!-- Tai mèo -->
             <polygon
               points="15,42 10,12 38,24"
               fill="#fff"
@@ -1332,7 +1292,6 @@
               stroke-width="4"
               stroke-linejoin="round"
             />
-            <!-- Mặt mèo -->
             <ellipse
               cx="50"
               cy="52"
@@ -1342,7 +1301,6 @@
               stroke="#4a152d"
               stroke-width="4"
             />
-            <!-- Nơ đỏ hồng Hello Kitty -->
             <path
               d="M62,22 C54,12 46,24 56,30 C48,36 58,44 65,33 Z"
               fill="#ff2e88"
@@ -1356,7 +1314,6 @@
               stroke-width="3"
             />
             <circle cx="65" cy="30" r="5.5" fill="#ff1744" stroke="#4a152d" stroke-width="3" />
-            <!-- Mắt & Mũi vàng -->
             <ellipse cx="34" cy="54" rx="3.5" ry="5" fill="#4a152d" />
             <ellipse cx="66" cy="54" rx="3.5" ry="5" fill="#4a152d" />
             <ellipse
@@ -1368,7 +1325,6 @@
               stroke="#4a152d"
               stroke-width="2.5"
             />
-            <!-- Râu mèo -->
             <line
               x1="6"
               y1="48"
@@ -1427,8 +1383,7 @@
         </div>
         <div>
           <div class="logo">
-            ANhoEm<b>NhieuLam</b>
-            <span class="kitty-badge">🎀 HELLO KITTY</span>
+            ANhoEm<b>NhieuLam</b> <span class="kitty-badge">🎀 HELLO KITTY</span>
           </div>
           <small class="brand-sub"
             >Nhạc VietSub • 16 Chủ Đề TOPIK 1 • Dịch 3 Ngôn Ngữ • Ngữ Pháp &amp; Số Đếm</small
@@ -1443,14 +1398,14 @@
         <button data-t="gram">👑 4. Ngữ Pháp &amp; Đọc Số</button>
       </nav>
 
-      <button class="theme-btn" id="th">🌙 Chế độ Tối</button>
+      <button class="theme-btn" id="th">🌙 Tối</button>
     </header>
 
     <main>
-      <!-- BANNER HELLO KITTY DỄ THƯƠNG -->
+      <!-- BANNER NGẮN GỌN DỄ THƯƠNG THEO YÊU CẦU -->
       <div class="kitty-hero">
         <div class="kitty-hero-left">
-          <svg viewBox="0 0 100 90" width="54" height="54" style="flex-shrink: 0">
+          <svg viewBox="0 0 100 90" width="44" height="44" style="flex-shrink: 0">
             <polygon
               points="15,42 10,12 38,24"
               fill="#fff"
@@ -1499,26 +1454,13 @@
               stroke-width="2"
             />
           </svg>
-          <div>
-            <b style="font-size: 16.5px; color: var(--pink)"
-              >Chào công chúa đến với góc học tiếng Hàn &amp; nghe nhạc Hello Kitty! 🎀💖</b
-            >
-            <div style="font-size: 13px; color: var(--mut); font-weight: 600">
-              Vừa nghe nhạc từ 1p30s – Full bài kể cả khi khóa màn hình (Sleep), vừa học 16 chủ đề
-              TOPIK 1 &amp; phát âm chuẩn trên mọi điện thoại, máy tính!
-            </div>
-          </div>
-        </div>
-        <div class="kitty-mini-parade">
-          <span class="kitty-sticker">🐱 Hello Kitty Pink</span>
-          <span class="kitty-sticker">🔊 Multi-Device TTS Ready</span>
-          <span class="kitty-sticker">🌸 SoundCloud + Sub</span>
+          <b style="font-size: 17px; color: var(--pink)"
+            >Em yêu dô đây học tốt nheeeee! Anh nhớ em nhiều lấmmm 🎀💖</b
+          >
         </div>
       </div>
 
-      <!-- =====================================================
-         PHẦN 1: NHẠC & VIETSUB (3 CỘT: TRÁI TÌM KIẾM - GIỮA ĐĨA XOAY - PHẢI SUB)
-         ===================================================== -->
+      <!-- PHẦN 1: NHẠC & VIETSUB -->
       <section id="music" class="on">
         <h2>🎀 Không Gian Nhạc Đa Nguồn &amp; VietSub</h2>
         <div class="music-3col">
@@ -1530,22 +1472,29 @@
             </div>
 
             <div class="row" style="margin-top: 0">
-              <input id="q" placeholder="Nhập tên bài hát, ca sĩ, link SoundCloud..." />
+              <div class="search-wrap">
+                <input
+                  id="q"
+                  autocomplete="off"
+                  placeholder="Gõ 1 chữ bất kỳ để gợi ý bài hát, ca sĩ..."
+                />
+                <div id="suggestBox" class="suggest-box"></div>
+              </div>
               <div style="display: flex; gap: 6px; width: 100%; flex-wrap: wrap">
                 <button
                   class="btn"
                   id="go"
-                  style="flex: 1; min-width: 135px; padding: 9px 10px; font-size: 13px"
+                  style="flex: 1; min-width: 130px; padding: 9px 10px; font-size: 13px"
                 >
                   🎵 Tìm &amp; Phát Ngay
                 </button>
                 <button
                   class="btn alt"
                   id="scSearchBtn"
-                  style="flex: 1; min-width: 135px; padding: 9px 10px; font-size: 13px"
-                  title="Tìm và phát Full bài qua SoundCloud API"
+                  style="flex: 1; min-width: 130px; padding: 9px 10px; font-size: 13px"
+                  title="Tìm và phát qua SoundCloud API"
                 >
-                  ☁️ SoundCloud API
+                  ☁️ Phát qua SoundCloud
                 </button>
               </div>
             </div>
@@ -1557,9 +1506,8 @@
                 class="btn alt"
                 for="mf"
                 style="flex: 1; font-size: 12.5px; padding: 8px 10px; cursor: pointer"
+                >📁 Up File Nhạc (.mp3)</label
               >
-                📁 Up File Nhạc (.mp3)
-              </label>
               <input id="mf" type="file" accept="audio/*" multiple hidden />
               <button
                 class="btn alt"
@@ -1585,14 +1533,13 @@
               id="st"
               style="color: var(--pink); font-weight: 700; min-height: 18px; display: block"
             ></small>
-
             <div style="font-size: 12.5px; font-weight: 800; color: var(--mut); margin-top: 4px">
-              🎶 Danh sách bài hát (1p30s – Full bài):
+              🎶 Danh sách bài hát (Bấm để phát ngay):
             </div>
             <div class="song-list" id="songList"></div>
           </div>
 
-          <!-- CỘT GIỮA: ĐĨA NHẠC HELLO KITTY XOAY + 5 NÚT ĐIỀU KHIỂN CHUẨN 1 HÀNG NGANG -->
+          <!-- CỘT GIỮA -->
           <div class="music-col">
             <div class="col-title">
               <span>💿 2. Đĩa Nhạc Hello Kitty</span>
@@ -1612,7 +1559,7 @@
                   checked
                   style="width: auto; accent-color: var(--pink)"
                 />
-                <span>Tự phát lại</span>
+                <span>Tự phát lại bài</span>
               </label>
             </div>
 
@@ -1785,7 +1732,6 @@
                 >
               </div>
 
-              <!-- THANH TUA & ÂM LƯỢNG RỘNG DÀI -->
               <div class="seek-panel">
                 <div class="seek-wrap">
                   <small
@@ -1833,7 +1779,6 @@
                 </div>
               </div>
 
-              <!-- 5 NÚT ĐIỀU KHIỂN CHUẨN 1 HÀNG NGANG KHÔNG RỚT DÒNG -->
               <div class="ctrl-bar-5">
                 <button
                   class="chip"
@@ -1877,17 +1822,20 @@
               </div>
 
               <div class="row" style="justify-content: center; flex-wrap: nowrap; margin-top: 4px">
+                <button class="chip" id="prevSongBtn" style="padding: 4px 10px; font-size: 11.5px">
+                  ⏮ Bài trước
+                </button>
                 <button class="chip" id="replayNowBtn" style="padding: 4px 10px; font-size: 11.5px">
                   🔄 Nghe lại từ đầu
                 </button>
-                <button class="chip" id="stp" style="padding: 4px 10px; font-size: 11.5px">
-                  ■ Dừng
+                <button class="chip" id="nextSongBtn" style="padding: 4px 10px; font-size: 11.5px">
+                  Bài tiếp ⏭
                 </button>
               </div>
             </div>
           </div>
 
-          <!-- CỘT PHẢI: SUB NHẠC TRÊN & CHỮ NHỎ VIETSUB BÊN DƯỚI -->
+          <!-- CỘT PHẢI -->
           <div class="music-col music-col-right">
             <div class="col-title">
               <span>🎤 3. Sub Nhạc &amp; VietSub</span>
@@ -1906,10 +1854,12 @@
 
             <div class="ly" id="ly">
               <div class="ly-item on">
-                <div class="ly-orig">🎀 Chọn một bài hát bên cột trái hoặc tìm bài hát bất kỳ</div>
+                <div class="ly-orig">
+                  🎀 Chọn một bài hát bên cột trái hoặc gõ 1 chữ bất kỳ để tìm
+                </div>
                 <div class="ly-vi">
-                  🇻🇳 Lời gốc sẽ hiện ở dòng trên và chữ nhỏ VietSub dịch nghĩa nằm ngay bên dưới,
-                  bấm vào bất kỳ câu nào để tua tới đúng câu đó!
+                  🇻🇳 Lời gốc hiển thị ở trên và VietSub ở ngay bên dưới, bấm vào câu bất kỳ để tua
+                  tới đúng câu đó!
                 </div>
               </div>
             </div>
@@ -1920,9 +1870,7 @@
         <div id="scbox"></div>
       </section>
 
-      <!-- =====================================================
-         PHẦN 2: 16 CHỦ ĐỀ TỪ VỰNG TOPIK 1 TRỌNG TÂM
-         ===================================================== -->
+      <!-- PHẦN 2: 16 CHỦ ĐỀ TỪ VỰNG TOPIK 1 -->
       <section id="vocab">
         <h2>🌸 Trọn Bộ 16 Chủ Đề Từ Vựng Tiếng Hàn TOPIK 1</h2>
         <div class="box">
@@ -1943,9 +1891,7 @@
         <div class="cards" id="vt"></div>
       </section>
 
-      <!-- =====================================================
-         PHẦN 3: DỊCH 3 NGÔN NGỮ (1 Ô NHẬP DUY NHẤT -> DỊCH ANH - HÀN - VIỆT)
-         ===================================================== -->
+      <!-- PHẦN 3: DỊCH 3 NGÔN NGỮ -->
       <section id="trans">
         <h2>💌 Dịch Câu &amp; Từ Vựng 3 Ngôn Ngữ (Anh • Hàn • Việt)</h2>
         <div class="box">
@@ -1957,7 +1903,6 @@
             rows="3"
             placeholder="Ví dụ: Anh nhớ em nhiều lắm / I love you / 보고 싶어요..."
           ></textarea>
-
           <div class="row" style="justify-content: space-between; margin-top: 12px; gap: 10px">
             <div class="spd" data-k="trans" style="margin: 0"></div>
             <div class="row" style="margin: 0; width: auto">
@@ -1973,17 +1918,13 @@
             từng từ để nghe phát âm riêng).
           </small>
         </div>
-
         <div class="card3" id="tr"></div>
       </section>
 
-      <!-- =====================================================
-         PHẦN 4: NGỮ PHÁP, HƯỚNG DẪN GHÉP CÂU, SỐ ĐẾM HÁN-HÀN & THUẦN HÀN, GIAO LƯU IDOL
-         ===================================================== -->
+      <!-- PHẦN 4: NGỮ PHÁP & ĐỌC SỐ -->
       <section id="gram">
         <h2>👑 Cấu Trúc Ngữ Pháp, Ghép Câu &amp; Bộ Đọc Số Tiếng Hàn</h2>
 
-        <!-- 4.1 BỘ ĐỌC SỐ HÁN-HÀN & THUẦN HÀN + HƯỚNG DẪN TỪNG SỐ -->
         <div class="box">
           <h3 style="margin-top: 0">
             🔢 Bộ Đọc Số Tiếng Hàn (Hán-Hàn &amp; Thuần Hàn kèm Chữ Hán Truyền Thống Hanja)
@@ -2001,11 +1942,8 @@
             <button class="btn" id="nb">🔊 Chuyển Đổi &amp; Đọc Số</button>
           </div>
           <div class="spd" data-k="num"></div>
-
-          <!-- KẾT QUẢ ĐỌC SỐ KHI NHẬP -->
           <div class="num-grid-2" id="no"></div>
 
-          <!-- BẢNG HƯỚNG DẪN ĐỌC TỪNG SỐ THEO 2 HỆ THỐNG CHÍNH -->
           <div class="num-grid-2" style="margin-top: 16px">
             <div class="box" style="margin: 0; background: var(--panel2)">
               <b style="color: var(--pink); font-size: 15.5px"
@@ -2017,7 +1955,6 @@
               >
               <div class="num-ref-list" id="sinoRefList"></div>
             </div>
-
             <div class="box" style="margin: 0; background: var(--panel2)">
               <b style="color: var(--pink); font-size: 15.5px"
                 >2. Hệ Số Thuần Hàn (Native Korean • 고유어 수사)</b
@@ -2031,7 +1968,6 @@
           </div>
         </div>
 
-        <!-- 4.2 CẤU TRÚC NGỮ PHÁP & TÔN KÍNH NGỮ (존댓말) + HƯỚNG DẪN GHÉP CÂU -->
         <div class="box">
           <h3 style="margin-top: 0">
             📘 Cấu Trúc Ngữ Pháp &amp; Tôn Kính Ngữ (존댓말) — Hướng Dẫn Ghép Câu
@@ -2046,7 +1982,6 @@
               thiện hàng ngày).</small
             >
           </p>
-
           <div class="table-scroll">
             <table>
               <thead>
@@ -2063,12 +1998,10 @@
           </div>
         </div>
 
-        <!-- 4.3 PHÂN TÍCH MẪU CÂU CHỦ NGỮ - TÂN NGỮ - VỊ NGỮ (NHIỀU CÂU MẪU + DỊCH VIỆT) -->
         <h3>🧩 Mẫu Ghép Câu Thực Tế (Phân Tích Chủ Ngữ • Tân Ngữ • Vị Ngữ Kèm Dịch Tiếng Việt)</h3>
         <div class="spd" data-k="gram"></div>
         <div id="gr" class="num-grid-2"></div>
 
-        <!-- 4.4 CÂU CHÀO HỎI & KÍNH NGỮ XÃ GIAO -->
         <h3>🌸 Câu Chào Hỏi &amp; Kính Ngữ Xã Giao Hàng Ngày</h3>
         <div class="spd" data-k="greet"></div>
         <div class="box">
@@ -2087,7 +2020,6 @@
           </div>
         </div>
 
-        <!-- 4.5 10 CÂU GIAO LƯU IDOL CORTIS -->
         <h3>
           🎤 10 Câu Giao Lưu &amp; Hỏi Thăm Nhóm Nhạc Idol (Cortis)
           <span class="kitty-badge">K-POP FANSPEAK</span>
@@ -2157,8 +2089,7 @@
       aud.volume = 0.95;
 
       // =========================================================================
-      // HỆ THỐNG PHÁT ÂM ĐA THIẾT BỊ (PC, ANDROID, IPHONE/IPAD, ZALO/MESSENGER)
-      // Kết hợp Cloud Audio TTS trực tuyến + Mở khóa iOS + Dự phòng Web Speech API
+      // HỆ THỐNG PHÁT ÂM ĐA THIẾT BỊ (PC, ANDROID, IPHONE/IPAD)
       // =========================================================================
       const TTS_ENGINE = {
         audio: document.getElementById("tts-audio") || new Audio(),
@@ -2169,10 +2100,7 @@
 
         init() {
           this.audio.preload = "auto";
-          if ("referrerPolicy" in this.audio) {
-            this.audio.referrerPolicy = "no-referrer";
-          }
-
+          if ("referrerPolicy" in this.audio) this.audio.referrerPolicy = "no-referrer";
           if ("speechSynthesis" in window) {
             const loadVoices = () => {
               try {
@@ -2180,15 +2108,12 @@
               } catch (e) {}
             };
             loadVoices();
-            if (window.speechSynthesis.onvoiceschanged !== undefined) {
+            if (window.speechSynthesis.onvoiceschanged !== undefined)
               window.speechSynthesis.onvoiceschanged = loadVoices;
-            }
           }
-
           const unlockAudio = () => {
             if (this.isUnlocked) return;
             this.isUnlocked = true;
-
             try {
               this.audio.src =
                 "data:audio/wav;base64,UklGRigAAABXQVZFZm10IBIAAAABAAEARKwAAIhYAQACABAAAABkYXRhAgAAAAEA";
@@ -2204,7 +2129,6 @@
                 });
               }
             } catch (e) {}
-
             if ("speechSynthesis" in window) {
               try {
                 const silentU = new SpeechSynthesisUtterance(" ");
@@ -2213,7 +2137,6 @@
               } catch (e) {}
             }
           };
-
           ["touchstart", "touchend", "click", "keydown"].forEach((evt) => {
             document.addEventListener(evt, unlockAudio, { once: true, passive: true });
           });
@@ -2232,11 +2155,8 @@
         cleanText(rawText, langShort) {
           let s = String(rawText || "").trim();
           if (!s || s === "...") return "";
-          s = s.replace(/[♪♫🎀🌸💖🇻🇳🇬🇧🇰🇷🔊]/g, " ");
-          s = s.replace(/\s*\/\s*/g, ", ");
-          if (langShort === "ko") {
-            s = s.replace(/\([a-zA-Z0-9\s._-]+\)/g, "");
-          }
+          s = s.replace(/[♪♫🎀🌸💖🇻🇳🇬🇧🇰🇷🔊]/g, " ").replace(/\s*\/\s*/g, ", ");
+          if (langShort === "ko") s = s.replace(/\([a-zA-Z0-9\s._-]+\)/g, "");
           return s.replace(/\s+/g, " ").trim();
         },
 
@@ -2247,11 +2167,9 @@
                 if (this.duckRestoreVol === null) this.duckRestoreVol = aud.volume;
                 aud.volume = 0.18;
               }
-            } else {
-              if (this.duckRestoreVol !== null) {
-                aud.volume = this.duckRestoreVol;
-                this.duckRestoreVol = null;
-              }
+            } else if (this.duckRestoreVol !== null) {
+              aud.volume = this.duckRestoreVol;
+              this.duckRestoreVol = null;
             }
           } catch (e) {}
         },
@@ -2289,13 +2207,11 @@
         findBestVoice(langInfo) {
           if (!("speechSynthesis" in window)) return null;
           try {
-            if (!this.voices || !this.voices.length) {
+            if (!this.voices || !this.voices.length)
               this.voices = window.speechSynthesis.getVoices() || [];
-            }
-            const matching = this.voices.filter((v) => {
-              const vl = (v.lang || "").toLowerCase().replace("_", "-");
-              return vl.startsWith(langInfo.short);
-            });
+            const matching = this.voices.filter((v) =>
+              (v.lang || "").toLowerCase().replace("_", "-").startsWith(langInfo.short),
+            );
             if (!matching.length) return null;
             return (
               matching.find((v) =>
@@ -2335,7 +2251,6 @@
 
             const encoded = encodeURIComponent(cleaned.slice(0, 190));
             const ttsSlowParam = rate <= 0.65 ? "0.24" : "1";
-
             const urls = [
               `https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=${langInfo.short}&ttsspeed=${ttsSlowParam}&q=${encoded}`,
               `https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=${langInfo.short}&ttsspeed=${ttsSlowParam}&q=${encoded}`,
@@ -2343,7 +2258,6 @@
             ];
 
             let urlIdx = 0;
-
             const tryNextCloud = () => {
               if (token !== this.seqToken) return resolve(false);
               if (urlIdx >= urls.length) {
@@ -2372,56 +2286,41 @@
 
                 const playPromise = this.audio.play();
                 if (playPromise !== undefined) {
-                  playPromise
-                    .then(() => {
-                      this.applyAudioRate(rate);
-                    })
-                    .catch(() => {
-                      doneOnce(false);
-                    });
+                  playPromise.then(() => this.applyAudioRate(rate)).catch(() => doneOnce(false));
                 }
               } catch (err) {
                 tryNextCloud();
               }
             };
-
             tryNextCloud();
           });
         },
 
         playWebSpeechPromise(text, langInfo, rate, token) {
           return new Promise((resolve) => {
-            if (token !== this.seqToken || !("speechSynthesis" in window)) {
-              return resolve(false);
-            }
+            if (token !== this.seqToken || !("speechSynthesis" in window)) return resolve(false);
             try {
               window.speechSynthesis.cancel();
-              if (window.speechSynthesis.paused) {
-                window.speechSynthesis.resume();
-              }
+              if (window.speechSynthesis.paused) window.speechSynthesis.resume();
               const u = new SpeechSynthesisUtterance(text);
               u.lang = langInfo.full;
               u.rate = Math.max(0.35, Math.min(1.6, Number(rate) || 1.0));
               u.pitch = 1.0;
               u.volume = 1.0;
-
               const bestVoice = this.findBestVoice(langInfo);
               if (bestVoice) u.voice = bestVoice;
 
               let done = false;
               const finishSpeech = () => {
-                if (done) return;
-                done = true;
-                resolve(true);
+                if (!done) {
+                  done = true;
+                  resolve(true);
+                }
               };
-
               u.onend = finishSpeech;
               u.onerror = finishSpeech;
-
               window.speechSynthesis.speak(u);
-
-              const maxWaitMs = Math.max(2500, text.length * 260);
-              setTimeout(finishSpeech, maxWaitMs);
+              setTimeout(finishSpeech, Math.max(2500, text.length * 260));
             } catch (e) {
               resolve(false);
             }
@@ -2443,13 +2342,11 @@
           if (myToken === this.seqToken && onFinishAll) onFinishAll();
         },
       };
-
       TTS_ENGINE.init();
 
       function speak(t, l = "ko-KR", k = null, customRate = null) {
         TTS_ENGINE.speak(t, l, k, customRate);
       }
-
       const sp = (t, l, k) => {
         const b = document.createElement("button");
         b.className = "chip";
@@ -2483,55 +2380,6 @@
         scDurTime = 180,
         scIsPlaying = false;
 
-      const SOUNDCLOUD_TRACK_MAP = {
-        "let me down slowly": "https://soundcloud.com/alecbenjamin/let-me-down-slowly",
-        apt: "https://soundcloud.com/rose-official/apt",
-        "die with a smile": "https://soundcloud.com/ladygaga/die-with-a-smile",
-        magnetic: "https://soundcloud.com/illit-music/magnetic",
-        cupid: "https://soundcloud.com/fiftyfifty-music/cupid-twin-ver",
-        "blinding lights": "https://soundcloud.com/theweeknd/blinding-lights",
-        "shape of you": "https://soundcloud.com/edsheeran/shape-of-you",
-      };
-
-      async function searchSoundCloudUrl(query) {
-        const nq = norm(query);
-        for (const [k, url] of Object.entries(SOUNDCLOUD_TRACK_MAP)) {
-          if (nq.includes(k)) return url;
-        }
-        const proxies = [
-          (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-          (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
-        ];
-        const scSearchPage = `https://soundcloud.com/search/sounds?q=${encodeURIComponent(query)}`;
-        for (const makeProxy of proxies) {
-          try {
-            const html = await fetch(makeProxy(scSearchPage)).then((r) => (r.ok ? r.text() : ""));
-            if (html) {
-              const matches = [...html.matchAll(/href="\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)"/g)];
-              const valid = matches.find(
-                (m) =>
-                  ![
-                    "search",
-                    "discover",
-                    "stream",
-                    "upload",
-                    "pages",
-                    "legal",
-                    "charts",
-                    "popular",
-                    "tags",
-                    "settings",
-                    "you",
-                    "messages",
-                  ].includes(m[1]),
-              );
-              if (valid) return `https://soundcloud.com/${valid[1]}/${valid[2]}`;
-            }
-          } catch (e) {}
-        }
-        return null;
-      }
-
       const J = async (u) => {
         const r = await fetch(u);
         if (!r.ok) throw 0;
@@ -2541,6 +2389,9 @@
       const norm = (t) =>
         (t || "")
           .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/đ/g, "d")
           .replace(/[^\p{L}\p{N}]+/gu, " ")
           .trim();
 
@@ -2573,11 +2424,11 @@
       let fallbackWavUrl = null;
       function getFallbackKittyMelodyWav() {
         if (fallbackWavUrl) return fallbackWavUrl;
-        const sampleRate = 22050;
-        const duration = 120;
-        const numSamples = sampleRate * duration;
-        const buffer = new ArrayBuffer(44 + numSamples * 2);
-        const view = new DataView(buffer);
+        const sampleRate = 22050,
+          duration = 120,
+          numSamples = sampleRate * duration;
+        const buffer = new ArrayBuffer(44 + numSamples * 2),
+          view = new DataView(buffer);
         const writeStr = (offset, str) => {
           for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
         };
@@ -2594,12 +2445,11 @@
         view.setUint16(34, 16, true);
         writeStr(36, "data");
         view.setUint32(40, numSamples * 2, true);
-
         const notes = [261.63, 329.63, 392.0, 523.25, 440.0, 349.23, 392.0, 293.66];
         for (let i = 0; i < numSamples; i++) {
-          const t = i / sampleRate;
-          const step = Math.floor(t * 2) % notes.length;
-          const freq = notes[step];
+          const t = i / sampleRate,
+            step = Math.floor(t * 2) % notes.length,
+            freq = notes[step];
           const env = Math.exp(-((t * 2) % 1) * 3.2);
           const val =
             (Math.sin(2 * Math.PI * freq * t) * 0.6 +
@@ -2611,190 +2461,14 @@
         return fallbackWavUrl;
       }
 
+      // KHO SUB TÍCH HỢP SẴN (ĐÃ XÓA HOÀN TOÀN LET ME DOWN SLOWLY)
       const BUILTIN_SUBS = {
-        "let me down slowly": {
-          duration: 169,
-          lines: [
-            {
-              t: 0,
-              o: "♪ Let Me Down Slowly - Alec Benjamin ♪",
-              v: "🇻🇳 Hãy Để Anh Buông Xuôi Từ Từ - Alec Benjamin",
-            },
-            {
-              t: 4,
-              o: "This night is cold in the kingdom",
-              v: "🇻🇳 Đêm nay thật lạnh lẽo nơi vương quốc này",
-            },
-            {
-              t: 8,
-              o: "I can feel you fade away",
-              v: "🇻🇳 Anh có thể cảm nhận hình bóng em đang phai nhạt dần",
-            },
-            {
-              t: 13,
-              o: "From the kitchen to the bathroom sink and",
-              v: "🇻🇳 Từ căn bếp cho đến bồn rửa mặt và...",
-            },
-            {
-              t: 17,
-              o: "Your steps keep me awake",
-              v: "🇻🇳 Từng tiếng bước chân em khiến anh thao thức mãi",
-            },
-            {
-              t: 21,
-              o: "Don't cut me down, throw me out, leave me here to waste",
-              v: "🇻🇳 Đừng gục ngã anh, đừng vứt bỏ anh ở lại nơi này hao mòn",
-            },
-            {
-              t: 26,
-              o: "I once was a man with dignity and grace",
-              v: "🇻🇳 Anh cũng từng là một người đàn ông đầy kiêu hãnh và lịch thiệp",
-            },
-            {
-              t: 30,
-              o: "Now I'm slippin' through the cracks of your cold embrace",
-              v: "🇻🇳 Giờ đây anh đang trượt dài qua vòng tay lạnh giá của em",
-            },
-            { t: 35, o: "So please, please", v: "🇻🇳 Vì vậy làm ơn, xin em đấy" },
-            {
-              t: 39,
-              o: "Could you find a way to let me down slowly?",
-              v: "🇻🇳 Em có thể tìm cách rời xa anh thật nhẹ nhàng từ từ được không?",
-            },
-            {
-              t: 44,
-              o: "A little sympathy, I hope you can show me",
-              v: "🇻🇳 Một chút cảm thông thôi, anh hy vọng em có thể dành cho anh",
-            },
-            {
-              t: 48,
-              o: "If you wanna go then I'll be so lonely",
-              v: "🇻🇳 Nếu em muốn rời đi, anh sẽ cô đơn biết nhường nào",
-            },
-            {
-              t: 53,
-              o: "If you're leavin', baby, let me down slowly",
-              v: "🇻🇳 Nếu em thực sự rời đi, người yêu ơi, hãy để anh buông xuống từ từ",
-            },
-            {
-              t: 58,
-              o: "Let me down, down, let me down, down, let me down",
-              v: "🇻🇳 Hãy để anh vơi đi nỗi buồn một cách dịu dàng...",
-            },
-            {
-              t: 63,
-              o: "Let me down, down, let me down, down, let me down",
-              v: "🇻🇳 Đừng làm trái tim anh tan vỡ quá đột ngột...",
-            },
-            {
-              t: 67,
-              o: "If you wanna go then I'll be so lonely",
-              v: "🇻🇳 Nếu em muốn bước đi thì anh sẽ lẻ loi lắm",
-            },
-            {
-              t: 72,
-              o: "If you're leavin', baby, let me down slowly",
-              v: "🇻🇳 Nếu em phải đi, xin hãy làm anh tổn thương thật khẽ thôi",
-            },
-            {
-              t: 77,
-              o: "Cold skin, drag my feet on the tile",
-              v: "🇻🇳 Làn da lạnh buốt, anh lê từng bước chân nặng nề trên sàn gạch",
-            },
-            {
-              t: 82,
-              o: "As I'm walking down the corridor",
-              v: "🇻🇳 Khi anh đang bước dọc theo hành lang trống trải",
-            },
-            {
-              t: 86,
-              o: "And I know we haven't talked in a while",
-              v: "🇻🇳 Và anh biết chúng mình đã chẳng trò chuyện với nhau một thời gian rồi",
-            },
-            {
-              t: 91,
-              o: "So I'm looking for an open door",
-              v: "🇻🇳 Nên anh đang kiếm tìm một cánh cửa còn mở lối",
-            },
-            {
-              t: 96,
-              o: "Don't cut me down, throw me out, leave me here to waste",
-              v: "🇻🇳 Đừng hạ gục anh, đừng bỏ mặc anh nơi đây tàn phai",
-            },
-            {
-              t: 101,
-              o: "I once was a man with dignity and grace",
-              v: "🇻🇳 Anh từng là chàng trai sống với trọn lòng tự trọng",
-            },
-            {
-              t: 105,
-              o: "Now I'm slippin' through the cracks of your cold embrace",
-              v: "🇻🇳 Giờ anh đang rơi qua những vết nứt trong cái ôm lạnh lùng của em",
-            },
-            { t: 110, o: "So please, please", v: "🇻🇳 Nên làm ơn, anh cầu xin em đó" },
-            {
-              t: 114,
-              o: "Could you find a way to let me down slowly?",
-              v: "🇻🇳 Em có thể tìm một cách để chia tay anh thật êm đềm không?",
-            },
-            {
-              t: 119,
-              o: "A little sympathy, I hope you can show me",
-              v: "🇻🇳 Một chút thương cảm thôi, mong em hãy trao cho anh",
-            },
-            {
-              t: 124,
-              o: "If you wanna go then I'll be so lonely",
-              v: "🇻🇳 Nếu em muốn ra đi thì anh sẽ cô độc biết bao",
-            },
-            {
-              t: 129,
-              o: "If you're leavin', baby, let me down slowly",
-              v: "🇻🇳 Nếu em rời xa, cưng ơi, hãy để anh chấp nhận từ từ nhé",
-            },
-            {
-              t: 134,
-              o: "Let me down, down, let me down, down, let me down",
-              v: "🇻🇳 Hãy để anh buông tay từ từ, nhẹ nhàng thôi...",
-            },
-            {
-              t: 139,
-              o: "Let me down, down, let me down, down, let me down",
-              v: "🇻🇳 Xin đừng rời bỏ anh trong sự lạnh lùng...",
-            },
-            {
-              t: 144,
-              o: "If you wanna go then I'll be so lonely",
-              v: "🇻🇳 Nếu em muốn rời đi thì anh sẽ cô đơn đến nhường nào",
-            },
-            {
-              t: 149,
-              o: "If you're leavin', baby, let me down slowly",
-              v: "🇻🇳 Nếu em thực sự ra đi, xin hãy để anh vơi nỗi đau từ từ",
-            },
-            {
-              t: 155,
-              o: "And I can't stop myself from fallin' (down) down",
-              v: "🇻🇳 Và anh chẳng thể ngăn bản thân mình khỏi gục ngã",
-            },
-            {
-              t: 160,
-              o: "And I can't stop myself from fallin' (down) down",
-              v: "🇻🇳 Anh không thể ngăn trái tim mình rơi xuống vực sâu...",
-            },
-            {
-              t: 165,
-              o: "Could you find a way to let me down slowly? ♪",
-              v: "🇻🇳 Em có thể tìm cách rời xa anh thật nhẹ nhàng được không? ♪",
-            },
-          ],
-        },
         apt: {
           duration: 169,
           lines: [
             {
               t: 0,
-              o: "♪ 채영이가 좋아하는 랜덤 게임 (Trò chơi ngẫu nhiên Rosé thích) ♪",
+              o: "♪ 채영이가 좋아하는 랜덤 게임 (APT. - ROSÉ & Bruno Mars) ♪",
               v: "🇻🇳 Trò chơi ngẫu nhiên mà Chaeyoung (Rosé) cực kỳ yêu thích!",
             },
             {
@@ -3412,7 +3086,7 @@
             },
             {
               t: 38,
-              o: "Ánh Dương tàn ngả nghiêng chiều hoàng hôn",
+              o: "Ánh dương tàn ngả nghiêng chiều hoàng hôn",
               v: "🇻🇳 Hoàng hôn buông xuống nhuộm hồng cả góc trời thương nhớ",
             },
             {
@@ -3504,6 +3178,367 @@
         },
       };
 
+      const SOUNDCLOUD_TRACK_MAP = {
+        apt: "https://soundcloud.com/rose-official/apt",
+        "die with a smile": "https://soundcloud.com/ladygaga/die-with-a-smile",
+        magnetic: "https://soundcloud.com/illit-music/magnetic",
+        cupid: "https://soundcloud.com/fiftyfifty-music/cupid-twin-ver",
+        "blinding lights": "https://soundcloud.com/theweeknd/blinding-lights",
+        "shape of you": "https://soundcloud.com/edsheeran/shape-of-you",
+      };
+
+      // DANH MỤC KHO NHẠC PHONG PHÚ V-POP, K-POP, US-UK (ĐÃ XÓA LET ME DOWN SLOWLY)
+      const SONG_CATALOG = [
+        // K-Pop
+        {
+          title: "APT.",
+          artist: "ROSÉ & Bruno Mars",
+          q: "APT ROSE Bruno Mars",
+          subKey: "apt",
+          cat: "K-Pop",
+        },
+        {
+          title: "Magnetic",
+          artist: "ILLIT (아일릿)",
+          q: "Magnetic ILLIT",
+          subKey: "magnetic",
+          cat: "K-Pop",
+        },
+        {
+          title: "Cupid (Twin Ver.)",
+          artist: "FIFTY FIFTY",
+          q: "Cupid Twin Ver FIFTY FIFTY",
+          subKey: "cupid",
+          cat: "K-Pop",
+        },
+        { title: "Flower (꽃)", artist: "JISOO (BLACKPINK)", q: "Flower JISOO", cat: "K-Pop" },
+        { title: "Dynamite", artist: "BTS (방탄소년단)", q: "Dynamite BTS", cat: "K-Pop" },
+        { title: "Seven", artist: "Jung Kook (BTS)", q: "Seven Jung Kook", cat: "K-Pop" },
+        { title: "Super Shy", artist: "NewJeans (뉴진스)", q: "Super Shy NewJeans", cat: "K-Pop" },
+        { title: "OMG", artist: "NewJeans (뉴진스)", q: "OMG NewJeans", cat: "K-Pop" },
+        { title: "Hype Boy", artist: "NewJeans (뉴진스)", q: "Hype Boy NewJeans", cat: "K-Pop" },
+        {
+          title: "How You Like That",
+          artist: "BLACKPINK",
+          q: "How You Like That BLACKPINK",
+          cat: "K-Pop",
+        },
+        { title: "Pink Venom", artist: "BLACKPINK", q: "Pink Venom BLACKPINK", cat: "K-Pop" },
+        { title: "Solo", artist: "JENNIE", q: "Solo JENNIE", cat: "K-Pop" },
+        { title: "You & Me", artist: "JENNIE", q: "You and Me JENNIE", cat: "K-Pop" },
+        { title: "Love Dive", artist: "IVE (아이브)", q: "Love Dive IVE", cat: "K-Pop" },
+        { title: "I AM", artist: "IVE (아이브)", q: "I AM IVE", cat: "K-Pop" },
+        { title: "Supernova", artist: "aespa (에스파)", q: "Supernova aespa", cat: "K-Pop" },
+        { title: "Queencard", artist: "(G)I-DLE", q: "Queencard GIDLE", cat: "K-Pop" },
+        { title: "Love Scenario", artist: "iKON", q: "Love Scenario iKON", cat: "K-Pop" },
+        // V-Pop
+        {
+          title: "Chúng Ta Của Hiện Tại",
+          artist: "Sơn Tùng M-TP",
+          q: "Chung ta cua hien tai Son Tung",
+          subKey: "chung ta cua hien tai",
+          cat: "V-Pop",
+        },
+        {
+          title: "Chúng Ta Của Tương Lai",
+          artist: "Sơn Tùng M-TP",
+          q: "Chung ta cua tuong lai Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "Đừng Làm Trái Tim Anh Đau",
+          artist: "Sơn Tùng M-TP",
+          q: "Dung lam trai tim anh dau Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "Nơi Này Có Anh",
+          artist: "Sơn Tùng M-TP",
+          q: "Noi nay co anh Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "Chạy Ngay Đi",
+          artist: "Sơn Tùng M-TP",
+          q: "Chay ngay di Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "Muộn Rồi Mà Sao Còn",
+          artist: "Sơn Tùng M-TP",
+          q: "Muon roi ma sao con Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "Hãy Trao Cho Anh",
+          artist: "Sơn Tùng M-TP",
+          q: "Hay trao cho anh Son Tung MTP",
+          cat: "V-Pop",
+        },
+        {
+          title: "See Tình",
+          artist: "Hoàng Thùy Linh",
+          q: "See Tinh Hoang Thuy Linh",
+          cat: "V-Pop",
+        },
+        {
+          title: "Để Mị Nói Cho Mà Nghe",
+          artist: "Hoàng Thùy Linh",
+          q: "De Mi noi cho ma nghe Hoang Thuy Linh",
+          cat: "V-Pop",
+        },
+        { title: "Waiting For You", artist: "MONO", q: "Waiting For You MONO", cat: "V-Pop" },
+        { title: "Ngủ Một Mình", artist: "HIEUTHUHAI", q: "Ngu mot minh HIEUTHUHAI", cat: "V-Pop" },
+        {
+          title: "Không Thể Say",
+          artist: "HIEUTHUHAI",
+          q: "Khong the say HIEUTHUHAI",
+          cat: "V-Pop",
+        },
+        { title: "Bắt Đầu Từ Hôm Nay", artist: "AMEE", q: "Hai muoi hai AMEE", cat: "V-Pop" },
+        { title: "Ưng Quá Chừng", artist: "AMEE", q: "Ung qua chung AMEE", cat: "V-Pop" },
+        { title: "Bước Qua Nhau", artist: "Vũ.", q: "Buoc qua nhau Vu", cat: "V-Pop" },
+        { title: "Lạ Lùng", artist: "Vũ.", q: "La lung Vu", cat: "V-Pop" },
+        { title: "Nàng Thơ", artist: "Hoàng Dũng", q: "Nang tho Hoang Dung", cat: "V-Pop" },
+        { title: "Giá Như", artist: "SOOBIN", q: "Gia nhu SOOBIN", cat: "V-Pop" },
+        // US-UK
+        {
+          title: "Die With A Smile",
+          artist: "Lady Gaga & Bruno Mars",
+          q: "Die With A Smile Lady Gaga Bruno Mars",
+          subKey: "die with a smile",
+          cat: "US-UK",
+        },
+        {
+          title: "Espresso",
+          artist: "Sabrina Carpenter",
+          q: "Espresso Sabrina Carpenter",
+          cat: "US-UK",
+        },
+        {
+          title: "Please Please Please",
+          artist: "Sabrina Carpenter",
+          q: "Please Please Please Sabrina Carpenter",
+          cat: "US-UK",
+        },
+        {
+          title: "Stay",
+          artist: "The Kid LAROI & Justin Bieber",
+          q: "Stay The Kid LAROI Justin Bieber",
+          cat: "US-UK",
+        },
+        { title: "As It Was", artist: "Harry Styles", q: "As It Was Harry Styles", cat: "US-UK" },
+        { title: "Levitating", artist: "Dua Lipa", q: "Levitating Dua Lipa", cat: "US-UK" },
+        {
+          title: "Blinding Lights",
+          artist: "The Weeknd",
+          q: "Blinding Lights The Weeknd",
+          cat: "US-UK",
+        },
+        {
+          title: "Save Your Tears",
+          artist: "The Weeknd & Ariana Grande",
+          q: "Save Your Tears The Weeknd",
+          cat: "US-UK",
+        },
+        { title: "Shape of You", artist: "Ed Sheeran", q: "Shape of You Ed Sheeran", cat: "US-UK" },
+        { title: "Perfect", artist: "Ed Sheeran", q: "Perfect Ed Sheeran", cat: "US-UK" },
+        {
+          title: "Cruel Summer",
+          artist: "Taylor Swift",
+          q: "Cruel Summer Taylor Swift",
+          cat: "US-UK",
+        },
+        { title: "Love Story", artist: "Taylor Swift", q: "Love Story Taylor Swift", cat: "US-UK" },
+        {
+          title: "We Don't Talk Anymore",
+          artist: "Charlie Puth & Selena Gomez",
+          q: "We Dont Talk Anymore Charlie Puth",
+          cat: "US-UK",
+        },
+        { title: "Attention", artist: "Charlie Puth", q: "Attention Charlie Puth", cat: "US-UK" },
+        {
+          title: "Until I Found You",
+          artist: "Stephen Sanchez",
+          q: "Until I Found You Stephen Sanchez",
+          cat: "US-UK",
+        },
+        { title: "Peaches", artist: "Justin Bieber", q: "Peaches Justin Bieber", cat: "US-UK" },
+      ];
+
+      let playlist = SONG_CATALOG.slice(0, 12).map((s) => ({ ...s, cover: KITTY_SVG_DATA }));
+      let currentSongIdx = 0;
+
+      const EX = {
+        "🎀 K-Pop": SONG_CATALOG.filter((s) => s.cat === "K-Pop"),
+        "💖 V-Pop": SONG_CATALOG.filter((s) => s.cat === "V-Pop"),
+        "🌸 US-UK": SONG_CATALOG.filter((s) => s.cat === "US-UK"),
+      };
+
+      Object.keys(EX).forEach((k) => {
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = k;
+        b.onclick = () => {
+          const uploaded = playlist.filter((p) => p.fileUrl);
+          playlist = [...uploaded, ...EX[k].map((s) => ({ ...s, cover: KITTY_SVG_DATA }))];
+          currentSongIdx = uploaded.length ? 0 : 0;
+          renderSongList();
+          const firstGenreSong = EX[k][0];
+          const idxInPl = playlist.findIndex((p) => norm(p.title) === norm(firstGenreSong.title));
+          currentSongIdx = idxInPl >= 0 ? idxInPl : 0;
+          renderSongList();
+          $("#q").value = firstGenreSong.q;
+          search();
+        };
+        $("#genres").append(b);
+      });
+
+      // TÌM NHẠC GỢI Ý NGAY KHI GÕ DÙ CHỈ 1 CHỮ CÁI
+      let suggestTimer = null;
+      async function updateSearchSuggestions(rawVal) {
+        const box = $("#suggestBox");
+        const q = norm(rawVal);
+        if (!q) {
+          box.classList.remove("on");
+          box.innerHTML = "";
+          return;
+        }
+
+        // Lọc ngay lập tức từ SONG_CATALOG + playlist theo bất kỳ chữ cái nào trong tên bài hoặc ca sĩ
+        const localMatches = [];
+        const seen = new Set();
+        [...playlist, ...SONG_CATALOG].forEach((item) => {
+          const key = norm(item.title + " " + item.artist);
+          if (!seen.has(key) && key.includes(q)) {
+            seen.add(key);
+            localMatches.push(item);
+          }
+        });
+
+        renderSuggestItems(localMatches.slice(0, 8), rawVal);
+
+        // Gọi thêm gợi ý trực tuyến từ iTunes để gõ chữ gì cũng ra thêm nhiều bài mới
+        clearTimeout(suggestTimer);
+        suggestTimer = setTimeout(async () => {
+          if (norm($("#q").value) !== q) return;
+          try {
+            const it = await fetchJsonp(
+              `https://itunes.apple.com/search?entity=song&limit=6&term=${encodeURIComponent(rawVal.trim())}`,
+              4000,
+            );
+            if (it && Array.isArray(it.results)) {
+              it.results.forEach((r) => {
+                if (!r.trackName) return;
+                const key = norm(r.trackName + " " + (r.artistName || ""));
+                if (!seen.has(key)) {
+                  seen.add(key);
+                  localMatches.push({
+                    title: r.trackName,
+                    artist: r.artistName || "Online Music",
+                    q: `${r.trackName} ${r.artistName || ""}`.trim(),
+                    previewUrl: r.previewUrl || null,
+                    cover: r.artworkUrl100 || KITTY_SVG_DATA,
+                    cat: "Online",
+                  });
+                }
+              });
+              if (norm($("#q").value) === q) {
+                renderSuggestItems(localMatches.slice(0, 10), rawVal);
+              }
+            }
+          } catch (e) {}
+        }, 220);
+      }
+
+      function renderSuggestItems(items, rawVal) {
+        const box = $("#suggestBox");
+        box.innerHTML = "";
+        if (!items.length) {
+          const d = document.createElement("div");
+          d.className = "suggest-item";
+          d.innerHTML = `<div><b>🔍 Tìm & phát trực tiếp: "${rawVal.trim()}"</b><small>Nhấn để tìm nguồn nhạc & VietSub</small></div><span class="song-badge">PLAY</span>`;
+          d.onclick = () => {
+            box.classList.remove("on");
+            search();
+          };
+          box.append(d);
+          box.classList.add("on");
+          return;
+        }
+
+        items.forEach((item) => {
+          const d = document.createElement("div");
+          d.className = "suggest-item";
+          d.innerHTML = `<div><b>🎵 ${item.title}</b><small>${item.artist} ${item.cat ? "• " + item.cat : ""}</small></div><span class="song-badge">${item.fileUrl ? "MP3" : "PHÁT"}</span>`;
+          d.onclick = () => {
+            box.classList.remove("on");
+            $("#q").value = item.q || `${item.title} ${item.artist}`;
+            let idx = playlist.findIndex((p) => norm(p.title) === norm(item.title));
+            if (idx === -1) {
+              playlist.unshift({ ...item, cover: item.cover || KITTY_SVG_DATA });
+              idx = 0;
+            }
+            currentSongIdx = idx;
+            renderSongList();
+            if (item.fileUrl) {
+              playUploadedItem(playlist[idx]);
+            } else {
+              search();
+            }
+          };
+          box.append(d);
+        });
+        box.classList.add("on");
+      }
+
+      $("#q").addEventListener("input", (e) => updateSearchSuggestions(e.target.value));
+      $("#q").addEventListener("focus", (e) => {
+        if (e.target.value.trim().length >= 1) updateSearchSuggestions(e.target.value);
+      });
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".search-wrap")) $("#suggestBox").classList.remove("on");
+      });
+
+      async function searchSoundCloudUrl(query) {
+        const nq = norm(query);
+        for (const [k, url] of Object.entries(SOUNDCLOUD_TRACK_MAP)) {
+          if (nq.includes(k)) return url;
+        }
+        const proxies = [
+          (u) => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+          (u) => `https://corsproxy.io/?${encodeURIComponent(u)}`,
+        ];
+        const scSearchPage = `https://soundcloud.com/search/sounds?q=${encodeURIComponent(query)}`;
+        for (const makeProxy of proxies) {
+          try {
+            const html = await fetch(makeProxy(scSearchPage)).then((r) => (r.ok ? r.text() : ""));
+            if (html) {
+              const matches = [...html.matchAll(/href="\/([a-zA-Z0-9_-]+)\/([a-zA-Z0-9_-]+)"/g)];
+              const valid = matches.find(
+                (m) =>
+                  ![
+                    "search",
+                    "discover",
+                    "stream",
+                    "upload",
+                    "pages",
+                    "legal",
+                    "charts",
+                    "popular",
+                    "tags",
+                    "settings",
+                    "you",
+                    "messages",
+                  ].includes(m[1]),
+              );
+              if (valid) return `https://soundcloud.com/${valid[1]}/${valid[2]}`;
+            }
+          } catch (e) {}
+        }
+        return null;
+      }
+
       function ensureFullDurationSubs(rawLines, totalDur = 169) {
         if (!Array.isArray(rawLines) || !rawLines.length) return [];
         const sorted = rawLines.map((x) => ({ ...x })).sort((a, b) => a.t - b.t);
@@ -3512,106 +3547,16 @@
 
         const result = [...sorted];
         const chorusLines = sorted.slice(Math.max(1, Math.floor(sorted.length * 0.25)));
-        let cursor = lastTime + 5.5;
-        let idx = 0;
+        let cursor = lastTime + 5.5,
+          idx = 0;
         while (cursor < totalDur - 3 && chorusLines.length > 0) {
           const srcLine = chorusLines[idx % chorusLines.length];
-          result.push({
-            t: Math.round(cursor * 10) / 10,
-            o: srcLine.o,
-            v: srcLine.v || "",
-          });
+          result.push({ t: Math.round(cursor * 10) / 10, o: srcLine.o, v: srcLine.v || "" });
           cursor += 5.2;
           idx++;
         }
         return result;
       }
-
-      let playlist = [
-        {
-          title: "Let Me Down Slowly",
-          artist: "Alec Benjamin",
-          q: "Let Me Down Slowly Alec Benjamin",
-          subKey: "let me down slowly",
-          cover: KITTY_SVG_DATA,
-        },
-        {
-          title: "APT.",
-          artist: "ROSÉ & Bruno Mars",
-          q: "APT ROSE Bruno Mars",
-          subKey: "apt",
-          cover: KITTY_SVG_DATA,
-        },
-        {
-          title: "Die With A Smile",
-          artist: "Lady Gaga & Bruno Mars",
-          q: "Die With A Smile Lady Gaga Bruno Mars",
-          subKey: "die with a smile",
-          cover: KITTY_SVG_DATA,
-        },
-        {
-          title: "Magnetic",
-          artist: "ILLIT (아일릿)",
-          q: "Magnetic ILLIT",
-          subKey: "magnetic",
-          cover: KITTY_SVG_DATA,
-        },
-        {
-          title: "Cupid (Twin Ver.)",
-          artist: "FIFTY FIFTY",
-          q: "Cupid Twin Ver FIFTY FIFTY",
-          subKey: "cupid",
-          cover: KITTY_SVG_DATA,
-        },
-        {
-          title: "Chúng Ta Của Hiện Tại",
-          artist: "Sơn Tùng M-TP",
-          q: "Chung ta cua hien tai Son Tung",
-          subKey: "chung ta cua hien tai",
-          cover: KITTY_SVG_DATA,
-        },
-      ];
-      let currentSongIdx = 0;
-
-      const EX = {
-        "🎀 K-Pop": [
-          "APT ROSE Bruno Mars",
-          "Magnetic ILLIT",
-          "Cupid Twin Ver FIFTY FIFTY",
-          "Dynamite BTS",
-        ],
-        "🌸 US-UK": [
-          "Let Me Down Slowly Alec Benjamin",
-          "Die With A Smile Lady Gaga Bruno Mars",
-          "Blinding Lights The Weeknd",
-        ],
-        "💖 V-Pop": [
-          "Chung ta cua hien tai Son Tung",
-          "Lac troi Son Tung MTP",
-          "Noi nay co anh Son Tung",
-        ],
-      };
-      Object.keys(EX).forEach((k) => {
-        const b = document.createElement("button");
-        b.className = "chip";
-        b.textContent = k;
-        b.onclick = () => {
-          EX[k].forEach((songQuery) => {
-            if (!playlist.some((p) => norm(p.q) === norm(songQuery))) {
-              playlist.unshift({
-                title: songQuery,
-                artist: k.replace(/^[^\s]+\s/, ""),
-                q: songQuery,
-                cover: KITTY_SVG_DATA,
-              });
-            }
-          });
-          renderSongList();
-          $("#q").value = EX[k][0];
-          search();
-        };
-        $("#genres").append(b);
-      });
 
       function renderSongList() {
         const box = $("#songList");
@@ -3625,7 +3570,7 @@
             <b>${item.title}</b>
             <small>${item.artist}</small>
           </div>
-          <span class="song-badge">${item.fileUrl ? "MP3" : item.scUrl ? "SC" : "🎀 PLAY"}</span>
+          <span class="song-badge">${item.fileUrl ? "LOCAL MP3" : item.scUrl ? "SC" : "🎀 PLAY"}</span>
         `;
           d.onclick = () => {
             currentSongIdx = idx;
@@ -3661,11 +3606,7 @@
           .filter(Boolean);
         if (!rawLines.length) return [];
         const step = Math.max(3.5, (totalDur - 8) / rawLines.length);
-        return rawLines.map((o, idx) => ({
-          t: Math.round(idx * step * 10) / 10,
-          o,
-          v: "",
-        }));
+        return rawLines.map((o, idx) => ({ t: Math.round(idx * step * 10) / 10, o, v: "" }));
       }
 
       function stopAllPlayers() {
@@ -3802,12 +3743,8 @@
               artist: artist || "Hello Kitty Music Studio",
               album: "Hello Kitty Pink Audio",
             });
-            navigator.mediaSession.setActionHandler("play", () => {
-              aud.play().catch(() => {});
-            });
-            navigator.mediaSession.setActionHandler("pause", () => {
-              aud.pause();
-            });
+            navigator.mediaSession.setActionHandler("play", () => aud.play().catch(() => {}));
+            navigator.mediaSession.setActionHandler("pause", () => aud.pause());
             navigator.mediaSession.setActionHandler("seekbackward", () =>
               seekToTime(Math.max(0, getCurrentTime() - 10), true),
             );
@@ -3821,23 +3758,28 @@
       }
 
       function playAdjacentSong(dir) {
+        if (!playlist.length) return;
         currentSongIdx = (currentSongIdx + dir + playlist.length) % playlist.length;
         renderSongList();
         const item = playlist[currentSongIdx];
-        if (item.fileUrl) playUploadedItem(item);
-        else {
-          $("#q").value = item.q;
+        if (item.fileUrl) {
+          playUploadedItem(item);
+        } else {
+          $("#q").value = item.q || `${item.title} ${item.artist}`;
           search();
         }
       }
 
-      function startHtml5Audio(url, t, isExtendedStream = false) {
+      // FIX TRIỆT ĐỂ LỖI UP FILE NHẠC (.MP3) BỊ TỰ NHẢY BÀI
+      function startHtml5Audio(url, t, isExtendedStream = false, isLocalFile = false) {
         mode = "audio";
         virtualBase = 0;
         lastRawTime = 0;
         aud.src = url;
-        aud.dataset.extended = isExtendedStream ? "1" : "0";
-        aud.loop = true;
+        aud.dataset.local = isLocalFile ? "1" : "0";
+        aud.dataset.extended = !isLocalFile && isExtendedStream ? "1" : "0";
+        // Nếu là file MP3 tự up hoặc luồng full bài: không dùng loop ẩn gây nhảy virtualBase
+        aud.loop = !isLocalFile && isExtendedStream;
         setupSleepMediaSession(t.trackName, t.artistName);
 
         if (pendingSeekSec !== null) {
@@ -3854,22 +3796,40 @@
           playPromise
             .then(() => {
               stt(
-                "🎀 Đang phát nhạc + VietSub đầy đủ (Nhấn vào phút:giây bất kỳ để tua và nghe tiếp)!",
+                isLocalFile
+                  ? "🎀 Đang phát mượt mà File MP3 của bạn (Không bị tự nhảy bài)!"
+                  : "🎀 Đang phát nhạc + VietSub đầy đủ!",
               );
             })
             .catch(() => {
-              stt('🎀 Bấm nút "▶ Phát / Dừng" hoặc bấm vào dòng Sub bất kỳ để phát tiếng ngay!');
+              stt('🎀 Bấm nút "▶ Phát / Dừng" để bắt đầu phát tiếng!');
             });
         }
       }
 
+      // Khi bài hát thực sự kết thúc (dành cho LOCAL MP3 và Full Stream)
+      aud.addEventListener("ended", () => {
+        if (mode !== "audio") return;
+        if ($("#loopToggle").checked) {
+          aud.currentTime = 0;
+          aud.play().catch(() => {});
+        } else {
+          playAdjacentSong(1);
+        }
+      });
+
       aud.addEventListener("timeupdate", () => {
+        // Nếu đang phát file MP3 cá nhân (local === "1"), tuyệt đối không can thiệp nhảy bài!
+        if (aud.dataset.local === "1") {
+          lastRawTime = aud.currentTime || 0;
+          return;
+        }
         const cur = aud.currentTime || 0;
         const rawDur = isFinite(aud.duration) && aud.duration > 0 ? aud.duration : 30;
         const fullDur = getDuration();
 
-        if (cur < lastRawTime - 1.5 && rawDur > 3) {
-          if (aud.dataset.extended === "1" && virtualBase + rawDur < fullDur - 3) {
+        if (aud.dataset.extended === "1" && cur < lastRawTime - 1.5 && rawDur > 3) {
+          if (virtualBase + rawDur < fullDur - 3) {
             virtualBase += rawDur;
           } else {
             virtualBase = 0;
@@ -3882,7 +3842,7 @@
         lastRawTime = cur;
       });
 
-      async function findMultiSourceAudio(t) {
+      async function findMultiSourceAudio(t, myTok) {
         const q = (t.trackName + " " + (t.artistName || ""))
           .replace(/Hello Kitty Studio/i, "")
           .trim();
@@ -3897,6 +3857,7 @@
             const d = await J(
               `${host}/v1/tracks/search?query=${encodeURIComponent(q)}&app_name=ANhoEmNhieuLam`,
             );
+            if (myTok && myTok !== tok) return;
             if (d && Array.isArray(d.data) && d.data.length) {
               const hit =
                 d.data.find((x) => norm(x.title).includes(norm(t.trackName)) && x.duration > 60) ||
@@ -3906,6 +3867,7 @@
                 return startHtml5Audio(
                   `${host}/v1/tracks/${hit.id}/stream?app_name=ANhoEmNhieuLam`,
                   t,
+                  false,
                   false,
                 );
               }
@@ -3917,11 +3879,12 @@
           const dz = await fetchJsonp(
             `https://api.deezer.com/search?output=jsonp&limit=6&q=${encodeURIComponent(q)}`,
           );
+          if (myTok && myTok !== tok) return;
           if (dz && Array.isArray(dz.data) && dz.data.length) {
             const bestDz = dz.data.find((x) => x.preview) || dz.data[0];
             if (bestDz && bestDz.preview) {
-              $("#srcBadge").textContent = "DEEZER HQ 2P+";
-              return startHtml5Audio(bestDz.preview, t, true);
+              $("#srcBadge").textContent = "DEEZER HQ";
+              return startHtml5Audio(bestDz.preview, t, true, false);
             }
           }
         } catch (e) {}
@@ -3930,17 +3893,19 @@
           const it = await fetchJsonp(
             `https://itunes.apple.com/search?entity=song&limit=6&term=${encodeURIComponent(q)}`,
           );
+          if (myTok && myTok !== tok) return;
           if (it && Array.isArray(it.results) && it.results.length) {
             const bestIt = it.results.find((x) => x.previewUrl) || it.results[0];
             if (bestIt && bestIt.previewUrl) {
-              $("#srcBadge").textContent = "APPLE HQ 2P+";
-              return startHtml5Audio(bestIt.previewUrl, t, true);
+              $("#srcBadge").textContent = "APPLE HQ";
+              return startHtml5Audio(bestIt.previewUrl, t, true, false);
             }
           }
         } catch (e) {}
 
+        if (myTok && myTok !== tok) return;
         $("#srcBadge").textContent = "KITTY STUDIO WAV";
-        startHtml5Audio(getFallbackKittyMelodyWav(), t, false);
+        startHtml5Audio(getFallbackKittyMelodyWav(), t, false, false);
       }
 
       $("#scOpenBtn").onclick = () => {
@@ -4043,9 +4008,7 @@
             if ($("#loopToggle").checked) {
               scWidget.seekTo(0);
               scWidget.play();
-            } else {
-              playAdjacentSong(1);
-            }
+            } else playAdjacentSong(1);
           });
         }
       }
@@ -4056,13 +4019,14 @@
         off = 0;
         $("#off").textContent = "0s";
         tok++;
+        const myTok = tok;
         act = -1;
         $("#np").textContent = t.trackName + (t.artistName ? " - " + t.artistName : "");
         $("#npSub").textContent =
           "Băng Đĩa Hello Kitty • Bấm vào phút:giây bất kỳ để chạy tiếp • Nghe khi Sleep";
         stt("🎀 Đang kết nối âm thanh...");
 
-        const totalTrackDur = t && t.duration && t.duration > 60 ? t.duration : 169;
+        const totalTrackDur = t && t.duration && t.duration > 30 ? t.duration : 180;
         if (t.preLines) {
           lines = ensureFullDurationSubs(t.preLines, totalTrackDur);
         } else if (t.syncedLyrics) {
@@ -4076,20 +4040,29 @@
           lines = [];
         }
         renderSubLines();
-        translateLyrics(tok);
+        translateLyrics(myTok);
 
         if (customSource && customSource.file) {
           $("#srcBadge").textContent = "LOCAL MP3";
-          startHtml5Audio(customSource.file, t, false);
+          startHtml5Audio(customSource.file, t, false, true);
         } else {
-          await findMultiSourceAudio(t);
+          await findMultiSourceAudio(t, myTok);
         }
       }
 
       async function search() {
+        $("#suggestBox").classList.remove("on");
         const q = $("#q").value.trim();
         if (!q) return stt("🎀 Hãy nhập tên bài hát hoặc ca sĩ vào ô tìm kiếm nhé!");
         if (q.includes("soundcloud.com/")) return playSoundCloudUrl(q, "SoundCloud Track");
+
+        // Nếu người dùng bấm Tìm đúng tên bài MP3 đã tải lên thì phát luôn file MP3 đó
+        const uploadedMatch = playlist.find((p) => p.fileUrl && norm(p.title).includes(norm(q)));
+        if (uploadedMatch) {
+          currentSongIdx = playlist.indexOf(uploadedMatch);
+          renderSongList();
+          return playUploadedItem(uploadedMatch);
+        }
 
         stt("🎀 Đang lấy nhạc đầy đủ & VietSub...");
         const lrc = await findLyrics(q);
@@ -4107,28 +4080,46 @@
           await openTrack(lrc, null);
         } else {
           await openTrack(
-            { trackName: q, artistName: "Multi-Source Audio", duration: 150, syncedLyrics: "" },
+            { trackName: q, artistName: "Multi-Source Audio", duration: 180, syncedLyrics: "" },
             null,
           );
         }
       }
 
       async function playUploadedItem(item) {
-        stt("🎀 Đang phát file nhạc MP3 của bạn...");
-        const lrc = await findLyrics(item.title, item.duration);
-        if (lrc) {
-          await openTrack(lrc, { file: item.fileUrl });
-        } else {
-          await openTrack(
-            {
-              trackName: item.title,
-              artistName: "File MP3 cá nhân",
-              duration: item.duration || 180,
-              syncedLyrics: "",
-            },
-            { file: item.fileUrl },
-          );
-        }
+        stopAllPlayers();
+        tok++;
+        const myTok = tok;
+        stt("🎀 Đang phát file nhạc MP3 cá nhân của bạn...");
+        // Phát ngay lập tức file MP3 cá nhân, không chờ mạng để tránh bị giật/nhảy
+        const baseTrack = {
+          trackName: item.title,
+          artistName: "File MP3 cá nhân",
+          duration: item.duration || 210,
+          syncedLyrics: "",
+        };
+        track = baseTrack;
+        $("#np").textContent = item.title + " - File MP3 cá nhân";
+        $("#srcBadge").textContent = "LOCAL MP3";
+        lines = [];
+        renderSubLines();
+        startHtml5Audio(item.fileUrl, baseTrack, false, true);
+
+        // Tìm lời bài hát chạy nền, nếu có thì cập nhật Sub chứ tuyệt đối không khởi động lại nhạc
+        findLyrics(item.title, item.duration)
+          .then((lrc) => {
+            if (myTok !== tok || !lrc) return;
+            const dur =
+              isFinite(aud.duration) && aud.duration > 10 ? aud.duration : lrc.duration || 210;
+            if (lrc.preLines) lines = ensureFullDurationSubs(lrc.preLines, dur);
+            else if (lrc.syncedLyrics)
+              lines = ensureFullDurationSubs(parseLrc(lrc.syncedLyrics), dur);
+            else if (lrc.plainLyrics)
+              lines = ensureFullDurationSubs(buildSyncedFromPlain(lrc.plainLyrics, dur), dur);
+            renderSubLines();
+            translateLyrics(myTok);
+          })
+          .catch(() => {});
       }
 
       $("#mf").onchange = async (e) => {
@@ -4151,12 +4142,14 @@
         currentSongIdx = 0;
         renderSongList();
         playUploadedItem(playlist[0]);
+        e.target.value = "";
       };
 
       function getCurrentTime() {
         if (mode === "sc") return scCurTime || 0;
         if (mode === "audio") {
           const cur = aud.currentTime || 0;
+          if (aud.dataset.local === "1") return cur;
           return aud.dataset.extended === "1" ? virtualBase + cur : cur;
         }
         return 0;
@@ -4165,22 +4158,34 @@
       function getDuration() {
         if (mode === "sc")
           return scDurTime > 20 ? scDurTime : track && track.duration ? track.duration : 175;
-        const trackDur = track && track.duration ? track.duration : 165;
         if (mode === "audio") {
+          // Với file MP3 tự up: luôn lấy đúng thời lượng thực của file MP3
+          if (aud.dataset.local === "1") {
+            return isFinite(aud.duration) && aud.duration > 0
+              ? aud.duration
+              : track && track.duration
+                ? track.duration
+                : 210;
+          }
+          const trackDur = track && track.duration ? track.duration : 165;
           if (aud.dataset.extended === "1") return Math.max(120, trackDur);
           return isFinite(aud.duration) && aud.duration > 45
             ? aud.duration
             : Math.max(120, trackDur);
         }
-        return Math.max(120, trackDur);
+        return 165;
       }
 
       function seekToTime(sec, resumePlay = true) {
         const D = getDuration();
-        sec = Math.max(0, Math.min(sec, D - 0.5));
+        sec = Math.max(0, Math.min(sec, D - 0.3));
         if (mode === "audio") {
           if (isFinite(aud.duration) && aud.duration > 0) {
-            if (aud.dataset.extended === "1" || aud.duration < D - 5) {
+            if (aud.dataset.local === "1") {
+              virtualBase = 0;
+              aud.currentTime = Math.min(sec, aud.duration - 0.2);
+              lastRawTime = aud.currentTime;
+            } else if (aud.dataset.extended === "1" || aud.duration < D - 5) {
               virtualBase = Math.floor(sec / aud.duration) * aud.duration;
               aud.currentTime = sec % aud.duration;
               lastRawTime = aud.currentTime;
@@ -4211,8 +4216,12 @@
           return;
         }
         if (!aud.src) {
-          $("#q").value = playlist[currentSongIdx].q;
-          search();
+          const curItem = playlist[currentSongIdx] || playlist[0];
+          if (curItem.fileUrl) playUploadedItem(curItem);
+          else {
+            $("#q").value = curItem.q;
+            search();
+          }
           return;
         }
         if (aud.paused) aud.play().catch(() => {});
@@ -4273,7 +4282,10 @@
       );
       $("#go").onclick = search;
       $("#q").onkeydown = (e) => {
-        if (e.key === "Enter") search();
+        if (e.key === "Enter") {
+          $("#suggestBox").classList.remove("on");
+          search();
+        }
       };
       $("#pp").onclick = togglePlayPause;
       $("#rw").onclick = () => seekToTime(getCurrentTime() - 10, true);
@@ -4287,11 +4299,9 @@
         $("#volTxt").textContent = v + "%";
         if (mode === "sc" && scWidget) scWidget.setVolume(v);
       };
+      $("#prevSongBtn").onclick = () => playAdjacentSong(-1);
+      $("#nextSongBtn").onclick = () => playAdjacentSong(1);
       $("#replayNowBtn").onclick = () => seekToTime(0, true);
-      $("#stp").onclick = () => {
-        aud.pause();
-        seekToTime(0, false);
-      };
       $("#e1").onclick = () => {
         off = Math.round((off + 0.5) * 10) / 10;
         $("#off").textContent = (off >= 0 ? "+" : "") + off + "s";
@@ -4303,6 +4313,9 @@
 
       renderSongList();
 
+      // =========================================================================
+      // PHẦN 2: 16 CHỦ ĐỀ TỪ VỰNG TOPIK 1
+      // =========================================================================
       const TP = [
         [
           "Tự giới thiệu (자기소개)",
@@ -4463,9 +4476,7 @@
           "vocab",
           (idx) => {
             cs.forEach((c, j) => c.classList.toggle("hl", j === idx));
-            if (cs[idx]) {
-              cs[idx].scrollIntoView({ behavior: "smooth", block: "nearest" });
-            }
+            if (cs[idx]) cs[idx].scrollIntoView({ behavior: "smooth", block: "nearest" });
           },
           (idx) => {
             if (cs[idx]) cs[idx].classList.remove("hl");
@@ -4481,6 +4492,9 @@
       };
       showTp(0);
 
+      // =========================================================================
+      // PHẦN 3: DỊCH 3 NGÔN NGỮ
+      // =========================================================================
       const trn = async (q, tl) => {
         const d = await J(
           "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=" +
@@ -4622,14 +4636,17 @@
       };
       doSingleInputTranslate();
 
+      // =========================================================================
+      // PHẦN 4: SỐ ĐẾM, NGỮ PHÁP, CHÀO HỎI & IDOL
+      // =========================================================================
       const SD = "영일이삼사오육칠팔구",
         SR = ["yeong", "il", "i", "sam", "sa", "o", "yuk", "chil", "pal", "gu"],
         UN = [
           ["십", "sip"],
           ["백", "baek"],
           ["천", "cheon"],
-        ];
-      const HJ = "零一二三四五六七八九";
+        ],
+        HJ = "零一二三四五六七八九";
 
       function grp(n) {
         let h = "",
@@ -4707,21 +4724,21 @@
         return h;
       }
 
-      const NU = ["", "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉"];
-      const NR = ["", "hana", "dul", "set", "net", "daseot", "yeoseot", "ilgop", "yeodeol", "ahop"];
-      const NT = ["", "열", "스물", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔"];
-      const NTR = [
-        "",
-        "yeol",
-        "seumul",
-        "seoreun",
-        "maheun",
-        "swin",
-        "yesun",
-        "ilheun",
-        "yeodeun",
-        "aheun",
-      ];
+      const NU = ["", "하나", "둘", "셋", "넷", "다섯", "여섯", "일곱", "여덟", "아홉"],
+        NR = ["", "hana", "dul", "set", "net", "daseot", "yeoseot", "ilgop", "yeodeol", "ahop"];
+      const NT = ["", "열", "스물", "서른", "마흔", "쉰", "예순", "일흔", "여든", "아흔"],
+        NTR = [
+          "",
+          "yeol",
+          "seumul",
+          "seoreun",
+          "maheun",
+          "swin",
+          "yesun",
+          "ilheun",
+          "yeodeun",
+          "aheun",
+        ];
       const CU = { 1: ["한", "han"], 2: ["두", "du"], 3: ["세", "se"], 4: ["네", "ne"] };
 
       const nat = (n) => {
@@ -4750,8 +4767,8 @@
           o.textContent = "Hãy nhập số từ 0 đến 999.999.999.999";
           return;
         }
-        const s = sino(n);
-        const sinoClean = s[0].split("/")[0].trim();
+        const s = sino(n),
+          sinoClean = s[0].split("/")[0].trim();
         const sinoCard = document.createElement("div");
         sinoCard.className = "box";
         sinoCard.style.margin = "0";
@@ -4795,10 +4812,7 @@
           natCard.firstElementChild.append(sp(sinoClean, "ko-KR", "num"));
         }
         o.append(natCard);
-
-        if (autoSpeak) {
-          speak(sinoClean, "ko-KR", "num");
-        }
+        if (autoSpeak) speak(sinoClean, "ko-KR", "num");
       }
 
       $("#nb").onclick = () => renderKoreanNumberOutput(true);
@@ -4906,16 +4920,7 @@
       FORMULAS.forEach(([f, rule, mean, ex]) => {
         const tr = document.createElement("tr");
         const [koEx, viEx] = ex.split("\n");
-        tr.innerHTML = `
-        <td><b style="color:var(--pink);">${f}</b></td>
-        <td>${rule}</td>
-        <td>${mean}</td>
-        <td>
-          <b class="k" style="font-size:17px;cursor:pointer;" title="Bấm để nghe">${koEx}</b><br>
-          <small style="color:var(--pink);font-weight:700;">${viEx}</small>
-        </td>
-        <td></td>
-      `;
+        tr.innerHTML = `<td><b style="color:var(--pink);">${f}</b></td><td>${rule}</td><td>${mean}</td><td><b class="k" style="font-size:17px;cursor:pointer;" title="Bấm để nghe">${koEx}</b><br><small style="color:var(--pink);font-weight:700;">${viEx}</small></td><td></td>`;
         tr.querySelector(".k").onclick = () => speak(koEx, "ko-KR", "gram");
         tr.children[4].append(sp(koEx, "ko-KR", "gram"));
         $("#formulaTable").append(tr);
@@ -5117,15 +5122,7 @@
 
       GT.forEach(([ko, vi, ro, level]) => {
         const tr = document.createElement("tr");
-        tr.innerHTML = `
-        <td>
-          <b class="k" style="font-size:18.5px;color:var(--pink);cursor:pointer;" title="Bấm để nghe">${ko}</b><br>
-          <span style="font-weight:700;">🇻🇳 Dịch: ${vi}</span>
-        </td>
-        <td style="font-weight:700;color:var(--mut);">${ro}</td>
-        <td><span class="badge">${level}</span></td>
-        <td></td>
-      `;
+        tr.innerHTML = `<td><b class="k" style="font-size:18.5px;color:var(--pink);cursor:pointer;" title="Bấm để nghe">${ko}</b><br><span style="font-weight:700;">🇻🇳 Dịch: ${vi}</span></td><td style="font-weight:700;color:var(--mut);">${ro}</td><td><span class="badge">${level}</span></td><td></td>`;
         tr.querySelector(".k").onclick = () => speak(ko, "ko-KR", "greet");
         tr.children[3].append(sp(ko, "ko-KR", "greet"));
         $("#gt").append(tr);
@@ -5220,6 +5217,7 @@
       });
 
       window.addEventListener("load", () => {
+        if (aud.dataset.local === "1") return;
         $("#q").value = playlist[0].q;
         search();
       });
